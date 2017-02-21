@@ -13,6 +13,9 @@
 		047D04B81E5CE4E600E54378 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047D04B61E5CE4E600E54378 /* Main.storyboard */; };
 		047D04BA1E5CE4E600E54378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047D04B91E5CE4E600E54378 /* Assets.xcassets */; };
 		047D04BD1E5CE4E600E54378 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047D04BB1E5CE4E600E54378 /* LaunchScreen.storyboard */; };
+		047D04C51E5D018200E54378 /* InstructionClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04C41E5D018200E54378 /* InstructionClass.swift */; };
+		047D04C71E5D026000E54378 /* TreeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04C61E5D026000E54378 /* TreeClass.swift */; };
+		047D04CF1E5D054B00E54378 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04CE1E5D054B00E54378 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		047D04B91E5CE4E600E54378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		047D04BC1E5CE4E600E54378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		047D04BE1E5CE4E600E54378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		047D04C41E5D018200E54378 /* InstructionClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionClass.swift; sourceTree = "<group>"; };
+		047D04C61E5D026000E54378 /* TreeClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeClass.swift; sourceTree = "<group>"; };
+		047D04CE1E5D054B00E54378 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,34 @@
 		047D04AF1E5CE4E600E54378 /* Physical_Exam_App */ = {
 			isa = PBXGroup;
 			children = (
-				047D04B01E5CE4E600E54378 /* AppDelegate.swift */,
-				047D04B21E5CE4E600E54378 /* FirstViewController.swift */,
-				047D04B41E5CE4E600E54378 /* SecondViewController.swift */,
+				047D04C81E5D02BD00E54378 /* Class */,
+				047D04C91E5D02CE00E54378 /* ViewController */,
 				047D04B61E5CE4E600E54378 /* Main.storyboard */,
+				047D04B01E5CE4E600E54378 /* AppDelegate.swift */,
 				047D04B91E5CE4E600E54378 /* Assets.xcassets */,
 				047D04BB1E5CE4E600E54378 /* LaunchScreen.storyboard */,
 				047D04BE1E5CE4E600E54378 /* Info.plist */,
 			);
 			path = Physical_Exam_App;
+			sourceTree = "<group>";
+		};
+		047D04C81E5D02BD00E54378 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				047D04C61E5D026000E54378 /* TreeClass.swift */,
+				047D04C41E5D018200E54378 /* InstructionClass.swift */,
+			);
+			name = Class;
+			sourceTree = "<group>";
+		};
+		047D04C91E5D02CE00E54378 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				047D04B41E5CE4E600E54378 /* SecondViewController.swift */,
+				047D04B21E5CE4E600E54378 /* FirstViewController.swift */,
+				047D04CE1E5D054B00E54378 /* SearchViewController.swift */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +165,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				047D04CF1E5D054B00E54378 /* SearchViewController.swift in Sources */,
 				047D04B51E5CE4E600E54378 /* SecondViewController.swift in Sources */,
+				047D04C71E5D026000E54378 /* TreeClass.swift in Sources */,
+				047D04C51E5D018200E54378 /* InstructionClass.swift in Sources */,
 				047D04B11E5CE4E600E54378 /* AppDelegate.swift in Sources */,
 				047D04B31E5CE4E600E54378 /* FirstViewController.swift in Sources */,
 			);
@@ -304,6 +332,7 @@
 				047D04C31E5CE4E600E54378 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
