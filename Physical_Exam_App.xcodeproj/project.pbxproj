@@ -7,29 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0428B5D81E5E852800BBE273 /* RecentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428B5D71E5E852800BBE273 /* RecentTableViewController.swift */; };
+		0428B5DA1E5E855B00BBE273 /* AllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428B5D91E5E855B00BBE273 /* AllTableViewController.swift */; };
+		0428B5DC1E5E857C00BBE273 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428B5DB1E5E857C00BBE273 /* FavoriteTableViewController.swift */; };
 		047D04B11E5CE4E600E54378 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04B01E5CE4E600E54378 /* AppDelegate.swift */; };
 		047D04B31E5CE4E600E54378 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04B21E5CE4E600E54378 /* FirstViewController.swift */; };
-		047D04B51E5CE4E600E54378 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04B41E5CE4E600E54378 /* SecondViewController.swift */; };
 		047D04B81E5CE4E600E54378 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047D04B61E5CE4E600E54378 /* Main.storyboard */; };
 		047D04BA1E5CE4E600E54378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047D04B91E5CE4E600E54378 /* Assets.xcassets */; };
 		047D04BD1E5CE4E600E54378 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047D04BB1E5CE4E600E54378 /* LaunchScreen.storyboard */; };
 		047D04C51E5D018200E54378 /* InstructionClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04C41E5D018200E54378 /* InstructionClass.swift */; };
 		047D04C71E5D026000E54378 /* TreeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04C61E5D026000E54378 /* TreeClass.swift */; };
-		047D04CF1E5D054B00E54378 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04CE1E5D054B00E54378 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0428B5D71E5E852800BBE273 /* RecentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTableViewController.swift; sourceTree = "<group>"; };
+		0428B5D91E5E855B00BBE273 /* AllTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTableViewController.swift; sourceTree = "<group>"; };
+		0428B5DB1E5E857C00BBE273 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 		047D04AD1E5CE4E600E54378 /* Physical_Exam_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Physical_Exam_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		047D04B01E5CE4E600E54378 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		047D04B21E5CE4E600E54378 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		047D04B41E5CE4E600E54378 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		047D04B71E5CE4E600E54378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		047D04B91E5CE4E600E54378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		047D04BC1E5CE4E600E54378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		047D04BE1E5CE4E600E54378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		047D04C41E5D018200E54378 /* InstructionClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionClass.swift; sourceTree = "<group>"; };
 		047D04C61E5D026000E54378 /* TreeClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeClass.swift; sourceTree = "<group>"; };
-		047D04CE1E5D054B00E54378 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,9 +87,10 @@
 		047D04C91E5D02CE00E54378 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				047D04B41E5CE4E600E54378 /* SecondViewController.swift */,
 				047D04B21E5CE4E600E54378 /* FirstViewController.swift */,
-				047D04CE1E5D054B00E54378 /* SearchViewController.swift */,
+				0428B5D71E5E852800BBE273 /* RecentTableViewController.swift */,
+				0428B5DB1E5E857C00BBE273 /* FavoriteTableViewController.swift */,
+				0428B5D91E5E855B00BBE273 /* AllTableViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -165,12 +168,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				047D04CF1E5D054B00E54378 /* SearchViewController.swift in Sources */,
-				047D04B51E5CE4E600E54378 /* SecondViewController.swift in Sources */,
 				047D04C71E5D026000E54378 /* TreeClass.swift in Sources */,
 				047D04C51E5D018200E54378 /* InstructionClass.swift in Sources */,
 				047D04B11E5CE4E600E54378 /* AppDelegate.swift in Sources */,
+				0428B5DA1E5E855B00BBE273 /* AllTableViewController.swift in Sources */,
 				047D04B31E5CE4E600E54378 /* FirstViewController.swift in Sources */,
+				0428B5D81E5E852800BBE273 /* RecentTableViewController.swift in Sources */,
+				0428B5DC1E5E857C00BBE273 /* FavoriteTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
