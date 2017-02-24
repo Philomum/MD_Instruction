@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,9 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First View Controller-->
+        <!--Sections-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="Physical_Exam_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
@@ -34,6 +35,43 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QX1-XP-y6r">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nXn-IV-Cxd">
+                                    <size key="itemSize" width="154" height="124"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionCell" id="kDG-0P-A62" customClass="SectionCollectionViewCell" customModule="Physical_Exam_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="154" height="124"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="154" height="124"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgQ-ZK-2GI">
+                                                    <rect key="frame" x="8" y="8" width="138" height="108"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="myLabel" destination="bgQ-ZK-2GI" id="cP4-U9-Fpa"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="ebh-D6-YXj"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="rBY-vr-1wR"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -43,13 +81,15 @@
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0d7-zm-D7u"/>
+                    <navigationItem key="navigationItem" title="Sections" id="0d7-zm-D7u"/>
+                    <connections>
+                        <outlet property="collectionView" destination="QX1-XP-y6r" id="twK-tO-Gxh"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1747.5" y="-964.43661971830988"/>
         </scene>
-        <!--Favorite Table View Controller-->
+        <!--Favourite-->
         <scene sceneID="oP0-BB-zJb">
             <objects>
                 <tableViewController id="uyS-9h-Lmw" customClass="FavoriteTableViewController" customModule="Physical_Exam_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -67,7 +107,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AFK-3U-xwF" id="UuS-qY-sBX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -77,14 +117,14 @@
                             <outlet property="delegate" destination="uyS-9h-Lmw" id="I5D-45-5AD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="wgb-0v-leU"/>
+                    <navigationItem key="navigationItem" title="Favourite" id="wgb-0v-leU"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Mg-wg-Yjo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1748" y="399"/>
         </scene>
-        <!--Recent Table View Controller-->
+        <!--Recent Viewed-->
         <scene sceneID="O7x-uy-uoy">
             <objects>
                 <tableViewController id="JSV-Di-25c" customClass="RecentTableViewController" customModule="Physical_Exam_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -102,7 +142,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WcZ-3A-dzK" id="Ve0-hh-7rh">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -112,7 +152,7 @@
                             <outlet property="delegate" destination="JSV-Di-25c" id="moJ-Bd-xOm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="OH9-DO-EUs"/>
+                    <navigationItem key="navigationItem" title="Recent Viewed" id="OH9-DO-EUs"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nXx-Pb-O9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -177,11 +217,11 @@
             </objects>
             <point key="canvasLocation" x="750" y="-964.43661971830988"/>
         </scene>
-        <!--Recent-->
+        <!--Navigation Controller-->
         <scene sceneID="edW-TI-4bg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m9u-k2-oF2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Recent" id="qz3-1D-Ykz"/>
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="qz3-1D-Ykz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="r57-jF-HRR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -196,11 +236,11 @@
             </objects>
             <point key="canvasLocation" x="750" y="-289.43661971830988"/>
         </scene>
-        <!--Favorite-->
+        <!--Navigation Controller-->
         <scene sceneID="aU0-Ld-KL6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hue-a3-wMZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorite" id="Sec-bS-frS"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="Sec-bS-frS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fFd-Ib-SuO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -215,7 +255,7 @@
             </objects>
             <point key="canvasLocation" x="750" y="400"/>
         </scene>
-        <!--All Table View Controller-->
+        <!--Search-->
         <scene sceneID="zCg-rS-Wte">
             <objects>
                 <tableViewController id="bUt-2u-cjF" customClass="AllTableViewController" customModule="Physical_Exam_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -233,7 +273,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCj-mr-bA9" id="FGE-D0-tq7">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -243,18 +283,18 @@
                             <outlet property="delegate" destination="bUt-2u-cjF" id="XH4-cG-NRl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ZiF-8J-6jH"/>
+                    <navigationItem key="navigationItem" title="Search" id="ZiF-8J-6jH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntX-6d-8fG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1747.5" y="1104.9295774647887"/>
         </scene>
-        <!--All-->
+        <!--Navigation Controller-->
         <scene sceneID="Xpv-JU-ccB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HbK-b4-30l" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="All" id="8YZ-cP-qmC"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="8YZ-cP-qmC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nmn-6B-RNX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
