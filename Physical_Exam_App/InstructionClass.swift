@@ -15,4 +15,8 @@ class Instruction {
     var source = ""
     var description = ""
     var checked = false
+    
+    init(name: String){
+        self.name = name
+    }
 }

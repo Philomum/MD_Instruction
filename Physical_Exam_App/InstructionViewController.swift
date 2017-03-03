@@ -18,6 +18,9 @@ class InstructionViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.instructionText.text = titleText
+        
+        
+        //RecentViewController.addViewedList(item: Instruction(name: titleText))
     }
 
     override func didReceiveMemoryWarning() {

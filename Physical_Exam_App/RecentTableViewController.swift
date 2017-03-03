@@ -11,15 +11,19 @@ import UIKit
 class RecentTableViewController: UITableViewController {
 
     var Recent_List = [Instruction]()
+    var List_Capacity = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,12 +46,26 @@ class RecentTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecentCell", for: indexPath)
-        
         cell.textLabel?.text = Recent_List[indexPath.row].name
         // Configure the cell...
         return cell
     }
- 
+    
+    func addViewedList(item: Instruction){
+        for i in 0..<Recent_List.count{
+            if item.name == Recent_List[i].name{
+                Recent_List.remove(at: i)
+                break
+            }
+        }
+        if Recent_List.count < List_Capacity{
+            Recent_List.insert(item, at: 0)
+        }
+        else{
+            Recent_List.remove(at: Recent_List.count)
+            Recent_List.insert(item, at: 0)
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
