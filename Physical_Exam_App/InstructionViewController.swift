@@ -18,7 +18,7 @@ class InstructionViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.instructionText.text = titleText
-        
+        addToRecent()
         
         //RecentViewController.addViewedList(item: Instruction(name: titleText))
     }
@@ -28,7 +28,19 @@ class InstructionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func addToRecent(){
+        let newInstruction = Instruction(name: titleText)
+        for i in 0..<Recent.recentVisited.count{
+            if newInstruction.name == Recent.recentVisited[i].name{
+                Recent.recentVisited.remove(at: i)
+                break
+            }
+        }
+        if Recent.recentVisited.count == Recent.capacity{
+            Recent.recentVisited.remove(at: Recent.capacity - 1)
+        }
+        Recent.recentVisited.insert(newInstruction, at: 0)
+    }
     /*
     // MARK: - Navigation
 

@@ -213,6 +213,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="00b-Pd-tOO" kind="showDetail" identifier="RecentToDetail" id="0j0-e1-Z4k"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -222,6 +225,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Recent Viewed" id="OH9-DO-EUs"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="djD-BW-aMD" id="7WE-1W-XJL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nXx-Pb-O9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -383,6 +389,6 @@
         <image name="Home-50" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Q2U-I4-hus"/>
+        <segue reference="0j0-e1-Z4k"/>
     </inferredMetricsTieBreakers>
 </document>

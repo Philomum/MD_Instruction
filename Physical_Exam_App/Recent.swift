@@ -10,4 +10,5 @@ import Foundation
 
 class Recent{
     static var recentVisited:[Instruction] = [Instruction]()
+    static let capacity = 3
 }
