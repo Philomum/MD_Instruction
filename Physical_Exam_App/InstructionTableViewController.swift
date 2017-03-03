@@ -115,9 +115,8 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         }
     }
     
-    @IBAction func unwindToList(segue: UIStoryboardSegue) {
-        print("unwind from tableview controller")
-    }
+
+    
     
     // MARK: - Split View Controller
 //    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
