@@ -15,6 +15,7 @@ class RecentTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Recent_List = Recent.recentVisited
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -51,21 +52,21 @@ class RecentTableViewController: UITableViewController {
         return cell
     }
     
-    func addViewedList(item: Instruction){
-        for i in 0..<Recent_List.count{
-            if item.name == Recent_List[i].name{
-                Recent_List.remove(at: i)
-                break
-            }
-        }
-        if Recent_List.count < List_Capacity{
-            Recent_List.insert(item, at: 0)
-        }
-        else{
-            Recent_List.remove(at: Recent_List.count)
-            Recent_List.insert(item, at: 0)
-        }
-    }
+//    func addViewedList(item: Instruction){
+//        for i in 0..<Recent_List.count{
+//            if item.name == Recent_List[i].name{
+//                Recent_List.remove(at: i)
+//                break
+//            }
+//        }
+//        if Recent_List.count < List_Capacity{
+//            Recent_List.insert(item, at: 0)
+//        }
+//        else{
+//            Recent_List.remove(at: Recent_List.count)
+//            Recent_List.insert(item, at: 0)
+//        }
+//    }
 
     /*
     // Override to support conditional editing of the table view.

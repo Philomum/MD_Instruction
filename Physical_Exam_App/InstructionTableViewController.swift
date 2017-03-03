@@ -112,6 +112,8 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
             let nav = segue.destination as! UINavigationController
             let vc = nav.viewControllers[0] as! InstructionViewController
             vc.titleText = self.InstructionList[index!]
+            let newInstruction = Instruction(name: vc.titleText)
+            Recent.recentVisited.append(newInstruction)
         }
     }
     
