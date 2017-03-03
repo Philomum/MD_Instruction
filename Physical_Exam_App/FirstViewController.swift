@@ -16,6 +16,7 @@ class FirstViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Recent.recentVisited = Instruction.loadFromFile() ?? []
         //self.view.addSubview(collectionView)
         // Do any additional setup after loading the view, typically from a nib.
         //let nib = UINib(nibName: "SectionCollectionViewCell", bundle: nil)

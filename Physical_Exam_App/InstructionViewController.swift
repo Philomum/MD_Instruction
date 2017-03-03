@@ -40,6 +40,7 @@ class InstructionViewController: UIViewController {
             Recent.recentVisited.remove(at: Recent.capacity - 1)
         }
         Recent.recentVisited.insert(newInstruction, at: 0)
+        let _ = Instruction.saveRecent(Recent.recentVisited)
     }
     /*
     // MARK: - Navigation
