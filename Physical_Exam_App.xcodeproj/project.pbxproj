@@ -18,6 +18,8 @@
 		047D04C51E5D018200E54378 /* InstructionClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04C41E5D018200E54378 /* InstructionClass.swift */; };
 		047D04C71E5D026000E54378 /* TreeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04C61E5D026000E54378 /* TreeClass.swift */; };
 		4BA03BAB1E5FBFD900C02294 /* SectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA03BA91E5FBFD900C02294 /* SectionCollectionViewCell.swift */; };
+		4BFD6A6F1E69042D00F76AEB /* InstructionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFD6A6E1E69042D00F76AEB /* InstructionTableViewController.swift */; };
+		4BFD6A711E6906E100F76AEB /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFD6A701E6906E100F76AEB /* InstructionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		047D04C41E5D018200E54378 /* InstructionClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionClass.swift; sourceTree = "<group>"; };
 		047D04C61E5D026000E54378 /* TreeClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeClass.swift; sourceTree = "<group>"; };
 		4BA03BA91E5FBFD900C02294 /* SectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		4BFD6A6E1E69042D00F76AEB /* InstructionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionTableViewController.swift; sourceTree = "<group>"; };
+		4BFD6A701E6906E100F76AEB /* InstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,11 +93,13 @@
 		047D04C91E5D02CE00E54378 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4BFD6A701E6906E100F76AEB /* InstructionViewController.swift */,
 				047D04B21E5CE4E600E54378 /* FirstViewController.swift */,
 				0428B5D71E5E852800BBE273 /* RecentTableViewController.swift */,
 				0428B5DB1E5E857C00BBE273 /* FavoriteTableViewController.swift */,
 				0428B5D91E5E855B00BBE273 /* AllTableViewController.swift */,
 				4BA03BA91E5FBFD900C02294 /* SectionCollectionViewCell.swift */,
+				4BFD6A6E1E69042D00F76AEB /* InstructionTableViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -176,8 +182,10 @@
 				047D04B11E5CE4E600E54378 /* AppDelegate.swift in Sources */,
 				0428B5DA1E5E855B00BBE273 /* AllTableViewController.swift in Sources */,
 				047D04B31E5CE4E600E54378 /* FirstViewController.swift in Sources */,
+				4BFD6A711E6906E100F76AEB /* InstructionViewController.swift in Sources */,
 				0428B5D81E5E852800BBE273 /* RecentTableViewController.swift in Sources */,
 				4BA03BAB1E5FBFD900C02294 /* SectionCollectionViewCell.swift in Sources */,
+				4BFD6A6F1E69042D00F76AEB /* InstructionTableViewController.swift in Sources */,
 				0428B5DC1E5E857C00BBE273 /* FavoriteTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
