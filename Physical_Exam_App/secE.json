@@ -1,0 +1,94 @@
+{
+  "id": "5",
+  "name": "Abdomen",
+  "sections": [
+    {
+      "Inspection,auscultation,palpation": [
+        {
+          "name": "Auscultate carotid arteries (bilaterally)(prior to palpation)"
+        },
+        {
+          "name": "Abdomen (verbalize inspection)"
+        }
+      ],
+      "Auscultate-beforemanipulation or palpation": [
+        {
+          "name": "Listen for and verbalize presence of bowel sounds (any quadrant)"
+        },
+        {
+          "name": "Left upper quadrant to include (L) renal artery for arterial bruits"
+        },
+        {
+          "name": "Right upper quadrant to include (R) renal artery for arterial bruits"
+        },
+        {
+          "name": "Right lower quadrant to include (R) iliac artery for arterial bruits"
+        },
+        {
+          "name": "Left lower quadrant to include (L) iliac artery for arterial bruits"
+        },
+        {
+          "name": "Aorta for arterial bruits"
+        }
+      ],
+      "Percuss/Palpate": [
+        {
+          "name": "Correct technique: observation of patient's face during examination"
+        },
+        {
+          "name": "Percuss liver span"
+        },
+        {
+          "name": "Palpate liver edge"
+        },
+        {
+          "name": "Percuss spleen"
+        },
+        {
+          "name": "Palpate tip of spleen"
+        },
+        {
+          "name": "Light palpation in 4 quadrants"
+        },
+        {
+          "name": "Deep palpation in 4 quadrants (must follow light palpation)"
+        },
+        {
+          "name": "Palpate epigastrium to include aorta"
+        },
+        {
+          "name": "Margins of aorta delineated"
+        }
+      ],
+      "Special-Screening-Techniques": [
+        {
+          "name": "Liver Scratch Test - Bell or diaphragm on right costal margin, scratch for sound changes over liver borders on MCL."
+        },
+        {
+          "name": "Murphy's Sign - Palpation under right costal margin while patient inhales quickly and deeply. Examiner notes pain or notes patient stops inspiration."
+        },
+        {
+          "name": "Rebound Tenderness - Firm slow palpation followed by immediate release. Note pain if increases with release."
+        },
+        {
+          "name": "Rovsing's Sign - Rebound tenderness maneuver on LLQ screening for RLQ pain response."
+        },
+        {
+          "name": "Shifting Dullness - Repeating percussion with patient rolled to either side, noting changes in percussion note."
+        },
+        {
+          "name": "Fluid Wave - Patient forms barrier down abdominal midline. Examiner taps one side while palpating for impulse on other side of abdomen. Fluid, not fat, transmits impulse."
+        },
+        {
+          "name": "Psoas Sign - Hip flexion against resistance reproduces pain response."
+        },
+        {
+          "name": "Obturator Sign - Painful internal rotation of the hip while hip and knee are flexed."
+        },
+        {
+          "name": "Obturator Sign - Painful internal rotation of the hip while hip and knee are flexed."
+        }
+      ]
+    }
+  ]
+}

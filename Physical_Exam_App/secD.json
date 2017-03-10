@@ -1,0 +1,76 @@
+{
+  "id": "4",
+  "name": "Cardiovascular",
+  "sections": [
+    {
+      "general": [
+        {
+          "name": "Auscultate carotid arteries (bilaterally)(prior to palpation)"
+        },
+        {
+          "name": "Palpate carotid pulse (bilaterally, but not simultaneously"
+        }
+      ],
+      "inspection": [
+        {
+          "name": "Correct technique: patient supine, head elevated to 30 degrees"
+        },
+        {
+          "name": "Inspect precordium (verbalize inspection)"
+        },
+        {
+          "name": "Inspect neck veins and estimate jugular venous pressure (verbalize inspection) Will not be tested"
+        }
+      ],
+      "Palpate": [
+        {
+          "name": "Costochondral junctions"
+        },
+        {
+          "name": "Left Sternal border (4th and 5th ICS – left) to assess RV hypertrophy"
+        },
+        {
+          "name": "Point of Maximal Impulse (PMI)"
+        },
+        [],
+        []
+      ],
+      "Auscultate- using diaphragm of stethoscope ": [
+        {
+          "name": "Aortic area (2nd ICS - right)"
+        },
+        {
+          "name": "Pulmonic area (2nd ICS – left)"
+        },
+        {
+          "name": "Tricuspid area (4th or 5th ICS - LSB)"
+        },
+        {
+          "name": "Mitral (Apical) area (5Th ICS, MCL)"
+        }
+      ],
+      "Auscultate- using bell of stethoscope": [
+        {
+          "name": "Aortic area (2nd ICS - right)"
+        },
+        {
+          "name": "Pulmonic area (2nd ICS – left)"
+        },
+        {
+          "name": "Tricuspid area (4th or 5th ICS - LSB)"
+        },
+        {
+          "name": "Mitral (Apical) area (5Th ICS, MCL)"
+        },
+        {
+          "name": "Mitral Valve Screening (left lateral decubitus, PMI/apex)"
+        }
+      ],
+      "Special-Screening-Techniques": [
+        {
+          "name": "Valsalva Maneuver - Patient supine and \"bearing down\" while examiner auscultates in tricuspid area"
+        }
+      ]
+    }
+  ]
+}

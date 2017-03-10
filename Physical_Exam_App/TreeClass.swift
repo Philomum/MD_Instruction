@@ -13,4 +13,8 @@ class treeNode {
     var isInstruction = false
     var children = [treeNode]()
     var childInstruction: Instruction? = nil
+    
+    init() {
+        
+    }
 }
