@@ -124,7 +124,19 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         }
     }
     
-    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if let tappedIndex = tableView.indexPathForSelectedRow?.row{
+            if tappedIndex == 0{
+                InstructionList.remove(at: 0)
+                tableView.reloadSections([0], with: UITableViewRowAnimation.left)
+                return false
+            }
+            else {
+                return true
+            }
+        }
+        return true
+    }
     
     
     // MARK: - Split View Controller
@@ -195,4 +207,10 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
     }
     
     
+}
+
+extension UITableView {
+    func reloadData(with animation: UITableViewRowAnimation) {
+        reloadSections(IndexSet(integersIn: 0..<numberOfSections), with: animation)
+    }
 }

@@ -12,3 +12,7 @@ class Recent{
     static var recentVisited:[Instruction] = [Instruction]()
     static let capacity = 3
 }
+
+class Favorite{
+    static var recentVisited:[Instruction] = [Instruction]()
+}
