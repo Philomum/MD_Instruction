@@ -39,6 +39,11 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
         
         instDic = parseJson(section: "secA")
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
+        
         //print(instDic)
         
         // Uncomment the following line to preserve selection between presentations
@@ -48,9 +53,24 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.right:
+                performSegue(withIdentifier: "unwindToCollection", sender: self)
+            default:
+                break
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func unwindToTableView(segue: UIStoryboardSegue) {
+        print("unwind to tableview controller")
     }
     
     // MARK: - Table view data source
@@ -70,10 +90,15 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         
         // Configure the cell...
         cell.textLabel?.text = self.InstructionList[indexPath.row]
-        
+        cell.textLabel?.numberOfLines = 3
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 80;
+    }
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

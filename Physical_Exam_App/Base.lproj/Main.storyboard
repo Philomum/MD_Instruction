@@ -115,12 +115,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="BqQ-uO-riq"/>
+                    <navigationItem key="navigationItem" id="BqQ-uO-riq">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="0ep-eG-iR6">
+                            <connections>
+                                <segue destination="wGY-iI-JmC" kind="unwind" identifier="unwindToTable" unwindAction="unwindToTableViewWithSegue:" id="F7g-NC-QAJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="star1" id="yor-WT-e7e">
+                            <connections>
+                                <action selector="marked:" destination="NDP-81-dQg" id="8UT-vt-RhJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="instructionText" destination="zS7-pU-UQO" id="OgY-KR-za0"/>
+                        <outlet property="rightButton" destination="yor-WT-e7e" id="Jsm-t3-Tgm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9DI-Bq-67v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="wGY-iI-JmC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4605" y="-394"/>
         </scene>
@@ -153,7 +166,7 @@
                     <navigationItem key="navigationItem" title="Intruction List" id="w3d-37-VaG">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="tJ9-uc-79T">
                             <connections>
-                                <segue destination="0LA-x1-7M9" kind="unwind" unwindAction="unwindToListWithSegue:" id="fof-Rf-q2x"/>
+                                <segue destination="0LA-x1-7M9" kind="unwind" identifier="unwindToCollection" unwindAction="unwindToCollectionViewWithSegue:" id="ifu-Kr-HNI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -192,7 +205,7 @@
             </objects>
             <point key="canvasLocation" x="2805" y="-1230"/>
         </scene>
-        <!--Recent Viewed-->
+        <!--History-->
         <scene sceneID="O7x-uy-uoy">
             <objects>
                 <tableViewController storyboardIdentifier="recent" id="JSV-Di-25c" customClass="RecentTableViewController" customModule="Physical_Exam_App" sceneMemberID="viewController">
@@ -214,7 +227,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="00b-Pd-tOO" kind="showDetail" identifier="RecentToDetail" id="0j0-e1-Z4k"/>
+                                    <segue destination="00b-Pd-tOO" kind="show" identifier="RecentToDetail" id="0j0-e1-Z4k"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -223,7 +236,7 @@
                             <outlet property="delegate" destination="JSV-Di-25c" id="moJ-Bd-xOm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Recent Viewed" id="OH9-DO-EUs"/>
+                    <navigationItem key="navigationItem" title="History" id="OH9-DO-EUs"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="djD-BW-aMD" id="7WE-1W-XJL"/>
@@ -258,7 +271,7 @@
         <scene sceneID="edW-TI-4bg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m9u-k2-oF2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="qz3-1D-Ykz"/>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="qz3-1D-Ykz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="r57-jF-HRR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -387,8 +400,9 @@
     </scenes>
     <resources>
         <image name="Home-50" width="25" height="25"/>
+        <image name="star1" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Q2U-I4-hus"/>
+        <segue reference="0j0-e1-Z4k"/>
     </inferredMetricsTieBreakers>
 </document>

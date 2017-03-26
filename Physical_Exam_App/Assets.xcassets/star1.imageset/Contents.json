@@ -2,7 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "first.pdf"
+      "filename" : "star1.png",
+      "scale" : "1x"
     }
   ],
   "info" : {

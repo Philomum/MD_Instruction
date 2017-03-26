@@ -12,8 +12,6 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate {
 
     var Recent_List = [Instruction]()
     var filtered = [Instruction]()
-    
-    var List_Capacity = 5
     var searchActive : Bool = false
     
     @IBOutlet weak var searchBar: UISearchBar!

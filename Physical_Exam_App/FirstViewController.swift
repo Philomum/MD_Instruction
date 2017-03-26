@@ -43,14 +43,14 @@ class FirstViewController: UICollectionViewController {
         return cell
     }
     
-    @IBAction func unwindToList(segue: UIStoryboardSegue) {
+    @IBAction func unwindToCollectionView(segue: UIStoryboardSegue) {
         print("unwind from tableview controller")
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("You selected cell #\(self.sections[indexPath.item])")
     }
-
-
+    
+    
 }
 

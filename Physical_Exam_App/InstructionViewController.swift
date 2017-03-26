@@ -9,16 +9,32 @@
 import UIKit
 import AVFoundation
 
+
 class InstructionViewController: UIViewController {
     
     var player = AVPlayer()
     var playerLayer: AVPlayerLayer!
     var timeObserver: Any!
     var playerRateBeforeSeek: Float = 0
+    var isFavorite = false
     
     let invisibleButton = UIButton()
     let timeRemainingLabel = UILabel()
     let seekSlider = UISlider()
+    @IBOutlet weak var rightButton: UIBarButtonItem!
+    
+    @IBAction func marked(_ sender: Any) {
+        isFavorite = !isFavorite
+        if isFavorite == true{
+            rightButton.image = #imageLiteral(resourceName: "star2")
+        }
+        else{
+            rightButton.image = #imageLiteral(resourceName: "star1")
+        }
+        let newInstruction = Instruction(name: titleText)
+        Favorite.favoriteVisited.append(newInstruction)
+        print("!")
+    }
    
     private var _orientations = UIInterfaceOrientationMask.portrait
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
@@ -54,7 +70,22 @@ class InstructionViewController: UIViewController {
                              for: [.touchUpInside, .touchUpOutside])
         seekSlider.addTarget(self, action: #selector(sliderValueChanged),
                              for: .valueChanged)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
         //RecentViewController.addViewedList(item: Instruction(name: titleText))
+    }
+    
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.right:
+                performSegue(withIdentifier: "unwindToTable", sender: self)
+            default:
+                break
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

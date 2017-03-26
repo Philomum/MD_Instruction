@@ -11,9 +11,12 @@ import UIKit
 class FavoriteTableViewController: UITableViewController {
 
     var Favorite_List = [Instruction]()
+    var searchActive : Bool = false
+    var filtered = [Instruction]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        Favorite_List = Favorite.recentVisited
+        Favorite_List = Favorite.favoriteVisited
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -22,7 +25,7 @@ class FavoriteTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Favorite_List = Favorite.recentVisited
+        Favorite_List = Favorite.favoriteVisited
         self.tableView.reloadData()
     }
     
@@ -46,6 +49,12 @@ class FavoriteTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath)
+        if searchActive == false{
+            cell.textLabel?.text = Favorite_List[indexPath.row].name
+        }
+        else{
+            cell.textLabel?.text = filtered[indexPath.row].name
+        }
 
         // Configure the cell...
 

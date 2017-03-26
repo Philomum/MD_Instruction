@@ -17,6 +17,7 @@
 		047D04BD1E5CE4E600E54378 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047D04BB1E5CE4E600E54378 /* LaunchScreen.storyboard */; };
 		047D04C51E5D018200E54378 /* InstructionClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04C41E5D018200E54378 /* InstructionClass.swift */; };
 		047D04C71E5D026000E54378 /* TreeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04C61E5D026000E54378 /* TreeClass.swift */; };
+		04C3E5C61E878717008F867E /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C3E5C51E878717008F867E /* CustomSegue.swift */; };
 		4B7861E11E6A190600495FA0 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7861E01E6A190600495FA0 /* Recent.swift */; };
 		4B7E99D11E732BF0006C4370 /* secA.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B7E99C91E732BF0006C4370 /* secA.json */; };
 		4B7E99D21E732BF0006C4370 /* secB.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B7E99CA1E732BF0006C4370 /* secB.json */; };
@@ -44,6 +45,7 @@
 		047D04BE1E5CE4E600E54378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		047D04C41E5D018200E54378 /* InstructionClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionClass.swift; sourceTree = "<group>"; };
 		047D04C61E5D026000E54378 /* TreeClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeClass.swift; sourceTree = "<group>"; };
+		04C3E5C51E878717008F867E /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 		4B7861E01E6A190600495FA0 /* Recent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		4B7E99C91E732BF0006C4370 /* secA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secA.json; sourceTree = "<group>"; };
 		4B7E99CA1E732BF0006C4370 /* secB.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secB.json; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				047D04B21E5CE4E600E54378 /* FirstViewController.swift */,
 				0428B5D71E5E852800BBE273 /* RecentTableViewController.swift */,
 				0428B5DB1E5E857C00BBE273 /* FavoriteTableViewController.swift */,
+				04C3E5C51E878717008F867E /* CustomSegue.swift */,
 				0428B5D91E5E855B00BBE273 /* AllTableViewController.swift */,
 				4BA03BA91E5FBFD900C02294 /* SectionCollectionViewCell.swift */,
 				4BFD6A6E1E69042D00F76AEB /* InstructionTableViewController.swift */,
@@ -224,6 +227,7 @@
 				047D04C71E5D026000E54378 /* TreeClass.swift in Sources */,
 				047D04C51E5D018200E54378 /* InstructionClass.swift in Sources */,
 				047D04B11E5CE4E600E54378 /* AppDelegate.swift in Sources */,
+				04C3E5C61E878717008F867E /* CustomSegue.swift in Sources */,
 				0428B5DA1E5E855B00BBE273 /* AllTableViewController.swift in Sources */,
 				047D04B31E5CE4E600E54378 /* FirstViewController.swift in Sources */,
 				4BFD6A711E6906E100F76AEB /* InstructionViewController.swift in Sources */,

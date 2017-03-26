@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Recent{
     static var recentVisited:[Instruction] = [Instruction]()
@@ -14,5 +15,6 @@ class Recent{
 }
 
 class Favorite{
-    static var recentVisited:[Instruction] = [Instruction]()
+    static var favoriteVisited:[Instruction] = [Instruction]()
 }
+
