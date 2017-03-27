@@ -13,15 +13,13 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate {
     var Recent_List = [Instruction]()
     var filtered = [Instruction]()
     var searchActive : Bool = false
-    
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         searchBar.delegate = self
-        
         Recent_List = Recent.recentVisited
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -63,8 +61,15 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate {
         else{
             cell.textLabel?.text = filtered[indexPath.row].name
         }
+        cell.textLabel?.numberOfLines = 3
+        cell.accessoryType = .disclosureIndicator
         // Configure the cell...
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 80;
     }
     
     // MARK: - Search Bar Functions

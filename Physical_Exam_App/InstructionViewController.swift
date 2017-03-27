@@ -27,16 +27,23 @@ class InstructionViewController: UIViewController {
         isFavorite = !isFavorite
         if isFavorite == true{
             rightButton.image = #imageLiteral(resourceName: "star2")
+            let newInstruction = Instruction(name: titleText)
+            Favorite.favoriteVisited.append(newInstruction)
         }
         else{
             rightButton.image = #imageLiteral(resourceName: "star1")
+            for i in 0..<Favorite.favoriteVisited.count{
+                if titleText == Favorite.favoriteVisited[i].name{
+                    Favorite.favoriteVisited.remove(at: i)
+                    break
+                }
+            }
         }
-        let newInstruction = Instruction(name: titleText)
-        Favorite.favoriteVisited.append(newInstruction)
-        print("!")
+        let _ = Instruction.saveFavorite(Favorite.favoriteVisited)
     }
    
     private var _orientations = UIInterfaceOrientationMask.portrait
+    
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         get { return self._orientations }
         set { self._orientations = newValue }

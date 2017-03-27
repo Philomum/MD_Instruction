@@ -25,9 +25,11 @@ class Instruction:NSObject,NSCoding{
     var detail = ""
     var checked = false
     
-    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let ArchiveURLforRecent = DocumentsDirectory.appendingPathComponent("RecentFile")
-    
+    static let DocumentsDirectory1 = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURLforRecent = DocumentsDirectory1.appendingPathComponent("RecentFile")
+    static let DocumentsDirectory2 = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURLforFavorite = DocumentsDirectory2.appendingPathComponent("FavoriteFile")
+
     init(name: String){
         self.name = name
     }
@@ -39,7 +41,6 @@ class Instruction:NSObject,NSCoding{
     
     required convenience init?(coder aDecoder: NSCoder){
         let name = aDecoder.decodeObject(forKey: InstructionKey.nameK) as! String
-    
         self.init(name:name)
     }
     
@@ -55,7 +56,22 @@ class Instruction:NSObject,NSCoding{
 
     }
     
-    static func loadFromFile() -> [Instruction]?{
+    static func loadFromRecentFile() -> [Instruction]?{
         return NSKeyedUnarchiver.unarchiveObject(withFile: Instruction.ArchiveURLforRecent.path) as? [Instruction]
+    }
+    
+    static func saveFavorite(_ Recent_List: [Instruction]) -> Bool{
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(Recent_List, toFile: Instruction.ArchiveURLforFavorite.path)
+        if !isSuccessfulSave{
+            print("Failed to save info")
+            return false
+        }
+        else {
+            return true
+        }
+    }
+    
+    static func loadFromFavoriteFile() -> [Instruction]?{
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Instruction.ArchiveURLforFavorite.path) as? [Instruction]
     }
 }

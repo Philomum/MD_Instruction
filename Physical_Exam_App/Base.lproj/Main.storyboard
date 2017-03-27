@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Favourite-->
+        <!--Favorite-->
         <scene sceneID="oP0-BB-zJb">
             <objects>
                 <tableViewController id="uyS-9h-Lmw" customClass="FavoriteTableViewController" customModule="Physical_Exam_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,8 +37,11 @@
                             <outlet property="delegate" destination="uyS-9h-Lmw" id="I5D-45-5AD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favourite" id="wgb-0v-leU"/>
+                    <navigationItem key="navigationItem" title="Favorite" id="wgb-0v-leU"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="tEv-3R-XPA" id="0P0-18-wEC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Mg-wg-Yjo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

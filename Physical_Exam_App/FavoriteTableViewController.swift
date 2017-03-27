@@ -8,14 +8,16 @@
 
 import UIKit
 
-class FavoriteTableViewController: UITableViewController {
+class FavoriteTableViewController: UITableViewController,UISearchBarDelegate  {
 
     var Favorite_List = [Instruction]()
     var searchActive : Bool = false
     var filtered = [Instruction]()
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         Favorite_List = Favorite.favoriteVisited
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -43,7 +45,12 @@ class FavoriteTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Favorite_List.count
+        if searchActive == false{
+            return Favorite_List.count
+        }
+        else{
+            return filtered.count
+        }
     }
 
     
@@ -55,13 +62,67 @@ class FavoriteTableViewController: UITableViewController {
         else{
             cell.textLabel?.text = filtered[indexPath.row].name
         }
-
+        cell.textLabel?.numberOfLines = 3
+        cell.accessoryType = .disclosureIndicator
         // Configure the cell...
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 80;
+    }
  
-
+    // MARK: - Search Bar Functions
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = false
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false
+        if filtered.count != 0{
+            searchActive = true
+        }
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+        searchBar.endEditing(true)
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+        searchBar.endEditing(true)
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filtered = Favorite_List.filter({ (text) -> Bool in
+            let tmp: NSString = text.name as NSString
+            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+            return range.location != NSNotFound
+        })
+        
+        if searchText != ""{
+            searchActive = true
+        }
+        else {
+            searchActive = false
+        }
+        if filtered.count != 0{
+            searchActive = true
+        }
+        self.tableView.reloadData()
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
