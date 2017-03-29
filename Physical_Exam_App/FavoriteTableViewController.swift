@@ -159,14 +159,30 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate  {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "FavoriteToDetail" {
+            let index = self.tableView.indexPathForSelectedRow?.row
+            let nav = segue.destination as! UINavigationController
+            let vc = nav.viewControllers[0] as! InstructionViewController
+            if searchActive == false{
+                vc.titleText = self.Favorite_List[index!].name
+            }
+            else{
+                vc.titleText = self.filtered[index!].name
+            }
+            vc.source = 3
+        }
     }
-    */
+    
+    @IBAction func unwindToFavorite(segue: UIStoryboardSegue) {
+        print("unwind from detail")
+    }
 
 }

@@ -9,34 +9,23 @@
 import UIKit
 
 class CustomSegue: UIStoryboardSegue {
-    override func perform() {
+    override func perform()
+    {
+        let src = self.source
+        let dst = self.destination
         
-        //credits to http://www.appcoda.com/custom-segue-animations/
+        src.view.superview?.insertSubview(dst.view, aboveSubview: src.view)
+        dst.view.transform = CGAffineTransform(translationX: src.view.frame.size.width, y: 0)
         
-        let firstClassView = self.source.view
-        let secondClassView = self.destination.view
-        
-        let screenWidth = UIScreen.main.bounds.size.width
-        let screenHeight = UIScreen.main.bounds.size.height
-        
-        secondClassView?.frame = CGRect(x: screenWidth, y: 0, width: screenWidth, height: screenHeight)
-        
-        if let window = UIApplication.shared.keyWindow {
-            
-            window.insertSubview(secondClassView!, aboveSubview: firstClassView!)
-            
-            UIView.animate(withDuration: 0.4, animations: { () -> Void in
-                
-                firstClassView?.frame = (firstClassView?.frame)!.offsetBy(dx: -screenWidth, dy: 0)
-                secondClassView?.frame = (secondClassView?.frame)!.offsetBy(dx: -screenWidth, dy: 0)
-                
-            }) {(Finished) -> Void in
-                
-                self.source.navigationController?.pushViewController(self.destination, animated: false)
-                
-            }
-            
+        UIView.animate(withDuration: 0.35,
+                                   delay: 0.0,
+                                   options: UIViewAnimationOptions.curveEaseInOut,
+                                   animations: {
+                                    dst.view.transform = CGAffineTransform(translationX: 0, y: 0)
+        },
+                                   completion: { finished in
+                                    src.present(dst, animated: false, completion: nil)
         }
-        
+        )
     }
 }

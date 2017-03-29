@@ -146,6 +146,7 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
             let nav = segue.destination as! UINavigationController
             let vc = nav.viewControllers[0] as! InstructionViewController
             vc.titleText = self.InstructionList[index!]
+            vc.source = 1
         }
     }
     

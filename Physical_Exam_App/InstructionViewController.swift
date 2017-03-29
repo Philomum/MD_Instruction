@@ -17,6 +17,7 @@ class InstructionViewController: UIViewController {
     var timeObserver: Any!
     var playerRateBeforeSeek: Float = 0
     var isFavorite = false
+    var source = 1
     
     let invisibleButton = UIButton()
     let timeRemainingLabel = UILabel()
@@ -96,7 +97,15 @@ class InstructionViewController: UIViewController {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.right:
-                performSegue(withIdentifier: "unwindToTable", sender: self)
+                if source == 1{
+                    performSegue(withIdentifier: "unwindToTable", sender: self)
+                }
+                else if source == 3{
+                    performSegue(withIdentifier: "unwindToFavorite", sender: self)
+                }
+                else{
+                    performSegue(withIdentifier: "unwindToRecent", sender: self)
+                }
             default:
                 break
             }

@@ -13,7 +13,7 @@ class FirstViewController: UICollectionViewController {
     
     
     let reuseIdentifier = "SectionCell"
-    var sections = ["A.Vital Signs","B.Head","C.Respiratory", "D.Cardiovascular","E: Abdomen","F.Lymph","G.Neurological","H.Breast","K.Musculoskeletal"]
+    var sections = ["Vital Signs","Head","Respiratory", "Cardiovascular","Abdomen","Lymph","Neurological","Breast","Musculoskeletal"]
     var images = [#imageLiteral(resourceName: "c1"),#imageLiteral(resourceName: "c2"),#imageLiteral(resourceName: "c3"),#imageLiteral(resourceName: "c4"),#imageLiteral(resourceName: "c5"),#imageLiteral(resourceName: "c6"),#imageLiteral(resourceName: "c7"),#imageLiteral(resourceName: "c8"),#imageLiteral(resourceName: "c9")]
     
     override func viewDidLoad() {

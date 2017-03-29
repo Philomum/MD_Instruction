@@ -174,8 +174,11 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate {
             else{
                 vc.titleText = self.filtered[index!].name
             }
+            vc.source = 2
         }
     }
- 
+    @IBAction func unwindToRecent(segue: UIStoryboardSegue) {
+        print("unwind from detail")
+    }
 
 }

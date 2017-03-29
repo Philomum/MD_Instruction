@@ -27,9 +27,12 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AFK-3U-xwF" id="UuS-qY-sBX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="p96-Tv-nZT" kind="custom" identifier="FavoriteToDetail" customClass="CustomSegue" customModule="Physical_Exam_App" customModuleProvider="target" id="MFG-NV-4uL"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -138,7 +141,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9DI-Bq-67v" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wGY-iI-JmC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4605" y="-394"/>
+            <point key="canvasLocation" x="4290" y="-1354"/>
         </scene>
         <!--Intruction List-->
         <scene sceneID="fle-Qp-MJI">
@@ -153,7 +156,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lHI-11-AP9" id="Fpp-vT-SsM">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -177,7 +180,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n8x-v0-7ZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="0LA-x1-7M9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4605" y="-1308"/>
+            <point key="canvasLocation" x="4290" y="-2036"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="djm-kI-63b">
@@ -193,7 +196,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FBq-8L-Tpi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3701" y="-1671"/>
+            <point key="canvasLocation" x="3347" y="-2036"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="7Q3-G6-Lpo">
@@ -206,7 +209,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TWX-jc-X9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2805" y="-1230"/>
+            <point key="canvasLocation" x="2460" y="-2036"/>
         </scene>
         <!--History-->
         <scene sceneID="O7x-uy-uoy">
@@ -226,11 +229,11 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WcZ-3A-dzK" id="Ve0-hh-7rh">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="00b-Pd-tOO" kind="show" identifier="RecentToDetail" id="0j0-e1-Z4k"/>
+                                    <segue destination="p6D-WU-hkf" kind="custom" identifier="RecentToDetail" customClass="CustomSegue" customModule="Physical_Exam_App" customModuleProvider="target" id="8Mt-gf-Jse"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -326,7 +329,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCj-mr-bA9" id="FGE-D0-tq7">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -398,7 +401,134 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cm-R0-7Qp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3699" y="-394"/>
+            <point key="canvasLocation" x="3345" y="-1353"/>
+        </scene>
+        <!--Instruction View Controller-->
+        <scene sceneID="KS6-1G-dnv">
+            <objects>
+                <viewController id="0F5-N7-Krt" customClass="InstructionViewController" customModule="Physical_Exam_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M1A-Eh-yaD"/>
+                        <viewControllerLayoutGuide type="bottom" id="aGZ-ps-5lX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qku-9Z-j6X">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cbz-v1-OSf">
+                                <rect key="frame" x="40" y="387" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iG5-aZ-s42">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="5Ql-B3-ib4">
+                            <connections>
+                                <segue destination="3do-iN-twV" kind="unwind" identifier="unwindToFavorite" unwindAction="unwindToFavoriteWithSegue:" id="Rbh-Cr-yCQ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="star1" id="dlD-R3-8o4">
+                            <connections>
+                                <action selector="marked:" destination="0F5-N7-Krt" id="oV0-JQ-Pmj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="instructionText" destination="cbz-v1-OSf" id="aHH-IN-MRf"/>
+                        <outlet property="rightButton" destination="dlD-R3-8o4" id="Nag-dM-EZq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Olg-93-RTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3do-iN-twV" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4695" y="280.98591549295776"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="a8a-hX-vvE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p96-Tv-nZT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BAf-kP-oz4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0F5-N7-Krt" kind="relationship" relationship="rootViewController" id="lDN-z6-oc3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="as4-If-dss" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3697.5" y="280.98591549295776"/>
+        </scene>
+        <!--Instruction View Controller-->
+        <scene sceneID="iD6-CV-30u">
+            <objects>
+                <viewController id="36n-Mu-dZ5" customClass="InstructionViewController" customModule="Physical_Exam_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ESc-aE-Tsz"/>
+                        <viewControllerLayoutGuide type="bottom" id="dah-c5-Zqq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YQ6-Xf-QnQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3CT-9W-zD7">
+                                <rect key="frame" x="40" y="387" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="M0a-o1-1hy">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="hMN-cc-RFq">
+                            <connections>
+                                <segue destination="QrZ-H4-4hJ" kind="unwind" identifier="unwindToRecent" unwindAction="unwindToRecentWithSegue:" id="F5g-G1-naW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="star1" id="vST-Xw-Icj">
+                            <connections>
+                                <action selector="marked:" destination="36n-Mu-dZ5" id="rAn-jJ-wAg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="instructionText" destination="3CT-9W-zD7" id="Ezw-Hm-F1m"/>
+                        <outlet property="rightButton" destination="vST-Xw-Icj" id="P5H-kB-Qtn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uG7-E9-Zcf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="QrZ-H4-4hJ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4290" y="-464"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="l1j-DQ-mSG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p6D-WU-hkf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3vo-4O-H0t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="36n-Mu-dZ5" kind="relationship" relationship="rootViewController" id="gcy-O6-DGh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="48H-Zl-JDv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3345" y="-465"/>
         </scene>
     </scenes>
     <resources>
@@ -406,6 +536,6 @@
         <image name="star1" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0j0-e1-Z4k"/>
+        <segue reference="bXx-Kg-73v"/>
     </inferredMetricsTieBreakers>
 </document>
