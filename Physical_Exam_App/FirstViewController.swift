@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import CoreGraphics
 
 class FirstViewController: UICollectionViewController {
     
     
     let reuseIdentifier = "SectionCell"
     var sections = ["A.Vital Signs","B.Head","C.Respiratory", "D.Cardiovascular","E: Abdomen","F.Lymph","G.Neurological","H.Breast","K.Musculoskeletal"]
+    var images = [#imageLiteral(resourceName: "c1"),#imageLiteral(resourceName: "c2"),#imageLiteral(resourceName: "c3"),#imageLiteral(resourceName: "c4"),#imageLiteral(resourceName: "c5"),#imageLiteral(resourceName: "c6"),#imageLiteral(resourceName: "c7"),#imageLiteral(resourceName: "c8"),#imageLiteral(resourceName: "c9")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +42,22 @@ class FirstViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SectionCollectionViewCell
         //cell.myLabel.text = self.items[indexPath.item]
         cell.myLabel.text = self.sections[indexPath.item]
+        cell.myLabel.textAlignment = .center
+        let imageview:UIImageView=UIImageView(image:images[indexPath.item])
+        imageview.frame = CGRect(x: 20, y: 10, width: 120, height: 120)
+        cell.contentView.addSubview(imageview)
         //cell.backgroundColor = UIColor.cyan
         return cell
     }
+    
+    /*
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }*/
     
     @IBAction func unwindToCollectionView(segue: UIStoryboardSegue) {
         print("unwind from tableview controller")

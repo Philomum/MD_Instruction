@@ -19,6 +19,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate  {
         super.viewDidLoad()
         searchBar.delegate = self
         Favorite_List = Favorite.favoriteVisited
+        self.tableView.rowHeight = 80
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

@@ -81,6 +81,14 @@ class InstructionViewController: UIViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
+        
+        for i in 0..<Favorite.favoriteVisited.count{
+            if Favorite.favoriteVisited[i].name == titleText{
+                rightButton.image = #imageLiteral(resourceName: "star2")
+                isFavorite = true
+                break
+            }
+        }
         //RecentViewController.addViewedList(item: Instruction(name: titleText))
     }
     
