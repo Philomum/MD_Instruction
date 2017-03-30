@@ -10,8 +10,10 @@ import UIKit
 
 class InstructionTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
-    var treeList = [treeNode]()
+    @IBOutlet weak var backButton: UIBarButtonItem!
     
+    var treeList = [treeNode]()
+    var stack = [[treeNode]]()
     let data = SectionCdata()
     
     override func viewDidLoad() {
@@ -138,16 +140,27 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
                 return true
             }
             else {
-                var templist = [treeNode]()
-                templist.append(contentsOf: treeList[tappedIndex].children)
-                treeList = templist
+                var tempList = [treeNode]()
+                tempList.append(contentsOf: treeList[tappedIndex].children)
+                stack.append(treeList)
+                treeList = tempList
                 tableView.reloadSections([0], with: UITableViewRowAnimation.left)
                 return false
             }
         }
+        else if sender as? UIBarButtonItem == backButton {
+            if(stack.count != 0) {
+                treeList = stack[0]
+                stack.remove(at: 0)
+                tableView.reloadSections([0], with: UITableViewRowAnimation.right)
+                return false
+            }
+            else{
+                return true
+            }
+        }
         return true
     }
-    
     
     // MARK: - Split View Controller
     

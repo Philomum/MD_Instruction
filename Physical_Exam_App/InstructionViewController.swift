@@ -279,6 +279,9 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
     }
     
     func addToRecent(){
+        if(titleText == nil){
+            return
+        }
         let newInstruction = Instruction(name: titleText)
         for i in 0..<Recent.recentVisited.count{
             if newInstruction.name == Recent.recentVisited[i].name{
