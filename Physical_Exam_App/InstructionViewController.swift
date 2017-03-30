@@ -41,6 +41,7 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
     let NoteButton=UIButton()
     let DeleteButton=UIButton()
     let notepad=UIPickerView()
+    let JumptoButton=UIButton()
     
     @IBOutlet weak var rightButton: UIBarButtonItem!
     
@@ -87,13 +88,17 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
         view.addSubview(AddingNote)
         view.addSubview(NoteButton)
         view.addSubview(DeleteButton)
+        view.addSubview(JumptoButton)
         view.addSubview(notepad)
         let videoURL = URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
         player = AVPlayer(url: videoURL!)
         playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = CGRect(x:0,y:view.bounds.maxY/4,width:view.bounds.maxX,height:view.bounds.maxX/16*9)
+        playerLayer.isEnabled=false
         player.currentItem!.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions(), context: nil)
         self.view.layer.addSublayer(playerLayer)
         view.addSubview(invisibleButton)
+        invisibleButton.frame=playerLayer.frame
         invisibleButton.addTarget(self, action: #selector(invisibleButtonTapped),for: .touchUpInside)
         let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
         NoteButton.addTarget(self, action: #selector(TakeNote), for: .touchUpInside)
@@ -102,6 +107,7 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
         DeleteButton.addTarget(self, action: #selector(DeleteNote), for: .touchUpInside)
         DeleteButton.setTitle("Delete", for: UIControlState.normal)
         DeleteButton.backgroundColor=UIColor.blue
+        JumptoButton.addTarget(self)
         timeObserver = player.addPeriodicTimeObserver(forInterval: timeInterval,queue: DispatchQueue.main) { (elapsedTime: CMTime) -> Void in self.observeTime(elapsedTime: elapsedTime)
         }
         timeLabel.textColor = .white
@@ -185,11 +191,30 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
         }
     }
     
+    func Jumpto(sender: UIButton){
+        if(note.count!=0){
+            
+        }
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         // Layout subviews manually
-        playerLayer.frame = view.bounds
+        let controlsHeight: CGFloat = 30
+        let controlsY: CGFloat = self.playerLayer.frame.maxY-controlsHeight
+        print(controlsY)
+        timeLabel.frame = CGRect(x: 5, y: controlsY, width: 110, height: controlsHeight)
+        AddingNote.frame = CGRect(x:5,y:self.playerLayer.frame.maxY+5,width:view.bounds.size.width/4*3,height:30)
+        AddingNote.borderStyle=UITextBorderStyle.roundedRect
+        NoteButton.frame = CGRect(x:AddingNote.frame.maxX+5,y:self.playerLayer.frame.maxY+5,width:view.bounds.size.width/4-20,height:30)
+        seekSlider.frame = CGRect(x: timeLabel.frame.origin.x + timeLabel.bounds.size.width,
+                                  y: controlsY, width: view.bounds.size.width - timeLabel.bounds.size.width - 5, height: controlsHeight)
+        instructionText.frame=CGRect(x:30,y:self.playerLayer.frame.minY-125,width:240,height:120)
+        notepad.frame=CGRect(x:5,y:AddingNote.frame.maxY+50,width:view.bounds.size.width-10,height:view.bounds.size.height-AddingNote.frame.maxY-10)
+        DeleteButton.frame=CGRect(x:view.bounds.midX+30,y:notepad.frame.minY-30,width:60,height:30)
+        DeleteButton.isEnabled=true
     }
+    
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if player.currentItem?.status == AVPlayerItemStatus.readyToPlay {
@@ -201,21 +226,8 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
                                           y: controlsY, width: view.bounds.size.width - timeLabel.bounds.size.width - 5, height: controlsHeight)
             }
             else if UIDevice.current.orientation.isPortrait{
-                let controlsHeight: CGFloat = 30
-                let controlsY: CGFloat = self.playerLayer.videoRect.maxY-controlsHeight
-                print(controlsY)
-                timeLabel.frame = CGRect(x: 5, y: controlsY, width: 110, height: controlsHeight)
-                AddingNote.frame = CGRect(x:5,y:self.playerLayer.videoRect.maxY+5,width:view.bounds.size.width/4*3,height:30)
-                AddingNote.borderStyle=UITextBorderStyle.roundedRect
-                NoteButton.frame = CGRect(x:AddingNote.frame.maxX+5,y:self.playerLayer.videoRect.maxY+5,width:view.bounds.size.width/4-20,height:30)
-                seekSlider.frame = CGRect(x: timeLabel.frame.origin.x + timeLabel.bounds.size.width,
-                                          y: controlsY, width: view.bounds.size.width - timeLabel.bounds.size.width - 5, height: controlsHeight)
-                instructionText.frame=CGRect(x:30,y:self.playerLayer.videoRect.minY-125,width:240,height:120)
-                notepad.frame=CGRect(x:5,y:AddingNote.frame.maxY+50,width:view.bounds.size.width-10,height:view.bounds.size.height-AddingNote.frame.maxY-10)
-                DeleteButton.frame=CGRect(x:view.bounds.midX-30,y:notepad.frame.minY-30,width:60,height:30)
-                DeleteButton.isEnabled=true
-            }
-             invisibleButton.frame = playerLayer.videoRect
+                            }
+            
              player.play()
         }
     }
