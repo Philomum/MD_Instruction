@@ -181,4 +181,10 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate {
         print("unwind from detail")
     }
 
+    @IBAction func clearHistory(_ sender: Any) {
+        Recent.recentVisited = [Instruction]()
+        Recent_List = Recent.recentVisited
+        tableView.reloadData()
+        let _ = Instruction.saveRecent(Recent.recentVisited)
+    }
 }

@@ -8,13 +8,18 @@
 
 import UIKit
 
-class AllTableViewController: UITableViewController {
+class AllTableViewController: UITableViewController,UISearchBarDelegate {
 
     var Instruction_List = [Instruction]()
+    var filtered = [Instruction]()
+    var searchActive = false
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.rowHeight = 80
+        
+        searchBar.delegate = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -48,6 +53,55 @@ class AllTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - Search Bar Functions
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = false
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false
+        if filtered.count != 0{
+            searchActive = true
+        }
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+        searchBar.endEditing(true)
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+        searchBar.endEditing(true)
+        searchBar.showsCancelButton = false
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filtered = Instruction_List.filter({ (text) -> Bool in
+            let tmp: NSString = text.name as NSString
+            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+            return range.location != NSNotFound
+        })
+        
+        if searchText != ""{
+            searchActive = true
+        }
+        else {
+            searchActive = false
+        }
+        if filtered.count != 0{
+            searchActive = true
+        }
+        self.tableView.reloadData()
+    }
 
     /*
     // Override to support conditional editing of the table view.

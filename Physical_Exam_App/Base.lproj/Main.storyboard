@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -245,7 +245,13 @@
                             <outlet property="delegate" destination="JSV-Di-25c" id="moJ-Bd-xOm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="History" id="OH9-DO-EUs"/>
+                    <navigationItem key="navigationItem" title="History" id="OH9-DO-EUs">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="iBP-x8-Z4g">
+                            <connections>
+                                <action selector="clearHistory:" destination="JSV-Di-25c" id="CFw-At-BJG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="djD-BW-aMD" id="7WE-1W-XJL"/>
@@ -344,6 +350,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Search" id="ZiF-8J-6jH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="TID-AM-q8b" id="r5Y-oL-Ph4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntX-6d-8fG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
