@@ -94,7 +94,6 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
         player = AVPlayer(url: videoURL!)
         playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = CGRect(x:0,y:view.bounds.maxY/4,width:view.bounds.maxX,height:view.bounds.maxX/16*9)
-        playerLayer.isEnabled=false
         player.currentItem!.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions(), context: nil)
         self.view.layer.addSublayer(playerLayer)
         view.addSubview(invisibleButton)
@@ -107,7 +106,6 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
         DeleteButton.addTarget(self, action: #selector(DeleteNote), for: .touchUpInside)
         DeleteButton.setTitle("Delete", for: UIControlState.normal)
         DeleteButton.backgroundColor=UIColor.blue
-        JumptoButton.addTarget(self)
         timeObserver = player.addPeriodicTimeObserver(forInterval: timeInterval,queue: DispatchQueue.main) { (elapsedTime: CMTime) -> Void in self.observeTime(elapsedTime: elapsedTime)
         }
         timeLabel.textColor = .white
@@ -191,11 +189,7 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
         }
     }
     
-    func Jumpto(sender: UIButton){
-        if(note.count!=0){
-            
-        }
-    }
+
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
