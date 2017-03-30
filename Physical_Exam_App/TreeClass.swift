@@ -13,8 +13,13 @@ class treeNode {
     var isInstruction = false
     var children = [treeNode]()
     var childInstruction: Instruction? = nil
+    var insname = ""
     
     init() {
         
+    }
+    
+    init(name: String) {
+        self.insname = name
     }
 }

@@ -10,41 +10,23 @@ import UIKit
 
 class InstructionTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
-    //    var InstructionList = [
-    //        "Examiner washes hands before starting examination (soap or foam)",
-    //        "Palpate radial pulse rate (at least 15 seconds) and assess regularity (verbalize both)",
-    //        "Observe respiratory rate and pattern (verbalize inspection)",
-    //        "BP correct technique: bares arm for accuracy",
-    //        "BP correct technique: palpate brachial pulse apply cuff snugly, bladder over brachial artery",
-    //        "BP correct technique: cuff edge 1 inch above antecubital crease",
-    //        "BP correct technique: arm and cuff resting at heart level",
-    //        "Demonstrate how to assess systolic blood pressure by palpation",
-    //        "Inflate cuff to 30 mm Hg above palpable systole",
-    //        "Release cuff pressure by 2 mm Hg/heart beat or 1 mm Hg/sec (slow & steady)",
-    //        "Blood pressure reading verbalized to patient",
-    //        "Postural (orthostatic) Hypotension - changes in BP and pulse with postural change from supine to upright.  Measure blood pressure sitting then after standing for 3 minutes."
-    //    ]
+    var treeList = [treeNode]()
     
-    var InstructionList = [String]()
-    
-    var instDic = [String: Any]()
-    var instList = [String]()
-    var listTitle: String = "Instruction List"
+    let data = SectionCdata()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = data.name
+        treeList = data.treeNodes
         
         self.splitViewController?.delegate = self
         
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
         
-        instDic = parseJson(section: "secA")
-        
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
-        
-        //print(instDic)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -82,14 +64,14 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return InstructionList.count
+        return treeList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InstructionCell", for: indexPath)
         
         // Configure the cell...
-        cell.textLabel?.text = self.InstructionList[indexPath.row]
+        cell.textLabel?.text = self.treeList[indexPath.row].insname
         cell.textLabel?.numberOfLines = 3
         cell.accessoryType = .disclosureIndicator
         return cell
@@ -145,20 +127,22 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
             let index = self.tableView.indexPathForSelectedRow?.row
             let nav = segue.destination as! UINavigationController
             let vc = nav.viewControllers[0] as! InstructionViewController
-            vc.titleText = self.InstructionList[index!]
+            vc.titleText = self.treeList[index!].insname
             vc.source = 1
         }
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if let tappedIndex = tableView.indexPathForSelectedRow?.row{
-            if tappedIndex == 0{
-                InstructionList.remove(at: 0)
-                tableView.reloadSections([0], with: UITableViewRowAnimation.left)
-                return false
+            if treeList[tappedIndex].isInstruction == true{
+                return true
             }
             else {
-                return true
+                var templist = [treeNode]()
+                templist.append(contentsOf: treeList[tappedIndex].children)
+                treeList = templist
+                tableView.reloadSections([0], with: UITableViewRowAnimation.left)
+                return false
             }
         }
         return true
@@ -172,66 +156,6 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
                              onto primaryViewController: UIViewController) -> Bool {
         return true
     }
-    
-    // MARK: - Parse Json
-    
-    func parseJson(section: String) -> [String: Any]{
-        var InstructionDic = [String: Any]()
-        do {
-            if let file = Bundle.main.url(forResource: section, withExtension: "json") {
-                let data = try Data(contentsOf: file)
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                if let object = json as? [String: Any] {
-                    // parse here
-                    InstructionDic = object
-                    //print(object)
-                    if let myTitle = object["name"] as? String {
-                        //print(myTitle)
-                        self.title = myTitle
-                    }
-                    if let mySections = object["sections"] as? NSArray {
-                        if let myDict = mySections[0] as? NSDictionary {
-                            //                            print(myDict["general"] as! NSArray)
-                            //                            print(myDict["Special-Screening-Techniques"] as! NSArray)
-                            if let general = myDict["general"] as? NSArray {
-                                for item in general {
-                                    let a = item as! NSDictionary
-                                    let inst = a["name"] as! String
-                                    InstructionList.append(inst)
-                                }
-                            }
-                            if let special = myDict["Special-Screening-Techniques"] as? NSArray {
-                                for item in special {
-                                    let a = item as! NSDictionary
-                                    let inst = a["name"] as! String
-                                    InstructionList.append(inst)
-                                }
-                            }
-                        }
-                    }
-                }
-                else{
-                    print("Invalid Json File!")
-                }
-            }
-            else{
-                print("File does not exits!")
-            }
-        }
-        catch {
-            print(error.localizedDescription)
-        }
-        return InstructionDic
-    }
-    
-    // Generate Class here
-    func parseInstruction(instructionDict: [String: Any]) -> treeNode {
-        let myNode = treeNode()
-        
-        return myNode
-        
-    }
-    
     
 }
 

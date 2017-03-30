@@ -9,8 +9,21 @@
 import UIKit
 import AVFoundation
 
+struct  Note {
+    var time:Float64
+    var content:String
+    
+    init(time:Float64,content:String) {
+        self.time=time
+        self.content=content
+    }
+    
+    static func sortbytime(this:Note,that:Note)->Bool{
+        return this.time<=that.time
+    }
+}
 
-class InstructionViewController: UIViewController {
+class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate {
     
     var player = AVPlayer()
     var playerLayer: AVPlayerLayer!
@@ -18,10 +31,17 @@ class InstructionViewController: UIViewController {
     var playerRateBeforeSeek: Float = 0
     var isFavorite = false
     var source = 1
+    var time : Float64 = 0
+    var note:[Note]=[Note]()
     
     let invisibleButton = UIButton()
-    let timeRemainingLabel = UILabel()
+    let timeLabel = UILabel()
     let seekSlider = UISlider()
+    let AddingNote=UITextField()
+    let NoteButton=UIButton()
+    let DeleteButton=UIButton()
+    let notepad=UIPickerView()
+    
     @IBOutlet weak var rightButton: UIBarButtonItem!
     
     @IBAction func marked(_ sender: Any) {
@@ -59,18 +79,33 @@ class InstructionViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.instructionText.text = titleText
+        instructionText.isEditable=false
+        notepad.dataSource=self
+        notepad.delegate=self
         addToRecent()
+        AddingNote.delegate=self
+        view.addSubview(AddingNote)
+        view.addSubview(NoteButton)
+        view.addSubview(DeleteButton)
+        view.addSubview(notepad)
         let videoURL = URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
         player = AVPlayer(url: videoURL!)
         playerLayer = AVPlayerLayer(player: player)
+        player.currentItem!.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions(), context: nil)
         self.view.layer.addSublayer(playerLayer)
         view.addSubview(invisibleButton)
         invisibleButton.addTarget(self, action: #selector(invisibleButtonTapped),for: .touchUpInside)
         let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
+        NoteButton.addTarget(self, action: #selector(TakeNote), for: .touchUpInside)
+        NoteButton.setTitle("Add", for: UIControlState.normal)
+        NoteButton.backgroundColor=UIColor.blue
+        DeleteButton.addTarget(self, action: #selector(DeleteNote), for: .touchUpInside)
+        DeleteButton.setTitle("Delete", for: UIControlState.normal)
+        DeleteButton.backgroundColor=UIColor.blue
         timeObserver = player.addPeriodicTimeObserver(forInterval: timeInterval,queue: DispatchQueue.main) { (elapsedTime: CMTime) -> Void in self.observeTime(elapsedTime: elapsedTime)
         }
-        timeRemainingLabel.textColor = .white
-        view.addSubview(timeRemainingLabel)
+        timeLabel.textColor = .white
+        view.addSubview(timeLabel)
         view.addSubview(seekSlider)
         seekSlider.addTarget(self, action: #selector(sliderBeganTracking),
                              for: .touchDown)
@@ -82,7 +117,6 @@ class InstructionViewController: UIViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
-        
         for i in 0..<Favorite.favoriteVisited.count{
             if Favorite.favoriteVisited[i].name == titleText{
                 rightButton.image = #imageLiteral(resourceName: "star2")
@@ -91,6 +125,23 @@ class InstructionViewController: UIViewController {
             }
         }
         //RecentViewController.addViewedList(item: Instruction(name: titleText))
+    }
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return note.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let t=String(format:"%02d:%02d",((lround(note[row].time) / 60) % 60), lround(note[row].time) % 60)
+        return t+":    "+note[row].content
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -117,18 +168,63 @@ class InstructionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func TakeNote(sender: UIButton) {
+        if(AddingNote.text != ""){
+            let newNote=Note(time: time,content: AddingNote.text!)
+            note.append(newNote)
+            note.sort(by: Note.sortbytime)
+            notepad.reloadAllComponents()
+            AddingNote.text=""
+        }
+    }
+    
+    func DeleteNote(sender: UIButton){
+        if(note.count>0){
+        note.remove(at: notepad.selectedRow(inComponent: 0))
+        notepad.reloadAllComponents()
+        }
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        print("orientation changed")
         // Layout subviews manually
         playerLayer.frame = view.bounds
-        invisibleButton.frame = view.bounds
-        let controlsHeight: CGFloat = 30
-        let controlsY: CGFloat = view.bounds.size.height - controlsHeight
-        timeRemainingLabel.frame = CGRect(x: 5, y: controlsY, width: 60, height: controlsHeight)
-        seekSlider.frame = CGRect(x: timeRemainingLabel.frame.origin.x + timeRemainingLabel.bounds.size.width,
-                                  y: controlsY, width: view.bounds.size.width - timeRemainingLabel.bounds.size.width - 5, height: controlsHeight)
-        player.play()
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if player.currentItem?.status == AVPlayerItemStatus.readyToPlay {
+            if UIDevice.current.orientation.isLandscape{
+                let controlsHeight: CGFloat = 30
+                let controlsY: CGFloat = view.bounds.size.height-controlsHeight
+                timeLabel.frame = CGRect(x: 5, y: controlsY, width: 110, height: controlsHeight)
+                seekSlider.frame = CGRect(x: timeLabel.frame.origin.x + timeLabel.bounds.size.width,
+                                          y: controlsY, width: view.bounds.size.width - timeLabel.bounds.size.width - 5, height: controlsHeight)
+            }
+            else if UIDevice.current.orientation.isPortrait{
+                let controlsHeight: CGFloat = 30
+                let controlsY: CGFloat = self.playerLayer.videoRect.maxY-controlsHeight
+                print(controlsY)
+                timeLabel.frame = CGRect(x: 5, y: controlsY, width: 110, height: controlsHeight)
+                AddingNote.frame = CGRect(x:5,y:self.playerLayer.videoRect.maxY+5,width:view.bounds.size.width/4*3,height:30)
+                AddingNote.borderStyle=UITextBorderStyle.roundedRect
+                NoteButton.frame = CGRect(x:AddingNote.frame.maxX+5,y:self.playerLayer.videoRect.maxY+5,width:view.bounds.size.width/4-20,height:30)
+                seekSlider.frame = CGRect(x: timeLabel.frame.origin.x + timeLabel.bounds.size.width,
+                                          y: controlsY, width: view.bounds.size.width - timeLabel.bounds.size.width - 5, height: controlsHeight)
+                instructionText.frame=CGRect(x:30,y:self.playerLayer.videoRect.minY-125,width:240,height:120)
+                notepad.frame=CGRect(x:5,y:AddingNote.frame.maxY+50,width:view.bounds.size.width-10,height:view.bounds.size.height-AddingNote.frame.maxY-10)
+                DeleteButton.frame=CGRect(x:view.bounds.midX-30,y:notepad.frame.minY-30,width:60,height:30)
+                DeleteButton.isEnabled=true
+            }
+             invisibleButton.frame = playerLayer.videoRect
+             player.play()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
+    {
+        print("return")
+        textField.resignFirstResponder()
+        return true;
     }
     
     func invisibleButtonTapped(sender: UIButton) {
@@ -145,12 +241,12 @@ class InstructionViewController: UIViewController {
         if  duration.isFinite {
             let elapsedTime = CMTimeGetSeconds(elapsedTime)
             updateTimeLabel(elapsedTime: elapsedTime, duration: duration)
+            self.time=elapsedTime
         }
     }
     
     func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
-        let timeRemaining: Float64 = CMTimeGetSeconds(player.currentItem!.duration) - elapsedTime
-        timeRemainingLabel.text = String(format: "%02d:%02d", ((lround(timeRemaining) / 60) % 60), lround(timeRemaining) % 60)
+        timeLabel.text = String(format: "%02d:%02d / %02d:%02d", ((lround(elapsedTime) / 60) % 60), lround(elapsedTime) % 60,((lround(duration) / 60) % 60), lround(duration) % 60)
     }
     
     func sliderBeganTracking(slider: UISlider) {
