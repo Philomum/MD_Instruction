@@ -10,6 +10,7 @@
 		0428B5D81E5E852800BBE273 /* RecentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428B5D71E5E852800BBE273 /* RecentTableViewController.swift */; };
 		0428B5DA1E5E855B00BBE273 /* AllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428B5D91E5E855B00BBE273 /* AllTableViewController.swift */; };
 		0428B5DC1E5E857C00BBE273 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428B5DB1E5E857C00BBE273 /* FavoriteTableViewController.swift */; };
+		047032461E8D64D800BF2F1C /* SectionCdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047032451E8D64D800BF2F1C /* SectionCdata.swift */; };
 		047D04B11E5CE4E600E54378 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04B01E5CE4E600E54378 /* AppDelegate.swift */; };
 		047D04B31E5CE4E600E54378 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D04B21E5CE4E600E54378 /* FirstViewController.swift */; };
 		047D04B81E5CE4E600E54378 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047D04B61E5CE4E600E54378 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		0428B5D71E5E852800BBE273 /* RecentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTableViewController.swift; sourceTree = "<group>"; };
 		0428B5D91E5E855B00BBE273 /* AllTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTableViewController.swift; sourceTree = "<group>"; };
 		0428B5DB1E5E857C00BBE273 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
+		047032451E8D64D800BF2F1C /* SectionCdata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SectionCdata.swift; path = ../../../SectionCdata.swift; sourceTree = "<group>"; };
 		047D04AD1E5CE4E600E54378 /* Physical_Exam_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Physical_Exam_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		047D04B01E5CE4E600E54378 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		047D04B21E5CE4E600E54378 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				047D04C81E5D02BD00E54378 /* Class */,
 				047D04C91E5D02CE00E54378 /* ViewController */,
 				047D04B61E5CE4E600E54378 /* Main.storyboard */,
+				047032451E8D64D800BF2F1C /* SectionCdata.swift */,
 				047D04B01E5CE4E600E54378 /* AppDelegate.swift */,
 				047D04B91E5CE4E600E54378 /* Assets.xcassets */,
 				047D04BB1E5CE4E600E54378 /* LaunchScreen.storyboard */,
@@ -232,6 +235,7 @@
 				047D04B31E5CE4E600E54378 /* FirstViewController.swift in Sources */,
 				4BFD6A711E6906E100F76AEB /* InstructionViewController.swift in Sources */,
 				0428B5D81E5E852800BBE273 /* RecentTableViewController.swift in Sources */,
+				047032461E8D64D800BF2F1C /* SectionCdata.swift in Sources */,
 				4BA03BAB1E5FBFD900C02294 /* SectionCollectionViewCell.swift in Sources */,
 				4BFD6A6F1E69042D00F76AEB /* InstructionTableViewController.swift in Sources */,
 				0428B5DC1E5E857C00BBE273 /* FavoriteTableViewController.swift in Sources */,
