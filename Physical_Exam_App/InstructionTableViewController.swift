@@ -81,6 +81,10 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         cell.textLabel?.text = self.treeList[indexPath.row].insname
         cell.textLabel?.numberOfLines = 3
         cell.accessoryType = .disclosureIndicator
+        let myImage = #imageLiteral(resourceName: "c5")
+        let imageview:UIImageView=UIImageView(image: myImage)
+        imageview.frame = CGRect(x: 20, y: 10, width: 20, height: 20)
+        cell.contentView.addSubview(imageview)
         return cell
     }
     
