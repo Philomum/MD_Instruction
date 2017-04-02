@@ -15,6 +15,8 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
     var treeList = [treeNode]()
     var stack = [[treeNode]]()
     let data = SectionCdata()
+    let colors = [0xba87d4,0x9eb5f0,0xf0b971,0xff87a7,0x7aebeb,0xb3de78]
+    var images = [#imageLiteral(resourceName: "c1"),#imageLiteral(resourceName: "c2"),#imageLiteral(resourceName: "c3"),#imageLiteral(resourceName: "c4"),#imageLiteral(resourceName: "c5"),#imageLiteral(resourceName: "c6")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,18 +81,24 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         
         // Configure the cell...
         cell.textLabel?.text = self.treeList[indexPath.row].insname
+        cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.numberOfLines = 3
         cell.accessoryType = .disclosureIndicator
-        let myImage = #imageLiteral(resourceName: "c5")
-        let imageview:UIImageView=UIImageView(image: myImage)
-        imageview.frame = CGRect(x: 20, y: 10, width: 20, height: 20)
+        cell.backgroundColor = UIColor(rgb:colors[indexPath.row%6])
+        let imageview:UIImageView=UIImageView(image:images[indexPath.item%6])
+        imageview.frame = CGRect(x: 0, y: 10, width: 80, height: 80)
         cell.contentView.addSubview(imageview)
+        //let textLabel = UILabel(frame: CGRect(x: 80, y: 0, width: 150, height: 100))
+        //textLabel.textColor = UIColor.white
+        //textLabel.text = self.treeList[indexPath.row].insname
+        //textLabel.numberOfLines = 3
+        //cell.contentView.addSubview(textLabel)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 80;
+        return 100;
     }
     /*
      // Override to support conditional editing of the table view.
@@ -184,5 +192,23 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
 extension UITableView {
     func reloadData(with animation: UITableViewRowAnimation) {
         reloadSections(IndexSet(integersIn: 0..<numberOfSections), with: animation)
+    }
+}
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
     }
 }
