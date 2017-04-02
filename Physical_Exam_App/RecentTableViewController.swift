@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecentTableViewController: UITableViewController,UISearchBarDelegate {
+class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISplitViewControllerDelegate {
 
     var Recent_List = [Instruction]()
     var filtered = [Instruction]()
@@ -20,6 +20,9 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate {
         searchBar.delegate = self
         Recent_List = Recent.recentVisited
         self.tableView.rowHeight = 80
+        
+        self.splitViewController?.delegate = self
+        self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -157,8 +160,17 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate {
     */
 
 
-    // MARK: - Navigation
+    
+    // MARK: - Split View Controller
+    
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool {
+        return true
+    }
 
+    // MARK: - Navigation
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.

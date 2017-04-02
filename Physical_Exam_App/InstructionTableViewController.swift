@@ -23,7 +23,6 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         treeList = data.treeNodes
         
         self.splitViewController?.delegate = self
-        
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
