@@ -66,7 +66,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate  {
         cell.label.text = self.Favorite_List[indexPath.row].name
         cell.label.textColor = UIColor.white
         cell.label.numberOfLines = 3
-        cell.accessoryType = .disclosureIndicator
+        //cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = UIColor(rgb:colors[indexPath.row%6])
         cell.pic.image = images[indexPath.item%6]
         return cell
