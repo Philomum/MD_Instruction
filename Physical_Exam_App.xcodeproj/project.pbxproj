@@ -33,6 +33,7 @@
 		4BA03BAB1E5FBFD900C02294 /* SectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA03BA91E5FBFD900C02294 /* SectionCollectionViewCell.swift */; };
 		4BFD6A6F1E69042D00F76AEB /* InstructionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFD6A6E1E69042D00F76AEB /* InstructionTableViewController.swift */; };
 		4BFD6A711E6906E100F76AEB /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFD6A701E6906E100F76AEB /* InstructionViewController.swift */; };
+		B795472A1E91E9E000553299 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79547291E91E9E000553299 /* TabBarController.swift */; };
 		C75D760E1E8D77B700EE3C30 /* SectionCdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75D760D1E8D77B700EE3C30 /* SectionCdata.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		4BA03BA91E5FBFD900C02294 /* SectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		4BFD6A6E1E69042D00F76AEB /* InstructionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionTableViewController.swift; sourceTree = "<group>"; };
 		4BFD6A701E6906E100F76AEB /* InstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
+		B79547291E91E9E000553299 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C75D760D1E8D77B700EE3C30 /* SectionCdata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionCdata.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 				0428B5D91E5E855B00BBE273 /* AllTableViewController.swift */,
 				4BA03BA91E5FBFD900C02294 /* SectionCollectionViewCell.swift */,
 				4BFD6A6E1E69042D00F76AEB /* InstructionTableViewController.swift */,
+				B79547291E91E9E000553299 /* TabBarController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				044428101E91CC05009E4A9D /* TableViewCell.swift in Sources */,
+				B795472A1E91E9E000553299 /* TabBarController.swift in Sources */,
 				4B7861E11E6A190600495FA0 /* Recent.swift in Sources */,
 				047D04C71E5D026000E54378 /* TreeClass.swift in Sources */,
 				C75D760E1E8D77B700EE3C30 /* SectionCdata.swift in Sources */,
