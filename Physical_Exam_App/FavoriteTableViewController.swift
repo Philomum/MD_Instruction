@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoriteTableViewController: UITableViewController,UISearchBarDelegate  {
+class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UISplitViewControllerDelegate  {
 
     var Favorite_List = [Instruction]()
     var searchActive : Bool = false
@@ -22,7 +22,9 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate  {
         super.viewDidLoad()
         searchBar.delegate = self
         Favorite_List = Favorite.favoriteVisited
-        self.tableView.rowHeight = 80
+        self.tableView.rowHeight = 100
+        self.splitViewController?.delegate = self
+        self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
         //self.tableView.contentOffset.y = self.searchBar.frame.size.height
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -174,6 +176,14 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate  {
         return true
     }
     */
+    
+    // MARK: - Split View Controller
+    
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool {
+        return true
+    }
 
     
     // MARK: - Navigation
