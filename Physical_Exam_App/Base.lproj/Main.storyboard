@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Favorite-->
+        <!--Favorites-->
         <scene sceneID="oP0-BB-zJb">
             <objects>
                 <tableViewController id="uyS-9h-Lmw" customClass="FavoriteTableViewController" customModule="Physical_Exam_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AFK-3U-xwF" id="UuS-qY-sBX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -40,7 +40,7 @@
                             <outlet property="delegate" destination="uyS-9h-Lmw" id="I5D-45-5AD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favorite" id="wgb-0v-leU"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="wgb-0v-leU"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="tEv-3R-XPA" id="0P0-18-wEC"/>
@@ -123,6 +123,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="BqQ-uO-riq">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="0ep-eG-iR6">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="wGY-iI-JmC" kind="unwind" identifier="unwindToTable" unwindAction="unwindToTableViewWithSegue:" id="F7g-NC-QAJ"/>
                             </connections>
@@ -156,7 +157,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lHI-11-AP9" id="Fpp-vT-SsM">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yox-xb-287">
@@ -177,6 +178,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Intruction List" id="w3d-37-VaG">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="tJ9-uc-79T">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="0LA-x1-7M9" kind="unwind" identifier="unwindToCollection" unwindAction="unwindToCollectionViewWithSegue:" id="ifu-Kr-HNI"/>
                             </connections>
@@ -224,7 +226,7 @@
         <scene sceneID="LK9-Da-T1j">
             <objects>
                 <splitViewController id="CkL-Vm-awc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="cgL-e5-BaH"/>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="cgL-e5-BaH"/>
                     <connections>
                         <segue destination="feA-Ct-eeG" kind="relationship" relationship="masterViewController" id="PD8-w9-6W5"/>
                         <segue destination="gmT-aV-Jcc" kind="relationship" relationship="detailViewController" id="k7L-NT-Raw"/>
@@ -252,7 +254,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WcZ-3A-dzK" id="Ve0-hh-7rh">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -266,12 +268,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="History" id="OH9-DO-EUs">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="Pez-iW-xIb">
-                            <connections>
-                                <segue destination="Cmp-wX-0Sn" kind="unwind" unwindAction="unwindToCollectionViewWithSegue:" id="Pkk-fP-RQg"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="iBP-x8-Z4g">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="clearHistory:" destination="JSV-Di-25c" id="CFw-At-BJG"/>
                             </connections>
@@ -283,7 +281,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nXx-Pb-O9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Cmp-wX-0Sn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2518" y="-375"/>
         </scene>
@@ -345,7 +342,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCj-mr-bA9" id="FGE-D0-tq7">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -447,6 +444,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="iG5-aZ-s42">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="5Ql-B3-ib4">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="3do-iN-twV" kind="unwind" identifier="unwindToFavorite" customClass="CustomUnwind" customModule="Physical_Exam_App" customModuleProvider="target" unwindAction="unwindToFavoriteWithSegue:" id="Rbh-Cr-yCQ"/>
                             </connections>
@@ -511,6 +509,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="M0a-o1-1hy">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="hMN-cc-RFq">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="QrZ-H4-4hJ" kind="unwind" unwindAction="unwindToRecentWithSegue:" id="4jS-VN-ODi"/>
                             </connections>
@@ -573,7 +572,7 @@
         <image name="star1" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zOC-zE-JZ3"/>
+        <segue reference="k7L-NT-Raw"/>
         <segue reference="Q2U-I4-hus"/>
     </inferredMetricsTieBreakers>
 </document>
