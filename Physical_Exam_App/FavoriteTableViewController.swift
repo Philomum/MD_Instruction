@@ -14,6 +14,9 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate  {
     var searchActive : Bool = false
     var filtered = [Instruction]()
     @IBOutlet weak var searchBar: UISearchBar!
+    let colors = [0xba87d4,0x9eb5f0,0xf0b971,0xff87a7,0x7aebeb,0xb3de78]
+    let images = [#imageLiteral(resourceName: "t1"),#imageLiteral(resourceName: "t2"),#imageLiteral(resourceName: "t3"),#imageLiteral(resourceName: "t4"),#imageLiteral(resourceName: "t5"),#imageLiteral(resourceName: "t6")]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,24 +59,31 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate  {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath)
-        if searchActive == false{
-            cell.textLabel?.text = Favorite_List[indexPath.row].name
-        }
-        else{
-            cell.textLabel?.text = filtered[indexPath.row].name
-        }
-        cell.textLabel?.numberOfLines = 3
-        cell.accessoryType = .disclosureIndicator
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "InstructionCell", for: indexPath) as! TableViewCell
+        let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
         // Configure the cell...
-
+        
+        cell.label.text = self.Favorite_List[indexPath.row].name
+        cell.label.textColor = UIColor.white
+        cell.label.numberOfLines = 3
+        cell.accessoryType = .disclosureIndicator
+        cell.backgroundColor = UIColor(rgb:colors[indexPath.row%6])
+        cell.pic.image = images[indexPath.item%6]
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 80;
+        return 100;
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let result = shouldPerformSegue(withIdentifier: "FavoriteToDetail", sender: self)
+        if result == true {
+            self.performSegue(withIdentifier: "FavoriteToDetail", sender: self)
+        }
+    }
+
  
     // MARK: - Search Bar Functions
     

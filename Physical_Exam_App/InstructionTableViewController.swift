@@ -16,7 +16,7 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
     var stack = [[treeNode]]()
     let data = SectionCdata()
     let colors = [0xba87d4,0x9eb5f0,0xf0b971,0xff87a7,0x7aebeb,0xb3de78]
-    var images = [#imageLiteral(resourceName: "c1"),#imageLiteral(resourceName: "c2"),#imageLiteral(resourceName: "c3"),#imageLiteral(resourceName: "c4"),#imageLiteral(resourceName: "c5"),#imageLiteral(resourceName: "c6")]
+    let images = [#imageLiteral(resourceName: "t1"),#imageLiteral(resourceName: "t2"),#imageLiteral(resourceName: "t3"),#imageLiteral(resourceName: "t4"),#imageLiteral(resourceName: "t5"),#imageLiteral(resourceName: "t6")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,22 +77,16 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "InstructionCell", for: indexPath)
-        
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "InstructionCell", for: indexPath) as! TableViewCell
+        let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
         // Configure the cell...
-        cell.textLabel?.text = self.treeList[indexPath.row].insname
-        cell.textLabel?.textColor = UIColor.white
-        cell.textLabel?.numberOfLines = 3
+        
+        cell.label.text = self.treeList[indexPath.row].insname
+        cell.label.textColor = UIColor.white
+        cell.label.numberOfLines = 3
         cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = UIColor(rgb:colors[indexPath.row%6])
-        let imageview:UIImageView=UIImageView(image:images[indexPath.item%6])
-        imageview.frame = CGRect(x: 0, y: 10, width: 80, height: 80)
-        cell.contentView.addSubview(imageview)
-        //let textLabel = UILabel(frame: CGRect(x: 80, y: 0, width: 150, height: 100))
-        //textLabel.textColor = UIColor.white
-        //textLabel.text = self.treeList[indexPath.row].insname
-        //textLabel.numberOfLines = 3
-        //cell.contentView.addSubview(textLabel)
+        cell.pic.image = images[indexPath.item%6]
         return cell
     }
     
@@ -177,6 +171,13 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
             }
         }
         return true
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let result = shouldPerformSegue(withIdentifier: "ShowDetail", sender: self)
+        if result == true {
+            self.performSegue(withIdentifier: "ShowDetail", sender: self)
+        }
     }
     
     // MARK: - Split View Controller
