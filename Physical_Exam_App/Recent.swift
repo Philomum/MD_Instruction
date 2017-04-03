@@ -11,7 +11,7 @@ import UIKit
 
 class Recent{
     static var recentVisited:[Instruction] = [Instruction]()
-    static let capacity = 3
+    static let capacity = 5
 }
 
 class Favorite{

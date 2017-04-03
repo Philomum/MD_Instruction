@@ -23,9 +23,10 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
         searchBar.delegate = self
         Recent_List = Recent.recentVisited
         self.tableView.rowHeight = 100
-        
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
+        
+        //self.tableView.contentOffset.y = self.searchBar.frame.size.height
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -63,8 +64,12 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
         //let cell = tableView.dequeueReusableCell(withIdentifier: "InstructionCell", for: indexPath) as! TableViewCell
         let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
         // Configure the cell...
-        
-        cell.label.text = self.Recent_List[indexPath.row].name
+        if searchActive == false{
+            cell.label.text = self.Recent_List[indexPath.row].name
+        }
+        else{
+            cell.label.text = self.filtered[indexPath.row].name
+        }
         cell.label.textColor = UIColor.white
         cell.label.numberOfLines = 3
         //cell.accessoryType = .disclosureIndicator
@@ -84,6 +89,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
             self.performSegue(withIdentifier: "RecentToDetail", sender: self)
         }
     }
+
     
     // MARK: - Search Bar Functions
     

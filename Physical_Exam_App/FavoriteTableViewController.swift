@@ -23,6 +23,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate  {
         searchBar.delegate = self
         Favorite_List = Favorite.favoriteVisited
         self.tableView.rowHeight = 80
+        //self.tableView.contentOffset.y = self.searchBar.frame.size.height
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -63,7 +64,12 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate  {
         let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
         // Configure the cell...
         
-        cell.label.text = self.Favorite_List[indexPath.row].name
+        if searchActive == false{
+            cell.label.text = self.Favorite_List[indexPath.row].name
+        }
+        else{
+            cell.label.text = self.filtered[indexPath.row].name
+        }
         cell.label.textColor = UIColor.white
         cell.label.numberOfLines = 3
         //cell.accessoryType = .disclosureIndicator
@@ -193,6 +199,12 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate  {
     
     @IBAction func unwindToFavorite(segue: UIStoryboardSegue) {
         print("unwind from detail")
+    }
+    
+    @IBAction func clear(_ sender: Any) {
+        Favorite.favoriteVisited = [Instruction]()
+        Favorite_List = [Instruction]()
+        tableView.reloadData()
     }
 
 }

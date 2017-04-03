@@ -40,7 +40,14 @@
                             <outlet property="delegate" destination="uyS-9h-Lmw" id="I5D-45-5AD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favorites" id="wgb-0v-leU"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="wgb-0v-leU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="6YW-dp-L9O">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="clear:" destination="uyS-9h-Lmw" id="cwu-gz-V0e"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="tEv-3R-XPA" id="0P0-18-wEC"/>
@@ -129,6 +136,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="star1" id="yor-WT-e7e">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="marked:" destination="NDP-81-dQg" id="8UT-vt-RhJ"/>
                             </connections>
@@ -450,6 +458,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="star1" id="dlD-R3-8o4">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="marked:" destination="0F5-N7-Krt" id="oV0-JQ-Pmj"/>
                             </connections>
@@ -515,6 +524,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="star1" id="vST-Xw-Icj">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="marked:" destination="36n-Mu-dZ5" id="rAn-jJ-wAg"/>
                             </connections>
@@ -572,7 +582,7 @@
         <image name="star1" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="k7L-NT-Raw"/>
+        <segue reference="zOC-zE-JZ3"/>
         <segue reference="Q2U-I4-hus"/>
     </inferredMetricsTieBreakers>
 </document>
