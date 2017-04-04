@@ -125,7 +125,14 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
                 let _ = Instruction.saveRead(Global.readList)
                 self.tableView.reloadData()
             }
-            return [read]
+            let delete = UITableViewRowAction(style: .destructive, title: "delete") { action, indexPath in
+                Global.recentVisited.remove(at: indexPath.row)
+                self.Recent_List = Global.recentVisited
+                self.tableView.reloadData()
+                let _ = Instruction.saveRecent(Global.recentVisited)
+                
+            }
+            return [read, delete]
         }
         else{
             let read = UITableViewRowAction(style: .normal, title: "Mark as \n unread") { action, indexPath in
@@ -138,7 +145,14 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
                 let _ = Instruction.saveRead(Global.readList)
                 self.tableView.reloadData()
             }
-            return [read]
+            let delete = UITableViewRowAction(style: .destructive, title: "delete") { action, indexPath in
+                Global.recentVisited.remove(at: indexPath.row)
+                self.Recent_List = Global.recentVisited
+                self.tableView.reloadData()
+                let _ = Instruction.saveRecent(Global.recentVisited)
+                
+            }
+            return [read, delete]
         }
     }
     

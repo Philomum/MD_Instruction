@@ -127,7 +127,14 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
                 let _ = Instruction.saveRead(Global.readList)
                 self.tableView.reloadData()
             }
-            return [read]
+            let delete = UITableViewRowAction(style: .destructive, title: "delete") { action, indexPath in
+                Global.favoriteVisited.remove(at: indexPath.row)
+                self.Favorite_List = Global.favoriteVisited
+                self.tableView.reloadData()
+                let _ = Instruction.saveRecent(Global.favoriteVisited)
+                
+            }
+            return [read, delete]
         }
         else{
             let read = UITableViewRowAction(style: .normal, title: "Mark as \n unread") { action, indexPath in
@@ -140,7 +147,14 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
                 let _ = Instruction.saveRead(Global.readList)
                 self.tableView.reloadData()
             }
-            return [read]
+            let delete = UITableViewRowAction(style: .destructive, title: "delete") { action, indexPath in
+                Global.favoriteVisited.remove(at: indexPath.row)
+                self.Favorite_List = Global.favoriteVisited
+                self.tableView.reloadData()
+                let _ = Instruction.saveRecent(Global.favoriteVisited)
+                
+            }
+            return [read, delete]
         }
     }
  
@@ -266,6 +280,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
         Global.favoriteVisited = [Instruction]()
         Favorite_List = [Instruction]()
         tableView.reloadData()
+        let _ = Instruction.saveRecent(Global.favoriteVisited)
     }
 
 }
