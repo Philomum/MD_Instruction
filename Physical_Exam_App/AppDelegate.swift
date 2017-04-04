@@ -22,15 +22,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UIApplication.shared.statusBarStyle = .lightContent
         
+        // Change font here
+        let font = "GillSans-Bold"
+        
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.tintColor = UIColor(rgb: 0x1ba685)
         navigationBarAppearance.barTintColor = UIColor(rgb: 0x1ba685)
-        navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
-//        let tabBarAppearance = UITabBar.appearance()
-//        tabBarAppearance.tintColor = UIColor(rgb: 0x1ba685)
-//        tabBarAppearance.barTintColor = UIColor(rgb: 0x1ba685)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(rgb: 0x1ba685)], for: .normal)
+        navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: font, size: 20)!]
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName:UIFont(name: font, size: 10)!], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(rgb: 0x1ba685), NSFontAttributeName:UIFont(name: font, size: 10)!], for: .normal)
+        
+        UILabel.appearance().font = UIFont(name: font, size: 15.0)
         return true
     }
 
