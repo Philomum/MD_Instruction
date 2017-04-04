@@ -294,10 +294,20 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
     }
 
     @IBAction func clearHistory(_ sender: Any) {
-        Global.recentVisited = [Instruction]()
-        Recent_List = Global.recentVisited
-        tableView.reloadData()
-        let _ = Instruction.saveRecent(Global.recentVisited)
+        let alertController = UIAlertController(title: "", message: "Clear ALL the History", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let noAction = UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
+        })
+        alertController.addAction(noAction)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
+            Global.recentVisited = [Instruction]()
+            self.Recent_List = Global.recentVisited
+            self.tableView.reloadData()
+            let _ = Instruction.saveRecent(Global.recentVisited)
+        })
+        alertController.addAction(yesAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
 

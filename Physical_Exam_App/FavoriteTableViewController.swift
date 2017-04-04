@@ -151,7 +151,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
                 Global.favoriteVisited.remove(at: indexPath.row)
                 self.Favorite_List = Global.favoriteVisited
                 self.tableView.reloadData()
-                let _ = Instruction.saveRecent(Global.favoriteVisited)
+                let _ = Instruction.saveFavorite(Global.favoriteVisited)
                 
             }
             return [read, delete]
@@ -296,10 +296,21 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
     }
     
     @IBAction func clear(_ sender: Any) {
-        Global.favoriteVisited = [Instruction]()
-        Favorite_List = [Instruction]()
-        tableView.reloadData()
-        let _ = Instruction.saveRecent(Global.favoriteVisited)
+        let alertController = UIAlertController(title: "", message: "Clear ALL the Favorites", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let noAction = UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
+        })
+        alertController.addAction(noAction)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive, handler: {(alert :UIAlertAction!) in
+            Global.favoriteVisited = [Instruction]()
+            self.Favorite_List = [Instruction]()
+            self.tableView.reloadData()
+            let _ = Instruction.saveFavorite(Global.favoriteVisited)
+        })
+        alertController.addAction(yesAction)
+        present(alertController, animated: true, completion: nil)
+        
     }
 
 }
