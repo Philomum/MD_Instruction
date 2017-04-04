@@ -62,6 +62,7 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
             }
         }
         let _ = Instruction.saveFavorite(Global.favoriteVisited)
+        Global.favoriteEdited = true
     }
    
     private var _orientations = UIInterfaceOrientationMask.portrait
@@ -294,6 +295,7 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
         }
         Global.recentVisited.insert(newInstruction, at: 0)
         let _ = Instruction.saveRecent(Global.recentVisited)
+        Global.recentEdited = true
     }
     
     

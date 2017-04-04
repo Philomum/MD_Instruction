@@ -34,8 +34,11 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Favorite_List = Global.favoriteVisited
-        self.tableView.reloadData()
+        if Global.favoriteEdited == true{
+            Favorite_List = Global.favoriteVisited
+            self.tableView.reloadData()
+            Global.favoriteEdited = false
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -132,7 +135,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
                 self.Favorite_List = Global.favoriteVisited
                 self.tableView.reloadData()
                 let _ = Instruction.saveFavorite(Global.favoriteVisited)
-                
+                Global.favoriteEdited = true
             }
             return [read, delete]
         }
@@ -152,7 +155,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
                 self.Favorite_List = Global.favoriteVisited
                 self.tableView.reloadData()
                 let _ = Instruction.saveFavorite(Global.favoriteVisited)
-                
+                Global.favoriteEdited = true
             }
             return [read, delete]
         }
@@ -307,6 +310,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
             self.Favorite_List = [Instruction]()
             self.tableView.reloadData()
             let _ = Instruction.saveFavorite(Global.favoriteVisited)
+            Global.favoriteEdited = true
         })
         alertController.addAction(yesAction)
         present(alertController, animated: true, completion: nil)

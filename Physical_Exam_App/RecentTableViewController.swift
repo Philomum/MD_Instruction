@@ -35,8 +35,11 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Recent_List = Global.recentVisited
-        self.tableView.reloadData()
+        if Global.recentEdited == true{
+            Recent_List = Global.recentVisited
+            self.tableView.reloadData()
+            Global.recentEdited = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -130,7 +133,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
                 self.Recent_List = Global.recentVisited
                 self.tableView.reloadData()
                 let _ = Instruction.saveRecent(Global.recentVisited)
-                
+                Global.recentEdited = true
             }
             return [read, delete]
         }
@@ -150,7 +153,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
                 self.Recent_List = Global.recentVisited
                 self.tableView.reloadData()
                 let _ = Instruction.saveRecent(Global.recentVisited)
-                
+                Global.recentEdited = true
             }
             return [read, delete]
         }
@@ -305,6 +308,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
             self.Recent_List = Global.recentVisited
             self.tableView.reloadData()
             let _ = Instruction.saveRecent(Global.recentVisited)
+            Global.recentEdited = true
         })
         alertController.addAction(yesAction)
         present(alertController, animated: true, completion: nil)

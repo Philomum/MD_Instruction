@@ -14,5 +14,7 @@ class Global{
     static var favoriteVisited:[Instruction] = [Instruction]()
     static var readList:[Instruction] = [Instruction]()
     static let capacity = 5
+    static var recentEdited = false
+    static var favoriteEdited = false
 }
 
