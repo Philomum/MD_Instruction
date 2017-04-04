@@ -145,7 +145,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
                 let _ = Instruction.saveRead(Global.readList)
                 self.tableView.reloadData()
             }
-            let delete = UITableViewRowAction(style: .destructive, title: "delete") { action, indexPath in
+            let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
                 Global.recentVisited.remove(at: indexPath.row)
                 self.Recent_List = Global.recentVisited
                 self.tableView.reloadData()
