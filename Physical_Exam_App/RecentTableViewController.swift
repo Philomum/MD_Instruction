@@ -123,9 +123,9 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
                     Global.readList.append(self.filtered[editActionsForRowAt.row])
                 }
                 let _ = Instruction.saveRead(Global.readList)
-                self.tableView.reloadData()
+                self.tableView.reloadRows(at: [indexPath], with: .none)
             }
-            let delete = UITableViewRowAction(style: .destructive, title: "delete") { action, indexPath in
+            let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
                 Global.recentVisited.remove(at: indexPath.row)
                 self.Recent_List = Global.recentVisited
                 self.tableView.reloadData()
@@ -143,7 +143,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
                     }
                 }
                 let _ = Instruction.saveRead(Global.readList)
-                self.tableView.reloadData()
+                self.tableView.reloadRows(at: [indexPath], with: .none)
             }
             let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
                 Global.recentVisited.remove(at: indexPath.row)
@@ -154,6 +154,25 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
             }
             return [read, delete]
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        // choose one animation you want
+        
+        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+        UIView.animate(withDuration: 0.5, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+        })
+        
+        //        This animation below is stupid
+        //cell.alpha = 0
+        //let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 0)
+        //cell.layer.transform = transform
+        //UIView.animate(withDuration: 1.0, animations: {
+        //    cell.alpha = 1
+        //    cell.layer.transform = CATransform3DIdentity
+        //})
     }
     
     // MARK: - Search Bar Functions

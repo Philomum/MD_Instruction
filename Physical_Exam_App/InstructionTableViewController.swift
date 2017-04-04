@@ -118,7 +118,7 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
             if isRead == false{
                 let read = UITableViewRowAction(style: .normal, title: "Mark as \n read") { action, indexPath in
                     Global.readList.append(self.treeList[editActionsForRowAt.row].childInstruction!)
-                    self.tableView.reloadData()
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
                     let _ = Instruction.saveRead(Global.readList)
                 }
                 return [read]
@@ -131,53 +131,12 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
                             let _ = Instruction.saveRead(Global.readList)
                         }
                     }
-                    self.tableView.reloadData()
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
                 }
                 return [read]
             }
         }
-        /*
-        var isRead = false
-        var text = ""
-        if self.searchActive == false{
-            text = self.Recent_List[editActionsForRowAt.row].name
-        }
-        else{
-            text = self.filtered[editActionsForRowAt.row].name
-        }
-        
-        for i in 0..<Global.readList.count{
-            if text == Global.readList[i].name{
-                isRead = true
-                break
-            }
-        }
-        if isRead == false{
-            let read = UITableViewRowAction(style: .normal, title: "Mark as \n read") { action, indexPath in
-                if self.searchActive == false{
-                    Global.readList.append(self.Recent_List[editActionsForRowAt.row])
-                }
-                else{
-                    Global.readList.append(self.filtered[editActionsForRowAt.row])
-                }
-                let _ = Instruction.saveRead(Global.readList)
-                self.tableView.reloadData()
-            }
-            return [read]
-        }
-        else{
-            let read = UITableViewRowAction(style: .normal, title: "Mark as \n unread") { action, indexPath in
-                for i in 0..<Global.readList.count{
-                    if text == Global.readList[i].name{
-                        Global.readList.remove(at: i)
-                        break
-                    }
-                }
-                let _ = Instruction.saveRead(Global.readList)
-                self.tableView.reloadData()
-            }
-            return [read]
-        }*/
+       
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -190,13 +149,13 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         })
         
 //        This animation below is stupid
-//        cell.alpha = 0
-//        let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 0)
-//        cell.layer.transform = transform
-//        UIView.animate(withDuration: 1.0, animations: {
-//            cell.alpha = 1
-//            cell.layer.transform = CATransform3DIdentity
-//        })
+        //cell.alpha = 0
+        //let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 0)
+        //cell.layer.transform = transform
+        //UIView.animate(withDuration: 1.0, animations: {
+        //    cell.alpha = 1
+        //    cell.layer.transform = CATransform3DIdentity
+        //})
     }
     
     
