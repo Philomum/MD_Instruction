@@ -21,7 +21,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        Favorite_List = Favorite.favoriteVisited
+        Favorite_List = Global.favoriteVisited
         self.tableView.rowHeight = 100
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
@@ -34,7 +34,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Favorite_List = Favorite.favoriteVisited
+        Favorite_List = Global.favoriteVisited
         self.tableView.reloadData()
     }
     
@@ -77,6 +77,14 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
         //cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = UIColor(rgb:colors[indexPath.row%6])
         cell.pic.image = images[indexPath.item%6]
+        
+        for i in 0..<Global.readList.count{
+            if cell.label.text == Global.readList[i].name{
+                cell.read.text = "Read"
+                break
+            }
+        }
+        cell.read.textColor = UIColor.white
         return cell
     }
     
@@ -92,6 +100,49 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
         }
     }
 
+    override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+        var isRead = false
+        var text = ""
+        if self.searchActive == false{
+            text = self.Favorite_List[editActionsForRowAt.row].name
+        }
+        else{
+            text = self.filtered[editActionsForRowAt.row].name
+        }
+        
+        for i in 0..<Global.readList.count{
+            if text == Global.readList[i].name{
+                isRead = true
+                break
+            }
+        }
+        if isRead == false{
+            let read = UITableViewRowAction(style: .normal, title: "Mark as \n read") { action, indexPath in
+                if self.searchActive == false{
+                    Global.readList.append(self.Favorite_List[editActionsForRowAt.row])
+                }
+                else{
+                    Global.readList.append(self.filtered[editActionsForRowAt.row])
+                }
+                let _ = Instruction.saveRead(Global.readList)
+                self.tableView.reloadData()
+            }
+            return [read]
+        }
+        else{
+            let read = UITableViewRowAction(style: .normal, title: "Mark as \n unread") { action, indexPath in
+                for i in 0..<Global.readList.count{
+                    if text == Global.readList[i].name{
+                        Global.readList.remove(at: i)
+                        break
+                    }
+                }
+                let _ = Instruction.saveRead(Global.readList)
+                self.tableView.reloadData()
+            }
+            return [read]
+        }
+    }
  
     // MARK: - Search Bar Functions
     
@@ -212,7 +263,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
     }
     
     @IBAction func clear(_ sender: Any) {
-        Favorite.favoriteVisited = [Instruction]()
+        Global.favoriteVisited = [Instruction]()
         Favorite_List = [Instruction]()
         tableView.reloadData()
     }

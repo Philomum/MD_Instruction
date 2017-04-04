@@ -29,6 +29,8 @@ class Instruction:NSObject,NSCoding{
     static let ArchiveURLforRecent = DocumentsDirectory1.appendingPathComponent("RecentFile")
     static let DocumentsDirectory2 = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURLforFavorite = DocumentsDirectory2.appendingPathComponent("FavoriteFile")
+    static let DocumentsDirectory3 = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURLforRead = DocumentsDirectory3.appendingPathComponent("ReadFile")
 
     init(name: String){
         self.name = name
@@ -60,8 +62,8 @@ class Instruction:NSObject,NSCoding{
         return NSKeyedUnarchiver.unarchiveObject(withFile: Instruction.ArchiveURLforRecent.path) as? [Instruction]
     }
     
-    static func saveFavorite(_ Recent_List: [Instruction]) -> Bool{
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(Recent_List, toFile: Instruction.ArchiveURLforFavorite.path)
+    static func saveFavorite(_ Favorite_List: [Instruction]) -> Bool{
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(Favorite_List, toFile: Instruction.ArchiveURLforFavorite.path)
         if !isSuccessfulSave{
             print("Failed to save info")
             return false
@@ -74,4 +76,20 @@ class Instruction:NSObject,NSCoding{
     static func loadFromFavoriteFile() -> [Instruction]?{
         return NSKeyedUnarchiver.unarchiveObject(withFile: Instruction.ArchiveURLforFavorite.path) as? [Instruction]
     }
+    
+    static func saveRead(_ Read_List: [Instruction]) -> Bool{
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(Read_List, toFile: Instruction.ArchiveURLforRead.path)
+        if !isSuccessfulSave{
+            print("Failed to save info")
+            return false
+        }
+        else {
+            return true
+        }
+    }
+    
+    static func loadFromReadFile() -> [Instruction]?{
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Instruction.ArchiveURLforRead.path) as? [Instruction]
+    }
+
 }

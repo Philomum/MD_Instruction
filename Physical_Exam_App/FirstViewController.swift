@@ -18,8 +18,9 @@ class FirstViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Recent.recentVisited = Instruction.loadFromRecentFile() ?? []
-        Favorite.favoriteVisited = Instruction.loadFromFavoriteFile() ?? []
+        Global.recentVisited = Instruction.loadFromRecentFile() ?? []
+        Global.favoriteVisited = Instruction.loadFromFavoriteFile() ?? []
+        Global.readList = Instruction.loadFromReadFile() ?? []
         //self.view.addSubview(collectionView)
         // Do any additional setup after loading the view, typically from a nib.
         //let nib = UINib(nibName: "SectionCollectionViewCell", bundle: nil)

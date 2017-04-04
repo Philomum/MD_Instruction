@@ -88,6 +88,13 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         cell.backgroundColor = UIColor(rgb:colors[indexPath.row%6])
         cell.pic.image = images[indexPath.item%6]
         
+        for i in 0..<Global.readList.count{
+            if cell.label.text == Global.readList[i].name{
+                cell.read.text = "Read"
+                break
+            }
+        }
+        cell.read.textColor = UIColor.white
         return cell
     }
     
@@ -95,6 +102,88 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
     {
         return 100;
     }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+        if treeList[editActionsForRowAt.row].isInstruction == false{
+            return []
+        }
+        else{
+            let text = self.treeList[editActionsForRowAt.row].insname
+            var isRead = false
+            for i in 0..<Global.readList.count{
+                if text == Global.readList[i].name{
+                    isRead = true
+                }
+            }
+            if isRead == false{
+                let read = UITableViewRowAction(style: .normal, title: "Mark as \n read") { action, indexPath in
+                    Global.readList.append(self.treeList[editActionsForRowAt.row].childInstruction!)
+                    self.tableView.reloadData()
+                    let _ = Instruction.saveRead(Global.readList)
+                }
+                return [read]
+            }
+            else{
+                let read = UITableViewRowAction(style: .normal, title: "Mark as \n unread") { action, indexPath in
+                    for i in 0..<Global.readList.count{
+                        if text == Global.readList[i].name{
+                            Global.readList.remove(at: i)
+                            let _ = Instruction.saveRead(Global.readList)
+                        }
+                    }
+                    self.tableView.reloadData()
+                }
+                return [read]
+            }
+        }
+        /*
+        var isRead = false
+        var text = ""
+        if self.searchActive == false{
+            text = self.Recent_List[editActionsForRowAt.row].name
+        }
+        else{
+            text = self.filtered[editActionsForRowAt.row].name
+        }
+        
+        for i in 0..<Global.readList.count{
+            if text == Global.readList[i].name{
+                isRead = true
+                break
+            }
+        }
+        if isRead == false{
+            let read = UITableViewRowAction(style: .normal, title: "Mark as \n read") { action, indexPath in
+                if self.searchActive == false{
+                    Global.readList.append(self.Recent_List[editActionsForRowAt.row])
+                }
+                else{
+                    Global.readList.append(self.filtered[editActionsForRowAt.row])
+                }
+                let _ = Instruction.saveRead(Global.readList)
+                self.tableView.reloadData()
+            }
+            return [read]
+        }
+        else{
+            let read = UITableViewRowAction(style: .normal, title: "Mark as \n unread") { action, indexPath in
+                for i in 0..<Global.readList.count{
+                    if text == Global.readList[i].name{
+                        Global.readList.remove(at: i)
+                        break
+                    }
+                }
+                let _ = Instruction.saveRead(Global.readList)
+                self.tableView.reloadData()
+            }
+            return [read]
+        }*/
+    }
+
+    
+    //override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+    
+    //}
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

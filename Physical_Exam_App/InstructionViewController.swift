@@ -50,18 +50,18 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
         if isFavorite == true{
             rightButton.image = #imageLiteral(resourceName: "star2")
             let newInstruction = Instruction(name: titleText)
-            Favorite.favoriteVisited.append(newInstruction)
+            Global.favoriteVisited.append(newInstruction)
         }
         else{
             rightButton.image = #imageLiteral(resourceName: "star1")
-            for i in 0..<Favorite.favoriteVisited.count{
-                if titleText == Favorite.favoriteVisited[i].name{
-                    Favorite.favoriteVisited.remove(at: i)
+            for i in 0..<Global.favoriteVisited.count{
+                if titleText == Global.favoriteVisited[i].name{
+                    Global.favoriteVisited.remove(at: i)
                     break
                 }
             }
         }
-        let _ = Instruction.saveFavorite(Favorite.favoriteVisited)
+        let _ = Instruction.saveFavorite(Global.favoriteVisited)
     }
    
     private var _orientations = UIInterfaceOrientationMask.portrait
@@ -121,8 +121,8 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
-        for i in 0..<Favorite.favoriteVisited.count{
-            if Favorite.favoriteVisited[i].name == titleText{
+        for i in 0..<Global.favoriteVisited.count{
+            if Global.favoriteVisited[i].name == titleText{
                 rightButton.image = #imageLiteral(resourceName: "star2")
                 isFavorite = true
                 break
@@ -283,17 +283,17 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
             return
         }
         let newInstruction = Instruction(name: titleText)
-        for i in 0..<Recent.recentVisited.count{
-            if newInstruction.name == Recent.recentVisited[i].name{
-                Recent.recentVisited.remove(at: i)
+        for i in 0..<Global.recentVisited.count{
+            if newInstruction.name == Global.recentVisited[i].name{
+                Global.recentVisited.remove(at: i)
                 break
             }
         }
-        if Recent.recentVisited.count == Recent.capacity{
-            Recent.recentVisited.remove(at: Recent.capacity - 1)
+        if Global.recentVisited.count == Global.capacity{
+            Global.recentVisited.remove(at: Global.capacity - 1)
         }
-        Recent.recentVisited.insert(newInstruction, at: 0)
-        let _ = Instruction.saveRecent(Recent.recentVisited)
+        Global.recentVisited.insert(newInstruction, at: 0)
+        let _ = Instruction.saveRecent(Global.recentVisited)
     }
     
     

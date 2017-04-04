@@ -9,12 +9,10 @@
 import Foundation
 import UIKit
 
-class Recent{
+class Global{
     static var recentVisited:[Instruction] = [Instruction]()
-    static let capacity = 5
-}
-
-class Favorite{
     static var favoriteVisited:[Instruction] = [Instruction]()
+    static var readList:[Instruction] = [Instruction]()
+    static let capacity = 5
 }
 
