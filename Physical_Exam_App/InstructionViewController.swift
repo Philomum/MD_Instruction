@@ -159,8 +159,11 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
                 else if source == 3{
                     performSegue(withIdentifier: "unwindToFavorite", sender: self)
                 }
-                else{
+                else if source == 2{
                     performSegue(withIdentifier: "unwindToRecent", sender: self)
+                }
+                else{
+                    performSegue(withIdentifier: "unwindToAll", sender: self)
                 }
             default:
                 break

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AFK-3U-xwF" id="UuS-qY-sBX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -165,7 +165,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lHI-11-AP9" id="Fpp-vT-SsM">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yox-xb-287">
@@ -262,7 +262,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WcZ-3A-dzK" id="Ve0-hh-7rh">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -332,9 +332,12 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCj-mr-bA9" id="FGE-D0-tq7">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Idh-O8-ZUi" kind="show" identifier="AllToDetail" customClass="CustomSegue" customModule="Physical_Exam_App" customModuleProvider="target" action="showDetailViewController:sender:" id="6W5-GS-Bm8"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -469,7 +472,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olg-93-RTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="3do-iN-twV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2190" y="1534.8591549295775"/>
+            <point key="canvasLocation" x="3187.5" y="1534.8591549295775"/>
         </scene>
         <!--Instruction View Controller-->
         <scene sceneID="iD6-CV-30u">
@@ -595,7 +598,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Back" id="UhT-Bo-RJV">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="pbh-sK-0Ph" kind="unwind" identifier="unwindToFavorite" customClass="CustomUnwind" customModule="Physical_Exam_App" unwindAction="unwindToFavoriteWithSegue:" id="gfb-in-4Le"/>
+                                <segue destination="pbh-sK-0Ph" kind="unwind" identifier="unwindToAll" unwindAction="unwindToAllWithSegue:" id="9sJ-pz-YQT"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="star1" id="mON-dS-WB8">
@@ -614,7 +617,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NEv-Pg-Zu2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="pbh-sK-0Ph" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-716" y="1552"/>
+            <point key="canvasLocation" x="281.25" y="1551.7605633802816"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HbJ-GA-8gh">
@@ -650,7 +653,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYp-vS-1EN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1192.5" y="1534.8591549295775"/>
+            <point key="canvasLocation" x="2190" y="1534.8591549295775"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="npg-3R-kQz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Idh-O8-ZUi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UCh-Po-XIG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="C3e-yv-YlY" kind="relationship" relationship="rootViewController" id="2Q2-io-n23"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oKA-pc-6yE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-741" y="1552"/>
         </scene>
     </scenes>
     <resources>
@@ -658,7 +679,7 @@
         <image name="star1" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zOC-zE-JZ3"/>
+        <segue reference="k7L-NT-Raw"/>
         <segue reference="cbQ-OK-tkf"/>
         <segue reference="Q2U-I4-hus"/>
     </inferredMetricsTieBreakers>

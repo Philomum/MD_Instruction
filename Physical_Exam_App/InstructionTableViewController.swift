@@ -23,6 +23,9 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         
         self.title = data.name
         treeList = data.treeNodes
+        for i in 0..<treeList.count{
+            traverse(node: treeList[i])
+        }
         
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
@@ -36,6 +39,17 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func traverse(node:treeNode){
+        for i in 0..<node.children.count{
+            if node.children[i].isInstruction == true{
+                Global.allList.append(node.children[i].childInstruction!)
+            }
+            else{
+                traverse(node: node.children[i])
+            }
+        }
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {

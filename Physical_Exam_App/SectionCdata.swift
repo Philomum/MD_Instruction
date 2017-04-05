@@ -11,7 +11,7 @@ import Foundation
 class SectionCdata {
     
     var treeNodes = [treeNode]()
-    var name = "C. Respriatory"
+    var name = "Respriatory"
     
     init() {
         generateTreeNodes()
