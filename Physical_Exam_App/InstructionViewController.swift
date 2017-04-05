@@ -123,6 +123,9 @@ class InstructionViewController: UIViewController,UIPickerViewDelegate,UIPickerV
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
         for i in 0..<Global.favoriteVisited.count{
+            if titleText == nil {
+                continue;
+            }
             if Global.favoriteVisited[i].name == titleText{
                 rightButton.image = #imageLiteral(resourceName: "star2")
                 isFavorite = true

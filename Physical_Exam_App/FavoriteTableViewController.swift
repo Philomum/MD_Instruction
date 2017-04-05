@@ -164,11 +164,13 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         // choose one animation you want
+        if searchActive == false {
+            cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+            UIView.animate(withDuration: 0.5, animations: {
+                cell.layer.transform = CATransform3DMakeScale(1,1,1)
+            })
+        }
         
-        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
-        UIView.animate(withDuration: 0.5, animations: {
-            cell.layer.transform = CATransform3DMakeScale(1,1,1)
-        })
         
         //        This animation below is stupid
         //cell.alpha = 0

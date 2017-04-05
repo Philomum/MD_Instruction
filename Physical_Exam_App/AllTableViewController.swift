@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AllTableViewController: UITableViewController,UISearchBarDelegate {
+class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplitViewControllerDelegate {
 
     var Instruction_List = [Instruction]()
     var filtered = [Instruction]()
@@ -24,6 +24,9 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate {
         searchBar.delegate = self
         Instruction_List = Global.allList
         Instruction_List = Instruction_List.sorted{$0.name < $1.name}
+        
+        self.splitViewController?.delegate = self
+        self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -208,15 +211,19 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate {
         return true
     }
     */
+    
+    // MARK: - Split View Controller
+    
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool {
+        return true
+    }
 
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
     */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
