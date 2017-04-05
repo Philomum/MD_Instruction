@@ -32,6 +32,7 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        Instruction_List = Global.allList
         self.tableView.reloadData()
     }
 
