@@ -46,6 +46,7 @@ class FirstViewController: UICollectionViewController {
         cell.myLabel.textAlignment = .center
         //cell.myLabel.textColor = UIColor(rgb: 0x1ba685)
         let imageview:UIImageView=UIImageView(image:images[indexPath.item])
+        
         imageview.frame = CGRect(x: 20, y: 10, width: 120, height: 120)
         cell.contentView.addSubview(imageview)
         //cell.backgroundColor = UIColor.cyan
