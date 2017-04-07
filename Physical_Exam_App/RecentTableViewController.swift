@@ -25,7 +25,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
         self.tableView.rowHeight = 100
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
-        
+        Global.source = 2
         //self.tableView.contentOffset.y = self.searchBar.frame.size.height
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -40,6 +40,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
             self.tableView.reloadData()
             Global.recentEdited = false
         }
+        Global.source = 2
     }
 
     override func didReceiveMemoryWarning() {
@@ -291,7 +292,6 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
             else{
                 vc.titleText = self.filtered[index!].name
             }
-            vc.source = 2
         }
     }
     @IBAction func unwindToRecent(segue: UIStoryboardSegue) {

@@ -17,7 +17,6 @@ class TabBarController: UITabBarController {
         tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor(rgb: 0x1ba685), size: tabBarItemSize).resizableImage(withCapInsets: .zero)
         self.tabBar.frame.size.width = self.view.frame.width + 4
         self.tabBar.frame.origin.x = -2
-
         // Do any additional setup after loading the view.
     }
 
@@ -26,7 +25,9 @@ class TabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        print(self.selectedIndex)
+    }
     /*
     // MARK: - Navigation
 

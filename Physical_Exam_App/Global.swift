@@ -1,5 +1,5 @@
 //
-//  Recent.swift
+//  Global.swift
 //  Physical_Exam_App
 //
 //  Created by Yuchen Qian on 3/3/17.
@@ -17,5 +17,6 @@ class Global{
     static let capacity = 5
     static var recentEdited = false
     static var favoriteEdited = false
+    static var source = 0
 }
 

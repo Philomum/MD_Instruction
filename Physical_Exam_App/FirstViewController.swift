@@ -27,6 +27,11 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
         //let nib = UINib(nibName: "SectionCollectionViewCell", bundle: nil)
         //self.collectionView.register(nib, forCellWithReuseIdentifier: "SectionCell")
         print(modelName)
+        Global.source = 1
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        Global.source = 1
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,7 +42,6 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
     // MARK: - UICollectionViewDataSource protocol
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(sections.count)
         return sections.count
     }
     
@@ -54,6 +58,19 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
         return cell
     }
     
+    
+    
+    override open var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // Compute the dimension of a cell for an NxN layout with space S between

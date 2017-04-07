@@ -157,6 +157,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="YoutubeView" destination="RWB-Rl-W78" id="bM5-KQ-RNK"/>
+                        <outlet property="leftButton" destination="0ep-eG-iR6" id="W2p-jC-2CB"/>
                         <outlet property="rightButton" destination="yor-WT-e7e" id="Jsm-t3-Tgm"/>
                     </connections>
                 </viewController>
@@ -343,7 +344,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="dU7-Yf-YpU" kind="showDetail" identifier="AlltoDetail" customClass="CustomSegue" customModule="Physical_Exam_App" customModuleProvider="target" id="pyU-VS-h0Q"/>
+                                    <segue destination="dU7-Yf-YpU" kind="showDetail" identifier="AllToDetail" customClass="CustomSegue" customModule="Physical_Exam_App" customModuleProvider="target" id="pyU-VS-h0Q"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -457,6 +458,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="YoutubeView" destination="lUb-sJ-43u" id="8vN-3R-Brz"/>
+                        <outlet property="leftButton3" destination="5Ql-B3-ib4" id="0wg-cq-p0c"/>
                         <outlet property="rightButton" destination="dlD-R3-8o4" id="Nag-dM-EZq"/>
                     </connections>
                 </viewController>
@@ -501,6 +503,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="YoutubeView" destination="fQY-HF-CNq" id="koe-Sx-UpA"/>
+                        <outlet property="leftButton2" destination="hMN-cc-RFq" id="KGS-ON-Vvo"/>
                         <outlet property="rightButton" destination="vST-Xw-Icj" id="P5H-kB-Qtn"/>
                     </connections>
                 </viewController>
@@ -596,6 +599,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="YoutubeView" destination="uNo-GW-7dW" id="RJl-0W-euZ"/>
+                        <outlet property="leftButton4" destination="UhT-Bo-RJV" id="08h-0b-7gb"/>
                         <outlet property="rightButton" destination="mON-dS-WB8" id="2AM-k1-a0a"/>
                     </connections>
                 </viewController>

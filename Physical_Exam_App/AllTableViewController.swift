@@ -27,6 +27,7 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
         
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
+        Global.source = 4
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -37,6 +38,7 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
     override func viewDidAppear(_ animated: Bool) {
         Instruction_List = Global.allList
         self.tableView.reloadData()
+        Global.source = 4
     }
 
     override func didReceiveMemoryWarning() {
@@ -123,6 +125,7 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let result = shouldPerformSegue(withIdentifier: "AllToDetail", sender: self)
         if result == true {
+            print("!!!")
             self.performSegue(withIdentifier: "AllToDetail", sender: self)
         }
     }
@@ -240,7 +243,6 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
             else{
                 vc.titleText = self.filtered[index!].name
             }
-            vc.source = 4
         }
     }
     

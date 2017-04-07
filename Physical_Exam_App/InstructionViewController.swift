@@ -13,11 +13,15 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     
     
     var isFavorite = false
-    var source = 1
+    let modelName = UIDevice.current.modelName
     //hard coded url
     var urlString:String="https://youtu.be/xyJSBu6fFRk?list=PL8tZP77vSdwv9YlYNXJhNNTSuxqWR5qUQ"
     
     
+    @IBOutlet weak var leftButton4: UIBarButtonItem!
+    @IBOutlet weak var leftButton3: UIBarButtonItem!
+    @IBOutlet weak var leftButton2: UIBarButtonItem!
+    @IBOutlet weak var leftButton: UIBarButtonItem!
     @IBOutlet weak var YoutubeView: UIWebView!
     @IBOutlet weak var rightButton: UIBarButtonItem!
     
@@ -75,6 +79,26 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
                 break
             }
         }
+    
+        if modelName.contains("tor"){
+            if Global.source == 1{
+                leftButton.title = ""
+                leftButton.isEnabled = false
+            }
+            else if Global.source == 2{
+                leftButton2.title = ""
+                leftButton2.isEnabled = false
+            }
+            else if Global.source == 3{
+                leftButton3.title = ""
+                leftButton3.isEnabled = false
+            }
+            else if Global.source == 4{
+                leftButton4.title = ""
+                leftButton4.isEnabled = false
+            }
+        }
+        
         //RecentViewController.addViewedList(item: Instruction(name: titleText))
     }
     
@@ -83,13 +107,13 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.right:
-                if source == 1{
+                if Global.source == 1{
                     performSegue(withIdentifier: "unwindToTable", sender: self)
                 }
-                else if source == 3{
+                else if Global.source == 3{
                     performSegue(withIdentifier: "unwindToFavorite", sender: self)
                 }
-                else if source == 2{
+                else if Global.source == 2{
                     performSegue(withIdentifier: "unwindToRecent", sender: self)
                 }
                 else{

@@ -25,6 +25,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
         self.tableView.rowHeight = 100
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
+        Global.source = 3
         //self.tableView.contentOffset.y = self.searchBar.frame.size.height
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -39,6 +40,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
             self.tableView.reloadData()
             Global.favoriteEdited = false
         }
+        Global.source = 3
     }
     
     override func didReceiveMemoryWarning() {
@@ -292,7 +294,6 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
             else{
                 vc.titleText = self.filtered[index!].name
             }
-            vc.source = 3
         }
     }
     
