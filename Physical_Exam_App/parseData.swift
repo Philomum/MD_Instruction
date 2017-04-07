@@ -8,10 +8,10 @@
 
 import Foundation
 
-let str1 = "C.Respiratory/Inspection/Posterior and Anterior lung fields with deep breaths (verbalize inspection);https://www.youtube.com/watch?v=-EWLR4Xox_4&feature=youtu.be&app=desktop"
-let str2 = "C.Respiratory/Posterior : palpate, percuss, auscultate/Correct Technique: cross arms, hands on shoulder to raise scapulae;https://www.youtube.com/watch?v=-EWLR4Xox_4&feature=youtu.be&app=desktop"
-let str3 = "C.Respiratory/Posterior : palpate, percuss, auscultate/Check respiratory (thoracic) expansion;https://www.youtube.com/watch?v=-EWLR4Xox_4&feature=youtu.be&app=desktop"
-let list = [str1, str2, str3]
+//let str1 = "C.Respiratory/Inspection/Posterior and Anterior lung fields with deep breaths (verbalize inspection);https://www.youtube.com/watch?v=-EWLR4Xox_4&feature=youtu.be&app=desktop"
+//let str2 = "C.Respiratory/Posterior : palpate, percuss, auscultate/Correct Technique: cross arms, hands on shoulder to raise scapulae;https://www.youtube.com/watch?v=-EWLR4Xox_4&feature=youtu.be&app=desktop"
+//let str3 = "C.Respiratory/Posterior : palpate, percuss, auscultate/Check respiratory (thoracic) expansion;https://www.youtube.com/watch?v=-EWLR4Xox_4&feature=youtu.be&app=desktop"
+var list = [String]()
 
 var treeList = [treeNode]()
 
@@ -83,6 +83,32 @@ func appendNode(parentNode: treeNode, array: [String], index: Int, url: String) 
 
 // Parse Data Here
 func parse() {
+    //let source = URL(string: "https://users.cs.duke.edu/~hy/ece_590/sources.txt")!
+//    let sessionConfig = URLSessionConfiguration.default
+//    let session = URLSession(configuration: sessionConfig)
+//    let request = URLRequest(url: source)
+//    let task = session.downloadTask(with: request)
+    
+    if let source = URL(string: "https://users.cs.duke.edu/~hy/ece_590/sources.txt") {
+        do {
+            let contents = try String(contentsOf: source)
+            list = contents.components(separatedBy: "\n")
+        } catch {
+            print("failed loading contents")
+        }
+    } else {
+        print("bad url")
+    }
+    
+    for i in 0...list.count - 1 {
+        if i >= list.count {
+            break
+        }
+        while i < list.count && list[i] == "" {
+            list.remove(at: i)
+        }
+    }
+
     for str in list {
         // choose your separate symbol
         var myLine = str.components(separatedBy: ";")
