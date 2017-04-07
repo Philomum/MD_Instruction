@@ -8,37 +8,7 @@
 
 import Foundation
 
-//let str1 = "C.Respiratory/Inspection/Posterior and Anterior lung fields with deep breaths (verbalize inspection);https://www.youtube.com/watch?v=-EWLR4Xox_4&feature=youtu.be&app=desktop"
-//let str2 = "C.Respiratory/Posterior : palpate, percuss, auscultate/Correct Technique: cross arms, hands on shoulder to raise scapulae;https://www.youtube.com/watch?v=-EWLR4Xox_4&feature=youtu.be&app=desktop"
-//let str3 = "C.Respiratory/Posterior : palpate, percuss, auscultate/Check respiratory (thoracic) expansion;https://www.youtube.com/watch?v=-EWLR4Xox_4&feature=youtu.be&app=desktop"
 var list = [String]()
-
-var treeList = [treeNode]()
-
-//
-//func createTreeNode(parentNode: treeNode, array: [String], index: Int, url: String) -> treeNode{
-//
-//    var node = treeNode()
-//    let childrenList = parentNode.children
-//    let(result, ind) = containsNode(treeNodeList: childrenList, currNode: node)
-//    if result == true {
-//        node = childrenList[ind]
-//    }
-//    else{
-//        node = treeNode(name: array[index])
-//    }
-//    
-//    if index + 1 == array.count {
-//        node.isInstruction = true
-//        node.childInstruction = createInstructionNode(array: array, index: index, url: url)
-//    }
-//    else {
-//        node.children.append(createTreeNode(parentNode: node, array: array, index: index + 1, url: url))
-//    }
-//    
-//    return node
-//}
-
 
 // Check if the parent node list contains current node
 func containsNode(treeNodeList: [treeNode], currNode: treeNode) -> (Bool, Int) {
@@ -82,7 +52,8 @@ func appendNode(parentNode: treeNode, array: [String], index: Int, url: String) 
 }
 
 // Parse Data Here
-func parse() {
+func parse() -> [treeNode]{
+    var treeList = [treeNode]()
     //let source = URL(string: "https://users.cs.duke.edu/~hy/ece_590/sources.txt")!
 //    let sessionConfig = URLSessionConfiguration.default
 //    let session = URLSession(configuration: sessionConfig)
@@ -95,11 +66,11 @@ func parse() {
             list = contents.components(separatedBy: "\n")
         } catch {
             print("Failed loading contents. Stop parsing")
-            return
+            //return
         }
     } else {
         print("Bad url. Stop parsing")
-        return
+        //return
     }
     
     for i in 0...list.count - 1 {
@@ -129,17 +100,18 @@ func parse() {
     }
     
     // Play around and check correctness
-    for node in treeList {
-        for child in node.children {
-            print(child.insname)
-            for children in child.children{
-                if children.isInstruction {
-                    //print(children.childInstruction?.name)
-                    //print(children.childInstruction?.source)
-                }
-            }
-        }
-    }
+//    for node in treeList {
+//        for child in node.children {
+//            print(child.insname)
+//            for children in child.children{
+//                if children.isInstruction {
+//                    //print(children.childInstruction?.name)
+//                    //print(children.childInstruction?.source)
+//                }
+//            }
+//        }
+//    }
+    return treeList
     
 }
 

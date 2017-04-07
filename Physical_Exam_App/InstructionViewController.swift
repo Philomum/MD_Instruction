@@ -60,6 +60,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         addToRecent()
+        print(titleText)
         YoutubeView.delegate=self
         YoutubeView.loadRequest(URLRequest(url: URL(string:urlString)!))
         YoutubeView.scrollView.scrollsToTop=true
@@ -80,7 +81,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
             }
         }
     
-        if modelName.contains("tor"){
+        if modelName.contains("iPad"){
             if Global.source == 1{
                 leftButton.title = ""
                 leftButton.isEnabled = false

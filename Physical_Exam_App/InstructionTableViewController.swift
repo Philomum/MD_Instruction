@@ -14,15 +14,17 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
     
     var treeList = [treeNode]()
     var stack = [[treeNode]]()
-    let data = SectionCdata()
+    //let data = SectionCdata()
+    let data = parse()
     let colors = [0xba87d4,0x9eb5f0,0xf0b971,0xff87a7,0x7aebeb,0xb3de78]
     let images = [#imageLiteral(resourceName: "t1"),#imageLiteral(resourceName: "t2"),#imageLiteral(resourceName: "t3"),#imageLiteral(resourceName: "t4"),#imageLiteral(resourceName: "t5"),#imageLiteral(resourceName: "t6")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = data.name
-        treeList = data.treeNodes
+        // Will be 9 tree nodes initially, modifiy
+        self.title = data[0].insname
+        treeList = data[0].children
         Global.allList = [Instruction]()
         for i in 0..<treeList.count{
             traverse(node: treeList[i])
