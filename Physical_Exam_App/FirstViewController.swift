@@ -19,6 +19,8 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Parse your data here
+        // parse()
         Global.recentVisited = Instruction.loadFromRecentFile() ?? []
         Global.favoriteVisited = Instruction.loadFromFavoriteFile() ?? []
         Global.readList = Instruction.loadFromReadFile() ?? []
