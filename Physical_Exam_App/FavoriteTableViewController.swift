@@ -301,9 +301,11 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
             let vc = nav.viewControllers[0] as! InstructionViewController
             if searchActive == false{
                 vc.titleText = self.Favorite_List[index!].name
+                vc.urlString = self.Favorite_List[index!].source
             }
             else{
                 vc.titleText = self.filtered[index!].name
+                vc.urlString = self.filtered[index!].source
             }
         }
     }

@@ -15,7 +15,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     var isFavorite = false
     let modelName = UIDevice.current.modelName
     //hard coded url
-    var urlString:String="https://youtu.be/xyJSBu6fFRk?list=PL8tZP77vSdwv9YlYNXJhNNTSuxqWR5qUQ"
+    var urlString:String=""
     
     
     @IBOutlet weak var leftButton4: UIBarButtonItem!

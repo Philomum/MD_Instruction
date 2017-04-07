@@ -280,9 +280,11 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
             let vc = nav.viewControllers[0] as! InstructionViewController
             if searchActive == false{
                 vc.titleText = self.Instruction_List[index!].name
+                vc.urlString = self.Instruction_List[index!].source
             }
             else{
                 vc.titleText = self.filtered[index!].name
+                vc.urlString = self.filtered[index!].source
             }
         }
     }

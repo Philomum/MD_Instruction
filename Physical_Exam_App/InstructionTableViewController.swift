@@ -251,6 +251,7 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
             let nav = segue.destination as! UINavigationController
             let vc = nav.viewControllers[0] as! InstructionViewController
             vc.titleText = self.treeList[index!].insname
+            vc.urlString = self.treeList[index!].childInstruction!.source
         }
     }
     

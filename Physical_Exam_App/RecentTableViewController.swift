@@ -299,10 +299,13 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
             let vc = nav.viewControllers[0] as! InstructionViewController
             if searchActive == false{
                 vc.titleText = self.Recent_List[index!].name
+                vc.urlString = self.Recent_List[index!].source
             }
             else{
                 vc.titleText = self.filtered[index!].name
+                vc.urlString = self.filtered[index!].source
             }
+            
         }
     }
     @IBAction func unwindToRecent(segue: UIStoryboardSegue) {
