@@ -15,6 +15,7 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
     let reuseIdentifier = "SectionCell"
     var sections = ["Vital Signs","Head","Respiratory", "Cardiovascular","Abdomen","Lymph","Neurological","Breast","Musculoskeletal"]
     var images = [#imageLiteral(resourceName: "c1"),#imageLiteral(resourceName: "c2"),#imageLiteral(resourceName: "c3"),#imageLiteral(resourceName: "c4"),#imageLiteral(resourceName: "c5"),#imageLiteral(resourceName: "c6"),#imageLiteral(resourceName: "c7"),#imageLiteral(resourceName: "c8"),#imageLiteral(resourceName: "c9")]
+    let modelName = UIDevice.current.modelName
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
         // Do any additional setup after loading the view, typically from a nib.
         //let nib = UINib(nibName: "SectionCollectionViewCell", bundle: nil)
         //self.collectionView.register(nib, forCellWithReuseIdentifier: "SectionCell")
+        print(modelName)
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,6 +50,7 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
         cell.pic.image=images[indexPath.item]
         //cell.pic.frame = CGRect(x: 10, y: 10, width: cell.frame.width-30, height: cell.frame.width-30)
         //cell.backgroundColor = UIColor.cyan
+        cell.myLabel.adjustsFontSizeToFitWidth = true
         return cell
     }
     
@@ -58,10 +61,16 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
         // the spaces between the cells, and then divide by N to find the final
         // dimension for the cell's width and height.
         
-        let cellsAcross: CGFloat = 2
+        var cellsAcross: CGFloat = 0
+        if modelName.contains("iPad"){
+            cellsAcross = 4
+        }
+        else{
+            cellsAcross = 3
+        }
+        cellsAcross = 3
         let spaceBetweenCells: CGFloat = 10
         let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
-        print(dim)
         return CGSize(width: dim, height: dim+10)
     }
     
