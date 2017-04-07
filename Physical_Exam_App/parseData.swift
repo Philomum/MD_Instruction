@@ -94,10 +94,12 @@ func parse() {
             let contents = try String(contentsOf: source)
             list = contents.components(separatedBy: "\n")
         } catch {
-            print("failed loading contents")
+            print("Failed loading contents. Stop parsing")
+            return
         }
     } else {
-        print("bad url")
+        print("Bad url. Stop parsing")
+        return
     }
     
     for i in 0...list.count - 1 {
