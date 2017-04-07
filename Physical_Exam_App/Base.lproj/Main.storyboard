@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -72,24 +73,39 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionCell" id="P1v-iD-P65" customClass="SectionCollectionViewCell" customModule="Physical_Exam_App" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionCell" id="P1v-iD-P65" customClass="SectionCollectionViewCell" customModule="Physical_Exam_App">
                                 <rect key="frame" x="0.0" y="0.0" width="153" height="158"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="153" height="158"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKu-sQ-kaw">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKu-sQ-kaw">
                                             <rect key="frame" x="8" y="131" width="131" height="33"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="33" id="IiB-1Z-cXw"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j8e-yv-mdG">
+                                            <rect key="frame" x="8" y="8" width="137" height="128"/>
+                                        </imageView>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottomMargin" secondItem="j8e-yv-mdG" secondAttribute="bottom" constant="14" id="4S3-y3-Z9k"/>
+                                    <constraint firstItem="j8e-yv-mdG" firstAttribute="leading" secondItem="P1v-iD-P65" secondAttribute="leadingMargin" id="Z3O-0z-LM3"/>
+                                    <constraint firstAttribute="bottom" secondItem="NKu-sQ-kaw" secondAttribute="bottom" constant="-6" id="cKB-MG-bBR"/>
+                                    <constraint firstItem="j8e-yv-mdG" firstAttribute="top" secondItem="P1v-iD-P65" secondAttribute="topMargin" id="d5x-io-LkS"/>
+                                    <constraint firstAttribute="trailing" secondItem="NKu-sQ-kaw" secondAttribute="trailing" constant="14" id="q4S-fY-FtD"/>
+                                    <constraint firstItem="j8e-yv-mdG" firstAttribute="trailing" secondItem="P1v-iD-P65" secondAttribute="trailingMargin" id="tqn-Kz-MeH"/>
+                                    <constraint firstItem="NKu-sQ-kaw" firstAttribute="leading" secondItem="P1v-iD-P65" secondAttribute="leading" constant="8" id="yGw-fa-bPa"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="myLabel" destination="NKu-sQ-kaw" id="8Q6-kL-pjy"/>
+                                    <outlet property="pic" destination="j8e-yv-mdG" id="cAU-uX-m8w"/>
                                     <segue destination="LJ1-fl-Cj7" kind="showDetail" id="uky-Fj-BBm"/>
                                 </connections>
                             </collectionViewCell>

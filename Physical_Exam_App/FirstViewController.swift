@@ -9,7 +9,7 @@
 import UIKit
 import CoreGraphics
 
-class FirstViewController: UICollectionViewController {
+class FirstViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout{
     
     
     let reuseIdentifier = "SectionCell"
@@ -45,13 +45,27 @@ class FirstViewController: UICollectionViewController {
         cell.myLabel.text = self.sections[indexPath.item]
         cell.myLabel.textAlignment = .center
         //cell.myLabel.textColor = UIColor(rgb: 0x1ba685)
-        let imageview:UIImageView=UIImageView(image:images[indexPath.item])
-        
-        imageview.frame = CGRect(x: 20, y: 10, width: 120, height: 120)
-        cell.contentView.addSubview(imageview)
+        cell.pic.image=images[indexPath.item]
+        //cell.pic.frame = CGRect(x: 10, y: 10, width: cell.frame.width-30, height: cell.frame.width-30)
         //cell.backgroundColor = UIColor.cyan
         return cell
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // Compute the dimension of a cell for an NxN layout with space S between
+        // cells.  Take the collection view's width, subtract (N-1)*S points for
+        // the spaces between the cells, and then divide by N to find the final
+        // dimension for the cell's width and height.
+        
+        let cellsAcross: CGFloat = 2
+        let spaceBetweenCells: CGFloat = 10
+        let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
+        print(dim)
+        return CGSize(width: dim, height: dim+10)
+    }
+    
+
     
     /*
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

@@ -12,6 +12,8 @@ class SectionCollectionViewCell: UICollectionViewCell {
     
     
     @IBOutlet weak var myLabel: UILabel!
+    @IBOutlet weak var pic: UIImageView!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
