@@ -37,7 +37,11 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
     
     override func viewDidAppear(_ animated: Bool) {
         Instruction_List = Global.allList
-        self.tableView.reloadData()
+        Instruction_List = Instruction_List.sorted{$0.name < $1.name}
+        if Global.readEdited[2] == 1{
+            self.tableView.reloadData()
+            Global.readEdited[2] = 0
+        }
         Global.source = 4
     }
 
@@ -99,10 +103,18 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
         if isRead == false{
             let read = UITableViewRowAction(style: .normal, title: "Mark as \n read") { action, indexPath in
                 Global.readList.append(self.Instruction_List[editActionsForRowAt.row])
-                self.tableView.reloadRows(at: [indexPath], with: .none)
+                self.tableView.reloadRows(at: [editActionsForRowAt], with: .none)
                 let _ = Instruction.saveRead(Global.readList)
-                Global.favoriteEdited = true
-                Global.recentEdited = true
+                for i in 0..<Global.recentVisited.count{
+                    if text == Global.recentVisited[i].name{
+                        Global.readEdited[0] = 1
+                    }
+                }
+                for i in 0..<Global.favoriteVisited.count{
+                    if text == Global.favoriteVisited[i].name{
+                        Global.readEdited[1] = 1
+                    }
+                }
             }
             return [read]
         }
@@ -112,11 +124,20 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
                     if text == Global.readList[i].name{
                         Global.readList.remove(at: i)
                         let _ = Instruction.saveRead(Global.readList)
+                        break
                     }
                 }
-                self.tableView.reloadRows(at: [indexPath], with: .none)
-                Global.favoriteEdited = true
-                Global.recentEdited = true
+                self.tableView.reloadRows(at: [editActionsForRowAt], with: .none)
+                for i in 0..<Global.recentVisited.count{
+                    if text == Global.recentVisited[i].name{
+                        Global.readEdited[0] = 1
+                    }
+                }
+                for i in 0..<Global.favoriteVisited.count{
+                    if text == Global.favoriteVisited[i].name{
+                        Global.readEdited[1] = 1
+                    }
+                }
             }
             return [read]
         }
@@ -125,9 +146,29 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let result = shouldPerformSegue(withIdentifier: "AllToDetail", sender: self)
         if result == true {
-            print("!!!")
             self.performSegue(withIdentifier: "AllToDetail", sender: self)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        // choose one animation you want
+        if searchActive == false {
+            cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+            UIView.animate(withDuration: 0.5, animations: {
+                cell.layer.transform = CATransform3DMakeScale(1,1,1)
+            })
+        }
+        
+        
+        //        This animation below is stupid
+        //cell.alpha = 0
+        //let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 0)
+        //cell.layer.transform = transform
+        //UIView.animate(withDuration: 1.0, animations: {
+        //    cell.alpha = 1
+        //    cell.layer.transform = CATransform3DIdentity
+        //})
     }
     
     // MARK: - Search Bar Functions

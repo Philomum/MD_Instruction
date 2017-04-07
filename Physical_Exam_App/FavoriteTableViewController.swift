@@ -35,10 +35,11 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if Global.favoriteEdited == true{
+        if Global.favoriteEdited == true || Global.readEdited[1] == 1{
             Favorite_List = Global.favoriteVisited
             self.tableView.reloadData()
             Global.favoriteEdited = false
+            Global.readEdited[1] = 0
         }
         Global.source = 3
     }
@@ -131,13 +132,18 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
                 }
                 let _ = Instruction.saveRead(Global.readList)
                 self.tableView.reloadRows(at: [indexPath], with: .none)
+                Global.readEdited[2] = 1
+                for i in 0..<Global.recentVisited.count{
+                    if text == Global.recentVisited[i].name{
+                        Global.readEdited[0] = 1
+                    }
+                }
             }
             let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
                 Global.favoriteVisited.remove(at: indexPath.row)
                 self.Favorite_List = Global.favoriteVisited
                 self.tableView.reloadData()
                 let _ = Instruction.saveFavorite(Global.favoriteVisited)
-                Global.favoriteEdited = true
             }
             return [read, delete]
         }
@@ -151,13 +157,18 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
                 }
                 let _ = Instruction.saveRead(Global.readList)
                 self.tableView.reloadRows(at: [indexPath], with: .none)
+                Global.readEdited[2] = 1
+                for i in 0..<Global.recentVisited.count{
+                    if text == Global.recentVisited[i].name{
+                        Global.readEdited[0] = 1
+                    }
+                }
             }
             let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
                 Global.favoriteVisited.remove(at: indexPath.row)
                 self.Favorite_List = Global.favoriteVisited
                 self.tableView.reloadData()
                 let _ = Instruction.saveFavorite(Global.favoriteVisited)
-                Global.favoriteEdited = true
             }
             return [read, delete]
         }

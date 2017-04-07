@@ -35,10 +35,11 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if Global.recentEdited == true{
+        if Global.recentEdited == true || Global.readEdited[0] == 1{
             Recent_List = Global.recentVisited
             self.tableView.reloadData()
             Global.recentEdited = false
+            Global.readEdited[0] = 0
         }
         Global.source = 2
     }
@@ -128,13 +129,18 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
                 }
                 let _ = Instruction.saveRead(Global.readList)
                 self.tableView.reloadRows(at: [indexPath], with: .none)
+                Global.readEdited[2] = 1
+                for i in 0..<Global.favoriteVisited.count{
+                    if text == Global.favoriteVisited[i].name{
+                        Global.readEdited[1] = 1
+                    }
+                }
             }
             let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
                 Global.recentVisited.remove(at: indexPath.row)
                 self.Recent_List = Global.recentVisited
                 self.tableView.reloadData()
                 let _ = Instruction.saveRecent(Global.recentVisited)
-                Global.recentEdited = true
             }
             return [read, delete]
         }
@@ -148,13 +154,18 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
                 }
                 let _ = Instruction.saveRead(Global.readList)
                 self.tableView.reloadRows(at: [indexPath], with: .none)
+                Global.readEdited[2] = 1
+                for i in 0..<Global.favoriteVisited.count{
+                    if text == Global.favoriteVisited[i].name{
+                        Global.readEdited[1] = 1
+                    }
+                }
             }
             let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
                 Global.recentVisited.remove(at: indexPath.row)
                 self.Recent_List = Global.recentVisited
                 self.tableView.reloadData()
                 let _ = Instruction.saveRecent(Global.recentVisited)
-                Global.recentEdited = true
             }
             return [read, delete]
         }
