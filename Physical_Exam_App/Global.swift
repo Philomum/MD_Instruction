@@ -17,6 +17,7 @@ class Global{
     static let capacity = 5
     static var recentEdited = false
     static var favoriteEdited = false
+    static var readEdited = [0,0,0]
     static var source = 0
 }
 

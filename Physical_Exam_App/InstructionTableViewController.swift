@@ -23,6 +23,7 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         
         self.title = data.name
         treeList = data.treeNodes
+        Global.allList = [Instruction]()
         for i in 0..<treeList.count{
             traverse(node: treeList[i])
         }
@@ -134,6 +135,16 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
                     Global.readList.append(self.treeList[editActionsForRowAt.row].childInstruction!)
                     self.tableView.reloadRows(at: [indexPath], with: .none)
                     let _ = Instruction.saveRead(Global.readList)
+                    for i in 0..<Global.recentVisited.count{
+                        if text == Global.recentVisited[i].name{
+                            Global.readEdited[0] = 1
+                        }
+                    }
+                    for i in 0..<Global.favoriteVisited.count{
+                        if text == Global.favoriteVisited[i].name{
+                            Global.readEdited[1] = 1
+                        }
+                    }
                 }
                 return [read]
             }
@@ -143,9 +154,20 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
                         if text == Global.readList[i].name{
                             Global.readList.remove(at: i)
                             let _ = Instruction.saveRead(Global.readList)
+                            break
                         }
                     }
                     self.tableView.reloadRows(at: [indexPath], with: .none)
+                    for i in 0..<Global.recentVisited.count{
+                        if text == Global.recentVisited[i].name{
+                            Global.readEdited[0] = 1
+                        }
+                    }
+                    for i in 0..<Global.favoriteVisited.count{
+                        if text == Global.favoriteVisited[i].name{
+                            Global.readEdited[1] = 1
+                        }
+                    }
                 }
                 return [read]
             }
