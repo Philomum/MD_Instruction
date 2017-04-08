@@ -84,6 +84,9 @@ func parse() -> [treeNode]{
 
     for str in list {
         // choose your separate symbol
+        if str[0] == "/" && str[1] == "/"{
+            continue
+        }
         var myLine = str.components(separatedBy: ";")
         var dataArr = myLine[0].components(separatedBy: "/")
         let url = myLine[1]
@@ -97,6 +100,7 @@ func parse() -> [treeNode]{
             tempNode = treeList[index]
         }
         appendNode(parentNode: tempNode, array: dataArr, index: 1, url: url)
+        print("!!!")
     }
     
     // Play around and check correctness
@@ -114,5 +118,19 @@ func parse() -> [treeNode]{
     return treeList
     
 }
-
-
+extension String {
+    subscript(pos: Int) -> String {
+        precondition(pos >= 0, "character position can't be negative")
+        return self[pos...pos]
+    }
+    subscript(range: CountableRange<Int>) -> String {
+        precondition(range.lowerBound >= 0, "range lowerBound can't be negative")
+        let lowerIndex = index(startIndex, offsetBy: range.lowerBound, limitedBy: endIndex) ?? endIndex
+        return self[lowerIndex..<(index(lowerIndex, offsetBy: range.upperBound - range.lowerBound, limitedBy: endIndex) ?? endIndex)]
+    }
+    subscript(range: ClosedRange<Int>) -> String {
+        precondition(range.lowerBound >= 0, "range lowerBound can't be negative")
+        let lowerIndex = index(startIndex, offsetBy: range.lowerBound, limitedBy: endIndex) ?? endIndex
+        return self[lowerIndex..<(index(lowerIndex, offsetBy: range.upperBound - range.lowerBound + 1, limitedBy: endIndex) ?? endIndex)]
+    }
+}
