@@ -263,7 +263,9 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
             }
         }
         else if sender as? UIBarButtonItem == backButton {
+            print("here")
             if(stack.count != 0) {
+                print("backback")
                 treeList = stack[0]
                 stack.remove(at: 0)
                 tableView.reloadSections([0], with: UITableViewRowAnimation.right)

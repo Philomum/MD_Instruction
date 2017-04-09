@@ -137,6 +137,10 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
                 }
             }
             let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
+                if self.searchActive == true{
+                    self.filtered.remove(at: indexPath.row)
+                    
+                }
                 Global.recentVisited.remove(at: indexPath.row)
                 self.Recent_List = Global.recentVisited
                 self.tableView.reloadData()
@@ -162,6 +166,10 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
                 }
             }
             let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
+                if self.searchActive == true{
+                    self.filtered.remove(at: indexPath.row)
+                    
+                }
                 Global.recentVisited.remove(at: indexPath.row)
                 self.Recent_List = Global.recentVisited
                 self.tableView.reloadData()

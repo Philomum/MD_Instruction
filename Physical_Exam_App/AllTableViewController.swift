@@ -102,7 +102,13 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
         }
         if isRead == false{
             let read = UITableViewRowAction(style: .normal, title: "Mark as \n read") { action, indexPath in
-                Global.readList.append(self.Instruction_List[editActionsForRowAt.row])
+                if self.searchActive == false {
+                    Global.readList.append(self.Instruction_List[editActionsForRowAt.row])
+                }
+                else{
+                    Global.readList.append(self.filtered[editActionsForRowAt.row])
+                }
+                //Global.readList.append(self.Instruction_List[editActionsForRowAt.row])
                 self.tableView.reloadRows(at: [editActionsForRowAt], with: .none)
                 let _ = Instruction.saveRead(Global.readList)
                 for i in 0..<Global.recentVisited.count{

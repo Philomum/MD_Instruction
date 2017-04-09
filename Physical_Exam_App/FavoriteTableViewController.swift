@@ -140,6 +140,10 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
                 }
             }
             let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
+                if self.searchActive == true{
+                    self.filtered.remove(at: indexPath.row)
+                    
+                }
                 Global.favoriteVisited.remove(at: indexPath.row)
                 self.Favorite_List = Global.favoriteVisited
                 self.tableView.reloadData()
@@ -165,6 +169,10 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
                 }
             }
             let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
+                if self.searchActive == true{
+                    self.filtered.remove(at: indexPath.row)
+                    
+                }
                 Global.favoriteVisited.remove(at: indexPath.row)
                 self.Favorite_List = Global.favoriteVisited
                 self.tableView.reloadData()

@@ -61,6 +61,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         addToRecent()
+        //print(urlString)
         YoutubeView.delegate=self
         YoutubeView.loadRequest(URLRequest(url: URL(string:urlString)!))
         YoutubeView.scrollView.scrollsToTop=true
