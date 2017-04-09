@@ -17,6 +17,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate,WKUIDelegate
     let modelName = UIDevice.current.modelName
     //hard coded url
     var urlString:String=""
+    var lol:String="lol"
     
     var webView : WKWebView!
     
