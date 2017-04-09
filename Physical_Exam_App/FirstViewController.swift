@@ -29,6 +29,63 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
         //self.collectionView.register(nib, forCellWithReuseIdentifier: "SectionCell")
         //print(modelName)
         Global.source = 1
+        clean()
+    }
+    
+    func clean(){
+        
+        var exist = false
+        var count = Global.readList.count
+        if count > 0{
+            for i in [0,(count-1)]{
+                exist = false
+                print(count-1-i)
+                for j in 0..<Global.allList.count{
+                    if Global.allList[j].name == Global.readList[count-1-i].name{
+                        exist = true
+                        Global.readList[count-1-i].source = Global.allList[j].source
+                    }
+                }
+                if exist == false{
+                    Global.readList.remove(at: count-1-i)
+                }
+            }
+        }
+        
+        count = Global.recentVisited.count
+        if count > 0{
+            for i in [0,count-1]{
+                exist = false
+                for j in 0..<Global.allList.count{
+                    if Global.allList[j].name == Global.recentVisited[count-1-i].name{
+                        exist = true
+                        Global.recentVisited[count-1-i].source = Global.allList[j].source
+                    }
+                }
+                if exist == false{
+                    Global.recentVisited.remove(at: count-1-i)
+                }
+            }
+        }
+        count = Global.favoriteVisited.count
+        if count > 0{
+            for i in [0,count-1]{
+                exist = false
+                for j in 0..<Global.allList.count{
+                    if Global.allList[j].name == Global.favoriteVisited[count-1-i].name{
+                        exist = true
+                        Global.favoriteVisited[count-1-i].source = Global.allList[j].source
+                    }
+                }
+                if exist == false{
+                    Global.favoriteVisited.remove(at: count-1-i)
+                }
+            }
+        }
+        
+        let _ = Instruction.saveRecent(Global.recentVisited)
+        let _ = Instruction.saveRead(Global.readList)
+        let _ = Instruction.saveFavorite(Global.favoriteVisited)
     }
     
     override func viewDidAppear(_ animated: Bool) {
