@@ -93,7 +93,14 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
         
-        let text = self.Instruction_List[editActionsForRowAt.row].name
+        var text = ""
+        //let text = self.Instruction_List[editActionsForRowAt.row].name
+        if self.searchActive == false{
+            text = self.Instruction_List[editActionsForRowAt.row].name
+        }
+        else{
+            text = self.filtered[editActionsForRowAt.row].name
+        }
         var isRead = false
         for i in 0..<Global.readList.count{
             if text == Global.readList[i].name{
@@ -134,6 +141,7 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
                     }
                 }
                 self.tableView.reloadRows(at: [editActionsForRowAt], with: .none)
+                Global.readEdited[2] = 1
                 for i in 0..<Global.recentVisited.count{
                     if text == Global.recentVisited[i].name{
                         Global.readEdited[0] = 1
