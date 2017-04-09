@@ -313,7 +313,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
     }
 
     @IBAction func clearHistory(_ sender: Any) {
-        let alertController = UIAlertController(title: "", message: "Clear ALL the History", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Are you sure ?", message: "Clear ALL the History", preferredStyle: UIAlertControllerStyle.alert)
         
         let noAction = UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
         })

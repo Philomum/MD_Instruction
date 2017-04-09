@@ -62,8 +62,8 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         super.viewDidLoad()
         addToRecent()
         YoutubeView.delegate=self
-//        YoutubeView.loadRequest(URLRequest(url: URL(string:urlString)!))
-//        YoutubeView.scrollView.scrollsToTop=true
+        YoutubeView.loadRequest(URLRequest(url: URL(string:urlString)!))
+        YoutubeView.scrollView.scrollsToTop=true
         YoutubeView.frame=view.bounds
         // Do any additional setup after loading the view.
         
