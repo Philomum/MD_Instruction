@@ -141,10 +141,15 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
             }
             let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
                 if self.searchActive == true{
+                    let name = (self.filtered)[indexPath.row].name
                     self.filtered.remove(at: indexPath.row)
+                    let index = self.checkIndex(name: name)
+                    Global.favoriteVisited.remove(at: index)
                     
                 }
-                Global.favoriteVisited.remove(at: indexPath.row)
+                else{
+                    Global.favoriteVisited.remove(at: indexPath.row)
+                }
                 self.Favorite_List = Global.favoriteVisited
                 self.tableView.reloadData()
                 let _ = Instruction.saveFavorite(Global.favoriteVisited)
@@ -170,16 +175,31 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
             }
             let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, indexPath in
                 if self.searchActive == true{
+                    let name = (self.filtered)[indexPath.row].name
                     self.filtered.remove(at: indexPath.row)
+                    let index = self.checkIndex(name: name)
+                    Global.favoriteVisited.remove(at: index)
                     
                 }
-                Global.favoriteVisited.remove(at: indexPath.row)
+                else{
+                    Global.favoriteVisited.remove(at: indexPath.row)
+                }
+
                 self.Favorite_List = Global.favoriteVisited
                 self.tableView.reloadData()
                 let _ = Instruction.saveFavorite(Global.favoriteVisited)
             }
             return [read, delete]
         }
+    }
+    
+    func checkIndex(name: String) -> Int {
+        for i in 0..<Global.favoriteVisited.count {
+            if (Global.favoriteVisited)[i].name == name {
+                return i;
+            }
+        }
+        return -1;
     }
  
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

@@ -81,6 +81,7 @@ func parse() -> [treeNode]{
             list.remove(at: i)
         }
     }
+    print(list)
 
     for str in list {
         // choose your separate symbol
@@ -109,7 +110,7 @@ func parse() -> [treeNode]{
 //            print(child.insname)
 //            for children in child.children{
 //                if children.isInstruction {
-//                    //print(children.childInstruction?.name)
+//                    print(children.childInstruction?.name)
 //                    //print(children.childInstruction?.source)
 //                }
 //            }
