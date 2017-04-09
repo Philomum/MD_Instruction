@@ -35,53 +35,53 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
     func clean(){
         
         var exist = false
-        var count = Global.readList.count
-        if count > 0{
-            for i in [0,(count-1)]{
-                exist = false
-                print(count-1-i)
-                for j in 0..<Global.allList.count{
-                    if Global.allList[j].name == Global.readList[count-1-i].name{
-                        exist = true
-                        Global.readList[count-1-i].source = Global.allList[j].source
-                    }
-                }
-                if exist == false{
-                    Global.readList.remove(at: count-1-i)
+        var temp = [Instruction]()
+        for i in 0..<Global.readList.count{
+            exist = false
+            var index = 0
+            for j in 0..<Global.allList.count{
+                if Global.allList[j].name == Global.readList[i].name{
+                    exist = true
+                    index = j
                 }
             }
+            if exist == true{
+                temp.append(Global.allList[index])
+            }
         }
+        Global.readList = temp
         
-        count = Global.recentVisited.count
-        if count > 0{
-            for i in [0,count-1]{
-                exist = false
-                for j in 0..<Global.allList.count{
-                    if Global.allList[j].name == Global.recentVisited[count-1-i].name{
-                        exist = true
-                        Global.recentVisited[count-1-i].source = Global.allList[j].source
-                    }
-                }
-                if exist == false{
-                    Global.recentVisited.remove(at: count-1-i)
+        temp = [Instruction]()
+        for i in 0..<Global.recentVisited.count{
+            exist = false
+            var index = 0
+            for j in 0..<Global.allList.count{
+                if Global.allList[j].name == Global.recentVisited[i].name{
+                    exist = true
+                    index = j
                 }
             }
-        }
-        count = Global.favoriteVisited.count
-        if count > 0{
-            for i in [0,count-1]{
-                exist = false
-                for j in 0..<Global.allList.count{
-                    if Global.allList[j].name == Global.favoriteVisited[count-1-i].name{
-                        exist = true
-                        Global.favoriteVisited[count-1-i].source = Global.allList[j].source
-                    }
-                }
-                if exist == false{
-                    Global.favoriteVisited.remove(at: count-1-i)
-                }
+            if exist == true{
+                temp.append(Global.allList[index])
             }
         }
+        Global.recentVisited = temp
+        
+        temp = [Instruction]()
+        for i in 0..<Global.favoriteVisited.count{
+            exist = false
+            var index = 0
+            for j in 0..<Global.allList.count{
+                if Global.allList[j].name == Global.favoriteVisited[i].name{
+                    exist = true
+                    index = j
+                }
+            }
+            if exist == true{
+                temp.append(Global.allList[index])
+            }
+        }
+        Global.favoriteVisited = temp
         
         let _ = Instruction.saveRecent(Global.recentVisited)
         let _ = Instruction.saveRead(Global.readList)
