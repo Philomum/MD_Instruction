@@ -14,6 +14,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     
     var isFavorite = false
     let modelName = UIDevice.current.modelName
+    var item:DispatchWorkItem!
     //hard coded url
     var urlString:String=""
     
@@ -63,7 +64,11 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         addToRecent()
         //print(urlString)
         YoutubeView.delegate=self
-        YoutubeView.loadRequest(URLRequest(url: URL(string:urlString)!))
+         item = DispatchWorkItem( qos: .utility, flags: .detached) {
+            print("running first task")
+            self.YoutubeView.loadRequest(URLRequest(url: URL(string:self.urlString)!))
+        }
+        item.perform()
         YoutubeView.scrollView.scrollsToTop=true
         YoutubeView.frame=view.bounds
         // Do any additional setup after loading the view.
@@ -133,7 +138,9 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     }
     
 
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        item.cancel()
+    }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         // Layout subviews manually
