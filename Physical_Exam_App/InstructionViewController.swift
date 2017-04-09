@@ -5,11 +5,9 @@
 //  Created by Yuchen Qian on 3/2/17.
 //  Copyright © 2017 YuanHang. All rights reserved.
 //
-
 import UIKit
-
-
-class InstructionViewController: UIViewController,UIWebViewDelegate {
+import WebKit
+class InstructionViewController: UIViewController,UIWebViewDelegate,WKUIDelegate  {
     
     
     var isFavorite = false
@@ -17,6 +15,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     //hard coded url
     var urlString:String=""
     
+    var webView : WKWebView!
     
     @IBOutlet weak var leftButton4: UIBarButtonItem!
     @IBOutlet weak var leftButton3: UIBarButtonItem!
@@ -45,27 +44,36 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         let _ = Instruction.saveFavorite(Global.favoriteVisited)
         Global.favoriteEdited = true
     }
-   
+    
     private var _orientations = UIInterfaceOrientationMask.portrait
     
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         get { return self._orientations }
         set { self._orientations = newValue }
     }
-
-
     @IBOutlet weak var instructionText: UITextView!
     
     var titleText : String!
     
+    override func loadView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        view=webView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addToRecent()
+        if urlString != "" {
+            webView.load(URLRequest(url: URL(string:urlString)!))
+        }
+        
         //print(urlString)
-        YoutubeView.delegate=self
-        YoutubeView.loadRequest(URLRequest(url: URL(string:urlString)!))
-        YoutubeView.scrollView.scrollsToTop=true
-        YoutubeView.frame=view.bounds
+        //        YoutubeView.delegate=self
+        //        YoutubeView.loadRequest(URLRequest(url: URL(string:urlString)!))
+        //        YoutubeView.scrollView.scrollsToTop=true
+        //        YoutubeView.frame=view.bounds
         // Do any additional setup after loading the view.
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
@@ -81,7 +89,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
                 break
             }
         }
-    
+        
         if modelName.contains("iPad"){
             if Global.source == 1{
                 leftButton.title = ""
@@ -126,13 +134,11 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
             }
         }
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -173,13 +179,11 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 }
