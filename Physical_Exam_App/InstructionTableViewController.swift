@@ -140,6 +140,7 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
                             Global.readEdited[1] = 1
                         }
                     }
+                    Global.readEdited[2] = 1
                 }
                 return [read]
             }
@@ -163,6 +164,7 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
                             Global.readEdited[1] = 1
                         }
                     }
+                    Global.readEdited[2] = 1
                 }
                 return [read]
             }
