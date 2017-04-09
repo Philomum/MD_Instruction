@@ -281,10 +281,12 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
             if searchActive == false{
                 vc.titleText = self.Instruction_List[index!].name
                 vc.urlString = self.Instruction_List[index!].source
+                //print(self.Instruction_List[index!].source)
             }
             else{
                 vc.titleText = self.filtered[index!].name
                 vc.urlString = self.filtered[index!].source
+                //print(self.filtered[index!].name)
             }
         }
     }

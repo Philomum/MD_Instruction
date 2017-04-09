@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class Global{
+    static var myData:[treeNode] = [treeNode]()
     static var recentVisited:[Instruction] = [Instruction]()
     static var favoriteVisited:[Instruction] = [Instruction]()
     static var readList:[Instruction] = [Instruction]()

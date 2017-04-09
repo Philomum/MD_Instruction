@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -106,7 +106,7 @@
                                 <connections>
                                     <outlet property="myLabel" destination="NKu-sQ-kaw" id="8Q6-kL-pjy"/>
                                     <outlet property="pic" destination="j8e-yv-mdG" id="cAU-uX-m8w"/>
-                                    <segue destination="LJ1-fl-Cj7" kind="showDetail" id="uky-Fj-BBm"/>
+                                    <segue destination="LJ1-fl-Cj7" kind="showDetail" identifier="ShowList" id="uky-Fj-BBm"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -256,7 +256,7 @@
         <scene sceneID="O7x-uy-uoy">
             <objects>
                 <tableViewController storyboardIdentifier="recent" id="JSV-Di-25c" customClass="RecentTableViewController" customModule="Physical_Exam_App" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5sZ-eP-AWk" customClass="table">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5sZ-eP-AWk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -686,9 +686,9 @@
         <image name="star1" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pyU-VS-h0Q"/>
-        <segue reference="k7L-NT-Raw"/>
+        <segue reference="zOC-zE-JZ3"/>
         <segue reference="Q2U-I4-hus"/>
+        <segue reference="pyU-VS-h0Q"/>
         <segue reference="cbQ-OK-tkf"/>
     </inferredMetricsTieBreakers>
 </document>

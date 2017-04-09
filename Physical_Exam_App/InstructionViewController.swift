@@ -30,6 +30,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         if isFavorite == true{
             rightButton.image = #imageLiteral(resourceName: "star2")
             let newInstruction = Instruction(name: titleText)
+            newInstruction.source = urlString
             Global.favoriteVisited.append(newInstruction)
         }
         else{
@@ -60,10 +61,9 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         addToRecent()
-        print(titleText)
         YoutubeView.delegate=self
-        YoutubeView.loadRequest(URLRequest(url: URL(string:urlString)!))
-        YoutubeView.scrollView.scrollsToTop=true
+//        YoutubeView.loadRequest(URLRequest(url: URL(string:urlString)!))
+//        YoutubeView.scrollView.scrollsToTop=true
         YoutubeView.frame=view.bounds
         // Do any additional setup after loading the view.
         
@@ -155,6 +155,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
             return
         }
         let newInstruction = Instruction(name: titleText)
+        newInstruction.source = urlString
         for i in 0..<Global.recentVisited.count{
             if newInstruction.name == Global.recentVisited[i].name{
                 Global.recentVisited.remove(at: i)

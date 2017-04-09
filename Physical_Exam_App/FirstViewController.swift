@@ -20,7 +20,6 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
     override func viewDidLoad() {
         super.viewDidLoad()
         // Parse your data here
-        //parse()
         Global.recentVisited = Instruction.loadFromRecentFile() ?? []
         Global.favoriteVisited = Instruction.loadFromFavoriteFile() ?? []
         Global.readList = Instruction.loadFromReadFile() ?? []
@@ -28,7 +27,7 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
         // Do any additional setup after loading the view, typically from a nib.
         //let nib = UINib(nibName: "SectionCollectionViewCell", bundle: nil)
         //self.collectionView.register(nib, forCellWithReuseIdentifier: "SectionCell")
-        print(modelName)
+        //print(modelName)
         Global.source = 1
     }
     
@@ -91,6 +90,23 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
         let spaceBetweenCells: CGFloat = 10
         let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
         return CGSize(width: dim, height: dim+10)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowList" {
+            let svc = segue.destination as! UISplitViewController
+            let nvc = svc.viewControllers[0] as! UINavigationController
+            let vc = nvc.viewControllers[0] as! InstructionTableViewController
+            let cell = sender as! UICollectionViewCell
+            let indexPath = self.collectionView!.indexPath(for: cell)
+            let index = (indexPath?.row)!
+            // switch case
+            if index == 2 {
+                vc.myTitle = (Global.myData)[0].insname
+                vc.treeList = (Global.myData)[0].children
+            }
+            
+        }
     }
     
 

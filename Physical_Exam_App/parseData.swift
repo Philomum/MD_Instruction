@@ -100,7 +100,7 @@ func parse() -> [treeNode]{
             tempNode = treeList[index]
         }
         appendNode(parentNode: tempNode, array: dataArr, index: 1, url: url)
-        print("!!!")
+        //print("!!!")
     }
     
     // Play around and check correctness

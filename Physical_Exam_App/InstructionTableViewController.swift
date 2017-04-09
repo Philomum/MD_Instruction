@@ -12,10 +12,9 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
     
     @IBOutlet weak var backButton: UIBarButtonItem!
     
+    var myTitle: String = ""
     var treeList = [treeNode]()
     var stack = [[treeNode]]()
-    //let data = SectionCdata()
-    let data = parse()
     let colors = [0xba87d4,0x9eb5f0,0xf0b971,0xff87a7,0x7aebeb,0xb3de78]
     let images = [#imageLiteral(resourceName: "t1"),#imageLiteral(resourceName: "t2"),#imageLiteral(resourceName: "t3"),#imageLiteral(resourceName: "t4"),#imageLiteral(resourceName: "t5"),#imageLiteral(resourceName: "t6")]
     
@@ -23,12 +22,7 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         super.viewDidLoad()
         
         // Will be 9 tree nodes initially, modifiy
-        self.title = data[0].insname
-        treeList = data[0].children
-        Global.allList = [Instruction]()
-        for i in 0..<treeList.count{
-            traverse(node: treeList[i])
-        }
+        self.title = myTitle
         clean()
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
@@ -45,9 +39,9 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
     }
     
     func clean(){
+
         var exist = false
         var count = Global.readList.count
-        print(count)
         if count > 0{
             for i in [0,(count-1)]{
                 exist = false

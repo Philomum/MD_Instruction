@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        Global.myData = parse()
+        for i in 0..<Global.myData.count{
+            traverse(node: Global.myData[i])
+        }
         // Override point for customization after application launch.
         UIApplication.shared.statusBarStyle = .lightContent
         
@@ -57,6 +61,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func traverse(node:treeNode){
+        for i in 0..<node.children.count{
+            if node.children[i].isInstruction == true{
+                Global.allList.append(node.children[i].childInstruction!)
+            }
+            else{
+                traverse(node: node.children[i])
+            }
+        }
     }
 
 
