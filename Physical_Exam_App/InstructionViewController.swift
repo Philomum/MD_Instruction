@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import WebKit
 
 
-class InstructionViewController: UIViewController,UIWebViewDelegate {
+class InstructionViewController: UIViewController,UIWebViewDelegate,WKUIDelegate  {
     
     
     var isFavorite = false
@@ -17,6 +18,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     //hard coded url
     var urlString:String=""
     
+    var webView : WKWebView!
     
     @IBOutlet weak var leftButton4: UIBarButtonItem!
     @IBOutlet weak var leftButton3: UIBarButtonItem!
@@ -58,14 +60,22 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     
     var titleText : String!
     
+    override func loadView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        view=webView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addToRecent()
+        webView.load(URLRequest(url: URL(string:urlString)!))
         //print(urlString)
-        YoutubeView.delegate=self
-        YoutubeView.loadRequest(URLRequest(url: URL(string:urlString)!))
-        YoutubeView.scrollView.scrollsToTop=true
-        YoutubeView.frame=view.bounds
+//        YoutubeView.delegate=self
+//        YoutubeView.loadRequest(URLRequest(url: URL(string:urlString)!))
+//        YoutubeView.scrollView.scrollsToTop=true
+//        YoutubeView.frame=view.bounds
         // Do any additional setup after loading the view.
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
