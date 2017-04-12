@@ -302,6 +302,7 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
                 vc.urlString = self.filtered[index!].source
                 //print(self.filtered[index!].name)
             }
+            vc.preWidth = self.view.bounds.width
         }
     }
     

@@ -247,6 +247,7 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
             let vc = nav.viewControllers[0] as! InstructionViewController
             vc.titleText = self.treeList[index!].insname
             vc.urlString = self.treeList[index!].childInstruction!.source
+            vc.preWidth = self.view.bounds.width
         }
     }
     

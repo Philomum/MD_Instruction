@@ -333,7 +333,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
                 vc.titleText = self.filtered[index!].name
                 vc.urlString = self.filtered[index!].source
             }
-            
+            vc.preWidth = self.view.bounds.width
         }
     }
     @IBAction func unwindToRecent(segue: UIStoryboardSegue) {

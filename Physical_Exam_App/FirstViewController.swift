@@ -137,13 +137,12 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
         // dimension for the cell's width and height.
         
         var cellsAcross: CGFloat = 0
-        if modelName.contains("iPad"){
+        if modelName.contains("iPad") || modelName.contains("Simulator"){
             cellsAcross = 4
         }
         else{
             cellsAcross = 3
         }
-        cellsAcross = 3
         let spaceBetweenCells: CGFloat = 10
         let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
         return CGSize(width: dim, height: dim+10)

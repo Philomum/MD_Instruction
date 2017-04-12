@@ -335,6 +335,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
                 vc.titleText = self.filtered[index!].name
                 vc.urlString = self.filtered[index!].source
             }
+            vc.preWidth = self.view.bounds.width
         }
     }
     
@@ -343,7 +344,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
     }
     
     @IBAction func clear(_ sender: Any) {
-        let alertController = UIAlertController(title: "", message: "Clear ALL the Favorites", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Are you sure ?", message: "Clear ALL the Favorites", preferredStyle: UIAlertControllerStyle.alert)
         
         let noAction = UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
         })

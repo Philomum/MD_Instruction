@@ -16,7 +16,8 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     let modelName = UIDevice.current.modelName
     var item:DispatchWorkItem!
     //hard coded url
-    var urlString:String=""
+    var urlString:String="www.youtube.com"
+    var preWidth:CGFloat = 0
     
     
     @IBOutlet weak var leftButton4: UIBarButtonItem!
@@ -70,7 +71,12 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         }
         item.perform()
         YoutubeView.scrollView.scrollsToTop=true
-        YoutubeView.frame=view.bounds
+        if modelName.contains("iPad") || modelName.contains("Simulator"){
+            YoutubeView.frame = CGRect(x: 0, y: 0, width: view.bounds.width-preWidth, height: view.bounds.height)
+        }
+        else{
+            YoutubeView.frame = self.view.bounds
+        }
         // Do any additional setup after loading the view.
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
@@ -87,7 +93,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
             }
         }
     
-        if modelName.contains("iPad"){
+        if modelName.contains("iPad") || modelName.contains("Simulator"){
             if Global.source == 1{
                 leftButton.title = ""
                 leftButton.isEnabled = false
