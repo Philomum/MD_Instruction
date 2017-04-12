@@ -11,6 +11,17 @@ import UIKit
 
 //Global variables
 class Global{
+    
+    /**
+        - myData: data parsed from website
+        - recentVisited: recent visited instructions
+        - favoriteVisited: instructions marked as favorite
+        - readList: instructions marked as read
+        - allList: all instructions
+        - capacity: size of recent list
+        - source: a tag that keeps track of the current tab bar controller
+     */
+    
     static var myData:[treeNode] = [treeNode]()
     static var recentVisited:[Instruction] = [Instruction]()
     static var favoriteVisited:[Instruction] = [Instruction]()

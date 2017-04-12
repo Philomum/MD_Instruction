@@ -60,7 +60,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "InstructionCell", for: indexPath) as! TableViewCell
+        
         let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
         // Configure the cell...
         if searchActive == false{
@@ -184,6 +184,13 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
         }
     }
     
+    /**
+        Find out the index of selected item in recent list
+     
+        - Parameter name: name of the item in filtered list.
+     
+        - Returns: The corresponding Index in recent List
+     */
     func checkIndex(name: String) -> Int {
         for i in 0..<Global.recentVisited.count {
             if (Global.recentVisited)[i].name == name {
@@ -324,7 +331,11 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
         print("unwind from detail")
     }
 
-    //clear all history list
+    /**
+        Clear all history when trash can button is tapped
+     
+        - Parameter sender: action sender.
+     */
     @IBAction func clearHistory(_ sender: Any) {
         let alertController = UIAlertController(title: "Are you sure ?", message: "Clear ALL the History", preferredStyle: UIAlertControllerStyle.alert)
         

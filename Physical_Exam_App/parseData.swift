@@ -61,11 +61,9 @@ func parse() -> [treeNode]{
             list = contents.components(separatedBy: "\n")
         } catch {
             print("Failed loading contents. Stop parsing")
-            //return
         }
     } else {
         print("Bad url. Stop parsing")
-        //return
     }
     
     for i in 0...list.count - 1 {
@@ -76,13 +74,14 @@ func parse() -> [treeNode]{
             list.remove(at: i)
         }
     }
-    print(list)
 
     for str in list {
-        // choose your separate symbol
+        // Ignore comments
         if str[0] == "/" && str[1] == "/"{
             continue
         }
+        
+        // choose your separate symbol
         var myLine = str.components(separatedBy: ";")
         var dataArr = myLine[0].components(separatedBy: "/")
         let url = myLine[1]

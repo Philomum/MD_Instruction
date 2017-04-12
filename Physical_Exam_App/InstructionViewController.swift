@@ -18,6 +18,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     //hard coded url
     var urlString:String="www.youtube.com"
     var preWidth:CGFloat = 0
+    var titleText : String!
     
     
     @IBOutlet weak var leftButton4: UIBarButtonItem!
@@ -27,7 +28,12 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     @IBOutlet weak var YoutubeView: UIWebView!
     @IBOutlet weak var rightButton: UIBarButtonItem!
     
-    // mark as favorite function
+
+    /**
+        Mark as favorite function when favorite button is tapped
+     
+        - Parameter sender: action sender
+     */
     @IBAction func marked(_ sender: Any) {
         isFavorite = !isFavorite
         if isFavorite == true{
@@ -49,6 +55,8 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         Global.favoriteEdited = true
     }
    
+    // MARK: - Interface orientation
+    
     private var _orientations = UIInterfaceOrientationMask.portrait
     
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
@@ -56,7 +64,6 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         set { self._orientations = newValue }
     }
     
-    var titleText : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,7 +169,11 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         return true;
     }
     
-    // add the instruction to recent list
+    /**
+        Add the instruction to recent list
+     
+        - Parameter sender: action sender
+     */
     func addToRecent(){
         if(titleText == nil){
             return

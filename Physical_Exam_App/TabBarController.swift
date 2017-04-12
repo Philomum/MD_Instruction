@@ -12,6 +12,7 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Setup tabbar specifics
         let numberOfItems = CGFloat(self.tabBar.items!.count)
         let tabBarItemSize = CGSize(width: self.tabBar.frame.width / numberOfItems, height: self.tabBar.frame.height)
         tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor(rgb: 0x1ba685), size: tabBarItemSize).resizableImage(withCapInsets: .zero)

@@ -72,7 +72,6 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
         }
         cell.label.textColor = UIColor.white
         cell.label.numberOfLines = 3
-        //cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = UIColor(rgb:colors[indexPath.row%6])
         cell.pic.image = images[indexPath.item%6]
         
@@ -89,7 +88,6 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
     override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
         
         var text = ""
-        //let text = self.Instruction_List[editActionsForRowAt.row].name
         if self.searchActive == false{
             text = self.Instruction_List[editActionsForRowAt.row].name
         }
@@ -110,7 +108,6 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
                 else{
                     Global.readList.append(self.filtered[editActionsForRowAt.row])
                 }
-                //Global.readList.append(self.Instruction_List[editActionsForRowAt.row])
                 self.tableView.reloadRows(at: [editActionsForRowAt], with: .none)
                 let _ = Instruction.saveRead(Global.readList)
                 for i in 0..<Global.recentVisited.count{
@@ -281,12 +278,10 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
             if searchActive == false{
                 vc.titleText = self.Instruction_List[index!].name
                 vc.urlString = self.Instruction_List[index!].source
-                //print(self.Instruction_List[index!].source)
             }
             else{
                 vc.titleText = self.filtered[index!].name
                 vc.urlString = self.filtered[index!].source
-                //print(self.filtered[index!].name)
             }
             vc.preWidth = self.view.bounds.width
         }
