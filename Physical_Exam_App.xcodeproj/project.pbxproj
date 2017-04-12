@@ -23,20 +23,11 @@
 		04893D751E97D59F0092C9AC /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04893D741E97D59F0092C9AC /* UIDevice.swift */; };
 		04C3E5C61E878717008F867E /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C3E5C51E878717008F867E /* CustomSegue.swift */; };
 		4B7861E11E6A190600495FA0 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7861E01E6A190600495FA0 /* Global.swift */; };
-		4B7E99D11E732BF0006C4370 /* secA.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B7E99C91E732BF0006C4370 /* secA.json */; };
-		4B7E99D21E732BF0006C4370 /* secB.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B7E99CA1E732BF0006C4370 /* secB.json */; };
-		4B7E99D31E732BF0006C4370 /* secC.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B7E99CB1E732BF0006C4370 /* secC.json */; };
-		4B7E99D41E732BF0006C4370 /* secD.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B7E99CC1E732BF0006C4370 /* secD.json */; };
-		4B7E99D51E732BF0006C4370 /* secE.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B7E99CD1E732BF0006C4370 /* secE.json */; };
-		4B7E99D61E732BF0006C4370 /* secF.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B7E99CE1E732BF0006C4370 /* secF.json */; };
-		4B7E99D71E732BF0006C4370 /* secG.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B7E99CF1E732BF0006C4370 /* secG.json */; };
-		4B7E99D81E732BF0006C4370 /* secH.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B7E99D01E732BF0006C4370 /* secH.json */; };
 		4BA03BAB1E5FBFD900C02294 /* SectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA03BA91E5FBFD900C02294 /* SectionCollectionViewCell.swift */; };
 		4BFD6A6F1E69042D00F76AEB /* InstructionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFD6A6E1E69042D00F76AEB /* InstructionTableViewController.swift */; };
 		4BFD6A711E6906E100F76AEB /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFD6A701E6906E100F76AEB /* InstructionViewController.swift */; };
 		B7795E101E96DC4000C3F248 /* parseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7795E0F1E96DC4000C3F248 /* parseData.swift */; };
 		B795472A1E91E9E000553299 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79547291E91E9E000553299 /* TabBarController.swift */; };
-		C75D760E1E8D77B700EE3C30 /* SectionCdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75D760D1E8D77B700EE3C30 /* SectionCdata.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,20 +49,11 @@
 		04893D741E97D59F0092C9AC /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		04C3E5C51E878717008F867E /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 		4B7861E01E6A190600495FA0 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		4B7E99C91E732BF0006C4370 /* secA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secA.json; sourceTree = "<group>"; };
-		4B7E99CA1E732BF0006C4370 /* secB.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secB.json; sourceTree = "<group>"; };
-		4B7E99CB1E732BF0006C4370 /* secC.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secC.json; sourceTree = "<group>"; };
-		4B7E99CC1E732BF0006C4370 /* secD.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secD.json; sourceTree = "<group>"; };
-		4B7E99CD1E732BF0006C4370 /* secE.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secE.json; sourceTree = "<group>"; };
-		4B7E99CE1E732BF0006C4370 /* secF.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secF.json; sourceTree = "<group>"; };
-		4B7E99CF1E732BF0006C4370 /* secG.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secG.json; sourceTree = "<group>"; };
-		4B7E99D01E732BF0006C4370 /* secH.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secH.json; sourceTree = "<group>"; };
 		4BA03BA91E5FBFD900C02294 /* SectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		4BFD6A6E1E69042D00F76AEB /* InstructionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionTableViewController.swift; sourceTree = "<group>"; };
 		4BFD6A701E6906E100F76AEB /* InstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		B7795E0F1E96DC4000C3F248 /* parseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = parseData.swift; sourceTree = "<group>"; };
 		B79547291E91E9E000553299 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		C75D760D1E8D77B700EE3C30 /* SectionCdata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionCdata.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,12 +86,9 @@
 		047D04AF1E5CE4E600E54378 /* Physical_Exam_App */ = {
 			isa = PBXGroup;
 			children = (
-				4B7E99C81E732B86006C4370 /* JsonData */,
-				047D04C81E5D02BD00E54378 /* Class */,
+				047D04C81E5D02BD00E54378 /* SupportFile */,
 				047D04C91E5D02CE00E54378 /* ViewController */,
 				047D04B61E5CE4E600E54378 /* Main.storyboard */,
-				0444280E1E91CC05009E4A9D /* TableViewCell.swift */,
-				0444280F1E91CC05009E4A9D /* TableViewCell.xib */,
 				047D04B01E5CE4E600E54378 /* AppDelegate.swift */,
 				047D04B91E5CE4E600E54378 /* Assets.xcassets */,
 				047D04BB1E5CE4E600E54378 /* LaunchScreen.storyboard */,
@@ -118,16 +97,21 @@
 			path = Physical_Exam_App;
 			sourceTree = "<group>";
 		};
-		047D04C81E5D02BD00E54378 /* Class */ = {
+		047D04C81E5D02BD00E54378 /* SupportFile */ = {
 			isa = PBXGroup;
 			children = (
-				C75D760D1E8D77B700EE3C30 /* SectionCdata.swift */,
 				047D04C61E5D026000E54378 /* TreeClass.swift */,
 				047D04C41E5D018200E54378 /* InstructionClass.swift */,
 				4B7861E01E6A190600495FA0 /* Global.swift */,
+				04893D741E97D59F0092C9AC /* UIDevice.swift */,
+				4BA03BA91E5FBFD900C02294 /* SectionCollectionViewCell.swift */,
+				0444280E1E91CC05009E4A9D /* TableViewCell.swift */,
+				0444280F1E91CC05009E4A9D /* TableViewCell.xib */,
 				B7795E0F1E96DC4000C3F248 /* parseData.swift */,
+				047FAF251E8D696D0072AC78 /* CustomUnwind.swift */,
+				04C3E5C51E878717008F867E /* CustomSegue.swift */,
 			);
-			name = Class;
+			name = SupportFile;
 			sourceTree = "<group>";
 		};
 		047D04C91E5D02CE00E54378 /* ViewController */ = {
@@ -135,32 +119,13 @@
 			children = (
 				4BFD6A701E6906E100F76AEB /* InstructionViewController.swift */,
 				047D04B21E5CE4E600E54378 /* FirstViewController.swift */,
-				04893D741E97D59F0092C9AC /* UIDevice.swift */,
 				0428B5D71E5E852800BBE273 /* RecentTableViewController.swift */,
 				0428B5DB1E5E857C00BBE273 /* FavoriteTableViewController.swift */,
-				04C3E5C51E878717008F867E /* CustomSegue.swift */,
-				047FAF251E8D696D0072AC78 /* CustomUnwind.swift */,
 				0428B5D91E5E855B00BBE273 /* AllTableViewController.swift */,
-				4BA03BA91E5FBFD900C02294 /* SectionCollectionViewCell.swift */,
 				4BFD6A6E1E69042D00F76AEB /* InstructionTableViewController.swift */,
 				B79547291E91E9E000553299 /* TabBarController.swift */,
 			);
 			name = ViewController;
-			sourceTree = "<group>";
-		};
-		4B7E99C81E732B86006C4370 /* JsonData */ = {
-			isa = PBXGroup;
-			children = (
-				4B7E99C91E732BF0006C4370 /* secA.json */,
-				4B7E99CA1E732BF0006C4370 /* secB.json */,
-				4B7E99CB1E732BF0006C4370 /* secC.json */,
-				4B7E99CC1E732BF0006C4370 /* secD.json */,
-				4B7E99CD1E732BF0006C4370 /* secE.json */,
-				4B7E99CE1E732BF0006C4370 /* secF.json */,
-				4B7E99CF1E732BF0006C4370 /* secG.json */,
-				4B7E99D01E732BF0006C4370 /* secH.json */,
-			);
-			name = JsonData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,18 +188,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B7E99D21E732BF0006C4370 /* secB.json in Resources */,
 				044428111E91CC05009E4A9D /* TableViewCell.xib in Resources */,
-				4B7E99D61E732BF0006C4370 /* secF.json in Resources */,
-				4B7E99D51E732BF0006C4370 /* secE.json in Resources */,
-				4B7E99D81E732BF0006C4370 /* secH.json in Resources */,
-				4B7E99D31E732BF0006C4370 /* secC.json in Resources */,
 				047D04BD1E5CE4E600E54378 /* LaunchScreen.storyboard in Resources */,
-				4B7E99D71E732BF0006C4370 /* secG.json in Resources */,
-				4B7E99D11E732BF0006C4370 /* secA.json in Resources */,
 				047D04BA1E5CE4E600E54378 /* Assets.xcassets in Resources */,
 				047D04B81E5CE4E600E54378 /* Main.storyboard in Resources */,
-				4B7E99D41E732BF0006C4370 /* secD.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,7 +208,6 @@
 				B795472A1E91E9E000553299 /* TabBarController.swift in Sources */,
 				4B7861E11E6A190600495FA0 /* Global.swift in Sources */,
 				047D04C71E5D026000E54378 /* TreeClass.swift in Sources */,
-				C75D760E1E8D77B700EE3C30 /* SectionCdata.swift in Sources */,
 				047D04C51E5D018200E54378 /* InstructionClass.swift in Sources */,
 				047FAF261E8D696D0072AC78 /* CustomUnwind.swift in Sources */,
 				047D04B11E5CE4E600E54378 /* AppDelegate.swift in Sources */,

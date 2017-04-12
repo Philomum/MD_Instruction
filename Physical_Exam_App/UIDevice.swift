@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//extension of UIDevice to check the current device
 public extension UIDevice {
     var modelName: String {
         var systemInfo = utsname()

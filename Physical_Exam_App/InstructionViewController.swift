@@ -27,6 +27,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     @IBOutlet weak var YoutubeView: UIWebView!
     @IBOutlet weak var rightButton: UIBarButtonItem!
     
+    // mark as favorite function
     @IBAction func marked(_ sender: Any) {
         isFavorite = !isFavorite
         if isFavorite == true{
@@ -54,23 +55,21 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         get { return self._orientations }
         set { self._orientations = newValue }
     }
-
-
-    @IBOutlet weak var instructionText: UITextView!
     
     var titleText : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addToRecent()
-        //print(urlString)
         YoutubeView.delegate=self
-         item = DispatchWorkItem( qos: .utility, flags: .detached) {
+        item = DispatchWorkItem( qos: .utility, flags: .detached) {
             print("running first task")
             self.YoutubeView.loadRequest(URLRequest(url: URL(string:self.urlString)!))
         }
         item.perform()
         YoutubeView.scrollView.scrollsToTop=true
+        
+        //set the size of the instruction view
         if modelName.contains("iPad") || modelName.contains("Simulator"){
             YoutubeView.frame = CGRect(x: 0, y: 0, width: view.bounds.width-preWidth, height: view.bounds.height)
         }
@@ -82,6 +81,9 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
+        
+        
+        //configure the favorite button
         for i in 0..<Global.favoriteVisited.count{
             if titleText == nil {
                 continue;
@@ -93,6 +95,8 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
             }
         }
     
+        
+        //hide the back button in iPad
         if modelName.contains("iPad") || modelName.contains("Simulator"){
             if Global.source == 1{
                 leftButton.title = ""
@@ -111,11 +115,9 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
                 leftButton4.isEnabled = false
             }
         }
-        
-        //RecentViewController.addViewedList(item: Instruction(name: titleText))
     }
     
-    
+    // unwind with swipe gesture
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
@@ -153,9 +155,6 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         
     }
     
-    
-    
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
     {
         print("return")
@@ -163,7 +162,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         return true;
     }
     
-    
+    // add the instruction to recent list
     func addToRecent(){
         if(titleText == nil){
             return

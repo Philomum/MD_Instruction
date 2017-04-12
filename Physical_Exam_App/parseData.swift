@@ -54,11 +54,6 @@ func appendNode(parentNode: treeNode, array: [String], index: Int, url: String) 
 // Parse Data Here
 func parse() -> [treeNode]{
     var treeList = [treeNode]()
-    //let source = URL(string: "https://users.cs.duke.edu/~hy/ece_590/sources.txt")!
-//    let sessionConfig = URLSessionConfiguration.default
-//    let session = URLSession(configuration: sessionConfig)
-//    let request = URLRequest(url: source)
-//    let task = session.downloadTask(with: request)
     
     if let source = URL(string: "https://users.cs.duke.edu/~hy/ece_590/sources.txt") {
         do {
@@ -101,24 +96,13 @@ func parse() -> [treeNode]{
             tempNode = treeList[index]
         }
         appendNode(parentNode: tempNode, array: dataArr, index: 1, url: url)
-        //print("!!!")
     }
     
-    // Play around and check correctness
-//    for node in treeList {
-//        for child in node.children {
-//            print(child.insname)
-//            for children in child.children{
-//                if children.isInstruction {
-//                    print(children.childInstruction?.name)
-//                    //print(children.childInstruction?.source)
-//                }
-//            }
-//        }
-//    }
     return treeList
     
 }
+
+// extension for subscript of String
 extension String {
     subscript(pos: Int) -> String {
         precondition(pos >= 0, "character position can't be negative")

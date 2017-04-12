@@ -8,6 +8,7 @@
 
 import UIKit
 
+//custom segue, from right to left
 class CustomSegue: UIStoryboardSegue {
     override func perform()
     {

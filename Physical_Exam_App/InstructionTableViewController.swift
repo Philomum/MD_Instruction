@@ -29,23 +29,6 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    
-    func traverse(node:treeNode){
-        for i in 0..<node.children.count{
-            if node.children[i].isInstruction == true{
-                Global.allList.append(node.children[i].childInstruction!)
-            }
-            else{
-                traverse(node: node.children[i])
-            }
-        }
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -181,19 +164,7 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
             cell.layer.transform = CATransform3DMakeScale(1,1,1)
         })
         
-//        This animation below is stupid
-        //cell.alpha = 0
-        //let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 0)
-        //cell.layer.transform = transform
-        //UIView.animate(withDuration: 1.0, animations: {
-        //    cell.alpha = 1
-        //    cell.layer.transform = CATransform3DIdentity
-        //})
     }
-    
-    
-    
-
 
     
     //override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
@@ -298,12 +269,14 @@ class InstructionTableViewController: UITableViewController, UISplitViewControll
     
 }
 
+//reloadData with animation
 extension UITableView {
     func reloadData(with animation: UITableViewRowAnimation) {
         reloadSections(IndexSet(integersIn: 0..<numberOfSections), with: animation)
     }
 }
 
+//use rgb to represent a color
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")

@@ -25,13 +25,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
         self.tableView.rowHeight = 100
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
-        Global.source = 2
-        //self.tableView.contentOffset.y = self.searchBar.frame.size.height
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -208,16 +202,6 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
                 cell.layer.transform = CATransform3DMakeScale(1,1,1)
             })
         }
-        
-        
-        //        This animation below is stupid
-        //cell.alpha = 0
-        //let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 0)
-        //cell.layer.transform = transform
-        //UIView.animate(withDuration: 1.0, animations: {
-        //    cell.alpha = 1
-        //    cell.layer.transform = CATransform3DIdentity
-        //})
     }
     
     // MARK: - Search Bar Functions
@@ -340,6 +324,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
         print("unwind from detail")
     }
 
+    //clear all history list
     @IBAction func clearHistory(_ sender: Any) {
         let alertController = UIAlertController(title: "Are you sure ?", message: "Clear ALL the History", preferredStyle: UIAlertControllerStyle.alert)
         

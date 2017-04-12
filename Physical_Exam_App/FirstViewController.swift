@@ -19,19 +19,15 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Parse your data here
+        // load lists from file
         Global.recentVisited = Instruction.loadFromRecentFile() ?? []
         Global.favoriteVisited = Instruction.loadFromFavoriteFile() ?? []
         Global.readList = Instruction.loadFromReadFile() ?? []
-        //self.view.addSubview(collectionView)
-        // Do any additional setup after loading the view, typically from a nib.
-        //let nib = UINib(nibName: "SectionCollectionViewCell", bundle: nil)
-        //self.collectionView.register(nib, forCellWithReuseIdentifier: "SectionCell")
-        //print(modelName)
         Global.source = 1
         clean()
     }
     
+    // clean the lists, delete outdated lists, assign urls to the instructions
     func clean(){
         
         var exist = false
@@ -116,26 +112,9 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
         return cell
     }
     
-    
-    
-    override open var shouldAutorotate: Bool {
-        return true
-    }
-    
-    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
-    }
-    
-    override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return .portrait
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // Compute the dimension of a cell for an NxN layout with space S between
-        // cells.  Take the collection view's width, subtract (N-1)*S points for
-        // the spaces between the cells, and then divide by N to find the final
-        // dimension for the cell's width and height.
         
+        //different layouts for iphone and ipad
         var cellsAcross: CGFloat = 0
         if modelName.contains("iPad") || modelName.contains("Simulator"){
             cellsAcross = 4
@@ -146,6 +125,10 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
         let spaceBetweenCells: CGFloat = 10
         let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
         return CGSize(width: dim, height: dim+10)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("You selected cell #\(self.sections[indexPath.item])")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -165,24 +148,11 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
         }
     }
     
-
-    
-    /*
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }*/
-    
+    // MARK: - unwind function
     @IBAction func unwindToCollectionView(segue: UIStoryboardSegue) {
         print("unwind from tableview controller")
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("You selected cell #\(self.sections[indexPath.item])")
-    }
     
     
 }

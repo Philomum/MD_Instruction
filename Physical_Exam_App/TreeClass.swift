@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//treeNode class is used as the node in the instruction tree
 class treeNode {
     var isInstruction = false
     var children = [treeNode]()

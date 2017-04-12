@@ -37,6 +37,7 @@ class TabBarController: UITabBarController {
 
 }
 
+// configure an image with specific color
 extension UIImage
 {
     class func imageWithColor(color: UIColor, size: CGSize) -> UIImage

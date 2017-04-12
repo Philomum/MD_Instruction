@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIInterfaceOrientationMask(rawValue: UIInterfaceOrientationMask.portrait.rawValue)
     }
 
+    //configure the font, initialize the data from online source
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Global.myData = parse()
         for i in 0..<Global.myData.count{
@@ -66,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    //traverse the whole tree to add all instructions to a list
     func traverse(node:treeNode){
         for i in 0..<node.children.count{
             if node.children[i].isInstruction == true{

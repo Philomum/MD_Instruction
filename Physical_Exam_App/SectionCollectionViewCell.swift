@@ -8,6 +8,7 @@
 
 import UIKit
 
+//CollectionViewCell configuration
 class SectionCollectionViewCell: UICollectionViewCell {
     
     

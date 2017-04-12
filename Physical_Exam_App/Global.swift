@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//Global variables
 class Global{
     static var myData:[treeNode] = [treeNode]()
     static var recentVisited:[Instruction] = [Instruction]()

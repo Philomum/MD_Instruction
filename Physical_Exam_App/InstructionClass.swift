@@ -11,20 +11,15 @@ import UIKit
 
 struct InstructionKey{
     static let nameK = "name"
-    static let isVedioK = "isVedio"
     static let sourceK = "source"
-    static let detailK = "detail"
-    static let checkedK = "checked"
 }
 
-
+//class Instruction is used to save instruction and its correspoinding url
 class Instruction:NSObject,NSCoding{
     var name = ""
-    var isVedio = true
     var source = ""
-    var detail = ""
-    var checked = false
-    
+
+    //urls for different files
     static let DocumentsDirectory1 = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURLforRecent = DocumentsDirectory1.appendingPathComponent("RecentFile")
     static let DocumentsDirectory2 = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -46,6 +41,7 @@ class Instruction:NSObject,NSCoding{
         self.init(name:name)
     }
     
+    // MARK: - Save and Load Recent
     static func saveRecent(_ Recent_List: [Instruction]) -> Bool{
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(Recent_List, toFile: Instruction.ArchiveURLforRecent.path)
         if !isSuccessfulSave{
@@ -62,6 +58,7 @@ class Instruction:NSObject,NSCoding{
         return NSKeyedUnarchiver.unarchiveObject(withFile: Instruction.ArchiveURLforRecent.path) as? [Instruction]
     }
     
+    // MARK: - Save and Load Favorite
     static func saveFavorite(_ Favorite_List: [Instruction]) -> Bool{
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(Favorite_List, toFile: Instruction.ArchiveURLforFavorite.path)
         if !isSuccessfulSave{
@@ -77,6 +74,7 @@ class Instruction:NSObject,NSCoding{
         return NSKeyedUnarchiver.unarchiveObject(withFile: Instruction.ArchiveURLforFavorite.path) as? [Instruction]
     }
     
+    // MARK: - Save and Load Read
     static func saveRead(_ Read_List: [Instruction]) -> Bool{
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(Read_List, toFile: Instruction.ArchiveURLforRead.path)
         if !isSuccessfulSave{
