@@ -25,6 +25,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
         self.tableView.rowHeight = 100
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
+        Global.source = 2
 
     }
     
