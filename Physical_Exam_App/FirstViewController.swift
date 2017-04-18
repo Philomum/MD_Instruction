@@ -27,7 +27,9 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
         clean()
     }
     
-    // clean the lists, delete outdated lists, assign urls to the instructions
+    /**
+        Clean the lists, delete outdated lists and assign urls to the instructions
+     */
     func clean(){
         
         var exist = false
@@ -101,13 +103,9 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SectionCollectionViewCell
-        //cell.myLabel.text = self.items[indexPath.item]
         cell.myLabel.text = self.sections[indexPath.item]
         cell.myLabel.textAlignment = .center
-        //cell.myLabel.textColor = UIColor(rgb: 0x1ba685)
         cell.pic.image=images[indexPath.item]
-        //cell.pic.frame = CGRect(x: 10, y: 10, width: cell.frame.width-30, height: cell.frame.width-30)
-        //cell.backgroundColor = UIColor.cyan
         cell.myLabel.adjustsFontSizeToFitWidth = true
         return cell
     }
@@ -139,7 +137,10 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
             let cell = sender as! UICollectionViewCell
             let indexPath = self.collectionView!.indexPath(for: cell)
             let index = (indexPath?.row)!
-            // switch case
+            /* 
+             * Switch case
+             * need change for each index
+             */
             if index == 2 {
                 vc.myTitle = (Global.myData)[0].insname
                 vc.treeList = (Global.myData)[0].children

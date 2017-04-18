@@ -16,6 +16,13 @@ struct InstructionKey{
 
 //class Instruction is used to save instruction and its correspoinding url
 class Instruction:NSObject,NSCoding{
+    
+    /**
+        - name: name of instruction.
+        - source: the web video source of this instruction.
+     */
+    
+    
     var name = ""
     var source = ""
 

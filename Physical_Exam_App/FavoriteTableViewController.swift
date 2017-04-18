@@ -62,7 +62,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "InstructionCell", for: indexPath) as! TableViewCell
+        
         let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
         // Configure the cell...
         
@@ -187,6 +187,13 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
         }
     }
     
+    /**
+        Find out the index of selected item in favorite list
+     
+        - Parameter name: name of the item in filtered list.
+     
+        - Returns: The corresponding Index in favorite List
+     */
     func checkIndex(name: String) -> Int {
         for i in 0..<Global.favoriteVisited.count {
             if (Global.favoriteVisited)[i].name == name {
@@ -328,7 +335,11 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
         print("unwind from detail")
     }
     
-    //clear all favorite list
+    /**
+        Clear all favorite instructions when trash can button is tapped
+     
+        - Parameter sender: action sender.
+     */
     @IBAction func clear(_ sender: Any) {
         let alertController = UIAlertController(title: "Are you sure ?", message: "Clear ALL the Favorites", preferredStyle: UIAlertControllerStyle.alert)
         
