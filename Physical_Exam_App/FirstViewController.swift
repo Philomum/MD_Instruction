@@ -122,7 +122,15 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
             cellsAcross = 3
         }
         let spaceBetweenCells: CGFloat = 10
-        let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
+        var length:CGFloat = 0
+        if collectionView.bounds.width>collectionView.bounds.height{
+            length = collectionView.bounds.height
+        }else{
+            length = collectionView.bounds.width
+
+        }
+        print(cellsAcross)
+        let dim = (length - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
         return CGSize(width: dim, height: dim+10)
     }
     

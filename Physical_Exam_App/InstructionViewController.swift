@@ -77,7 +77,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         YoutubeView.scrollView.scrollsToTop=true
         
         //set the size of the instruction view
-        if modelName.contains("iPad") && modelName.contains("Simulator"){
+        if modelName.contains("iPad") || modelName.contains("Simulator"){
             YoutubeView.frame = CGRect(x: 0, y: 0, width: view.bounds.width-preWidth, height: view.bounds.height)
         }
         else{
