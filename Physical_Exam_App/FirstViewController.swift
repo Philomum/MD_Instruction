@@ -24,6 +24,7 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
         Global.favoriteVisited = Instruction.loadFromFavoriteFile() ?? []
         Global.readList = Instruction.loadFromReadFile() ?? []
         Global.source = 1
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         clean()
     }
     

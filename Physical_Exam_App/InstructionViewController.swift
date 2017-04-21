@@ -77,7 +77,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         YoutubeView.scrollView.scrollsToTop=true
         
         //set the size of the instruction view
-        if modelName.contains("iPad") || modelName.contains("Simulator"){
+        if modelName.contains("iPad") && modelName.contains("Simulator"){
             YoutubeView.frame = CGRect(x: 0, y: 0, width: view.bounds.width-preWidth, height: view.bounds.height)
         }
         else{
@@ -88,7 +88,6 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
-        
         
         //configure the favorite button
         for i in 0..<Global.favoriteVisited.count{
@@ -101,27 +100,37 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
                 break
             }
         }
-    
+        
+        
+
         
         //hide the back button in iPad
         if modelName.contains("iPad") || modelName.contains("Simulator"){
-            if Global.source == 1{
+            if self.tabBarController?.selectedIndex == nil{
                 leftButton.title = ""
-                leftButton.isEnabled = false
+                //leftButton.isEnabled = false
             }
-            else if Global.source == 2{
+            else if self.tabBarController!.selectedIndex == 1{
                 leftButton2.title = ""
-                leftButton2.isEnabled = false
+                //leftButton2.isEnabled = false
             }
-            else if Global.source == 3{
+            else if self.tabBarController!.selectedIndex == 2{
                 leftButton3.title = ""
-                leftButton3.isEnabled = false
+                //leftButton3.isEnabled = false
             }
-            else if Global.source == 4{
+            else if self.tabBarController!.selectedIndex == 3{
                 leftButton4.title = ""
-                leftButton4.isEnabled = false
+                //leftButton4.isEnabled = false
             }
         }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        print(Global.source)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.modalPresentationCapturesStatusBarAppearance = true;
     }
     
     // unwind with swipe gesture
@@ -158,6 +167,7 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        YoutubeView.frame = self.view.bounds
         // Layout subviews manually
         
     }
@@ -195,6 +205,10 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     }
     
     
+    
+    override var prefersStatusBarHidden: Bool{
+        return false
+    }
     /*
     // MARK: - Navigation
 

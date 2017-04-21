@@ -39,10 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(rgb: 0x1ba685), NSFontAttributeName:UIFont(name: font, size: 10)!], for: .normal)
         
         UILabel.appearance().font = UIFont(name: font, size: 15.0)
+        
+        
         return true
     }
-
-    
 
     
     func applicationWillResignActive(_ application: UIApplication) {
