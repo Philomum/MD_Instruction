@@ -136,7 +136,6 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
                     let name = (self.filtered)[indexPath.row].name
                     let index = self.checkIndex(name: name)
                     self.filtered.remove(at: indexPath.row)
-                    print(index)
                     Global.recentVisited.remove(at: index)
                     
                 }
@@ -329,7 +328,7 @@ class RecentTableViewController: UITableViewController,UISearchBarDelegate, UISp
         }
     }
     @IBAction func unwindToRecent(segue: UIStoryboardSegue) {
-        print("unwind from detail")
+    
     }
 
     /**

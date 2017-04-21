@@ -288,7 +288,7 @@ class AllTableViewController: UITableViewController,UISearchBarDelegate, UISplit
     }
     
     @IBAction func unwindToAll(segue: UIStoryboardSegue) {
-        print("unwind from detail")
+   
     }
 
 }

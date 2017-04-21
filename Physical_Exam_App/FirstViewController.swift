@@ -129,13 +129,12 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
             length = collectionView.bounds.width
 
         }
-        print(cellsAcross)
         let dim = (length - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
         return CGSize(width: dim, height: dim+10)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("You selected cell #\(self.sections[indexPath.item])")
+    
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -160,7 +159,7 @@ class FirstViewController: UICollectionViewController,UICollectionViewDelegateFl
     
     // MARK: - unwind function
     @IBAction func unwindToCollectionView(segue: UIStoryboardSegue) {
-        print("unwind from tableview controller")
+  
     }
     
     

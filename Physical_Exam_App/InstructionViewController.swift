@@ -70,7 +70,6 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         addToRecent()
         YoutubeView.delegate=self
         item = DispatchWorkItem( qos: .utility, flags: .detached) {
-            print("running first task")
             self.YoutubeView.loadRequest(URLRequest(url: URL(string:self.urlString)!))
         }
         item.perform()
@@ -125,10 +124,6 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
         }
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        print(Global.source)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         self.modalPresentationCapturesStatusBarAppearance = true;
     }
@@ -174,7 +169,6 @@ class InstructionViewController: UIViewController,UIWebViewDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
     {
-        print("return")
         textField.resignFirstResponder()
         return true;
     }

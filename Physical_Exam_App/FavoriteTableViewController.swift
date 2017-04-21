@@ -332,7 +332,7 @@ class FavoriteTableViewController: UITableViewController,UISearchBarDelegate, UI
     }
     
     @IBAction func unwindToFavorite(segue: UIStoryboardSegue) {
-        print("unwind from detail")
+       
     }
     
     /**
